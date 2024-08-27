@@ -20,13 +20,10 @@ let package = Package(
             targets: ["TrackerTesting"]
         ),
     ],
-    dependencies: [
-        .package(url: "https://github.com/hectr/swift-idioms.git", from: "2.1.0"),
-    ],
+    dependencies: [],
     targets: [
         .target(
-            name: "Tracker",
-            dependencies: ["Idioms"]
+            name: "Tracker"
         ),
         .target(
             name: "TrackerTesting",
