@@ -1,14 +1,14 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.10
 
 import PackageDescription
 
 let package = Package(
     name: "EventTracker",
     platforms: [
-        .iOS("8.0"),
-        .macOS("10.9"),
-        .watchOS("2.0"),
-        .tvOS("9.0"),
+        .iOS(.v12),
+        .macOS(.v10_13),
+        .watchOS(.v4),
+        .tvOS(.v12),
     ],
     products: [
         .library(
