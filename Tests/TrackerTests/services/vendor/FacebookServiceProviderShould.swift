@@ -4,8 +4,8 @@ import XCTest
 
 final class FacebookServiceProviderShould: XCTestCase {
     var sut: FacebookServiceProvider!
-    var adapter: FacebookServiceAdapterMock.Type!
-    var settingsAdapter: FacebookSettingsAdapterMock.Type!
+    var adapter: FacebookServiceAdapterMock!
+    var settingsAdapter: FacebookSettingsAdapterMock!
 
     var someEvent: EventMock!
     var anotherEvent: EventMock!
@@ -43,8 +43,8 @@ final class FacebookServiceProviderShould: XCTestCase {
         someScreen.screenClass = someScreenClass
         anotherScreen = ScreenMock(name: anotherScreenName)
 
-        adapter = FacebookServiceAdapterMock.self
-        settingsAdapter = FacebookSettingsAdapterMock.self
+        adapter = FacebookServiceAdapterMock()
+        settingsAdapter = FacebookSettingsAdapterMock()
         sut = FacebookServiceProvider(adapter: adapter, settingsAdapter: settingsAdapter)
     }
 
@@ -79,30 +79,10 @@ final class FacebookServiceProviderShould: XCTestCase {
         XCTAssertEqual(adapter.logEventParametersReceivedArguments?.eventName, "Set property")
     }
 
-    func testV6SetExpectedProperty() {
-        let adapter = FacebookV6ServiceAdapterMock.self
-        sut = FacebookServiceProvider(adapter: adapter, settingsAdapter: settingsAdapter)
-        sut.setProperty(somePropertyKey, value: somePropertyValue)
-        XCTAssertTrue(adapter.updateUserPropertiesCalled)
-        for (key, value) in adapter.updateUserPropertiesReceivedProperties ?? [:] {
-            XCTAssertEqual(key, somePropertyKey)
-            XCTAssertEqual(value as? String, somePropertyValue)
-        }
-    }
-
     func testRemovePropertiesOnResetProperties() throws {
         sut.resetProperties()
         XCTAssertTrue(adapter.logEventParametersCalled)
         XCTAssertEqual(adapter.logEventParametersReceivedArguments?.eventName, "Reset properties")
-    }
-
-    func testV6RemovePropertiesOnResetProperties() throws {
-        let adapter = FacebookV6ServiceAdapterMock.self
-        sut = FacebookServiceProvider(adapter: adapter, settingsAdapter: settingsAdapter)
-        sut.setProperty(somePropertyKey, value: somePropertyValue)
-        sut.resetProperties()
-        XCTAssertEqual(adapter.updateUserPropertiesCallsCount, 2)
-        try AssertTrue(adapter.updateUserPropertiesReceivedProperties?.isEmpty)
     }
 
     func testSetExpectedUserId() {

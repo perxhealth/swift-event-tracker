@@ -1,18 +1,34 @@
 import Foundation
 
 /**
- Links:
+ # Links:
  - https://docs.microsoft.com/en-us/appcenter/sdk/analytics/ios
  - https://docs.microsoft.com/en-us/appcenter/sdk/getting-started/ios
 
- Pod sample: `pod 'AppCenter/Analytics'`
-
- Integration sample:
+ # Package example:
  ```
- import class AppCenterAnalytics.MSAnalytics
+ // swift-tools-version: 5.10
+
+ import PackageDescription
+
+ let package = Package(
+     name: "Example",
+     dependencies: [
+         .package(name: "Tracker", path: "./swift-event-tracker"),
+         .package(url: "https://github.com/microsoft/appcenter-sdk-apple", from: "5.0.0"),
+     ],
+     targets: [
+         .target(name: "Example", dependencies: [.product(name: "AppCenterAnalytics", package: "appcenter-sdk-apple"), "Tracker"]),
+     ]
+ )
+ ```
+
+ # Integration example:
+ ```
+ import class AppCenterAnalytics.Analytics
  import Tracker
 
- extension AppCenterAnalytics.MSAnalytics: AppCenterAnalyticsServiceAdapter {}
+ extension Analytics: AppCenterAnalyticsServiceAdapter {}
  ```
  */
 

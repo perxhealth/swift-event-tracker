@@ -64,20 +64,6 @@ final class FirebaseAnalyticsServiceProviderShould: XCTestCase {
         }
     }
 
-    func testTrackScreenWithExpectedName() {
-        sut.trackScreen(anotherScreen)
-        XCTAssertTrue(adapter.setScreenNameScreenClassCalled)
-        XCTAssertEqual(adapter.setScreenNameScreenClassReceivedArguments?.name, anotherScreenName)
-        XCTAssertNil(adapter.setScreenNameScreenClassReceivedArguments?.screenClass)
-    }
-
-    func testTrackScreenWithExpectedScreenClass() {
-        sut.trackScreen(someScreen)
-        XCTAssertTrue(adapter.setScreenNameScreenClassCalled)
-        XCTAssertEqual(adapter.setScreenNameScreenClassReceivedArguments?.name, someScreenName)
-        XCTAssertEqual(adapter.setScreenNameScreenClassReceivedArguments?.screenClass, someScreenClass)
-    }
-
     func testSetExpectedProperty() {
         sut.setProperty(somePropertyKey, value: somePropertyValue)
         XCTAssertTrue(adapter.setUserPropertyForNameCalled)

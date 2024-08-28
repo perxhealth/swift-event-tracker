@@ -1,18 +1,30 @@
 import Foundation
 
 /**
- Links:
- - https://help.amplitude.com/hc/en-us/articles/115002278527#tracking-events
+ # Package example:
+ ```
+ // swift-tools-version: 5.10
 
- Pod sample: `pod 'Amplitude', '~> 7.2.2'`
- Package sample: `.package(url: "https://github.com/amplitude/Amplitude-iOS.git", from: "7.2.2"),`
+ import PackageDescription
 
- Integration sample:
+ let package = Package(
+     name: "Example",
+     dependencies: [
+         .package(name: "Tracker", path: "./swift-event-tracker"),
+         .package(url: "https://github.com/amplitude/Amplitude-iOS", from: "8.0.0"),
+     ],
+     targets: [
+         .target(name: "Example", dependencies: [.product(name: "Amplitude", package: "Amplitude-IOS"), "Tracker"]),
+     ]
+ )
+ ```
+
+ # Integration example:
  ```
  import class Amplitude.Amplitude
  import Tracker
 
- extension Amplitude.Amplitude: AmplitudeServiceAdapter {}
+ extension Amplitude: AmplitudeServiceAdapter {}
  ```
  */
 

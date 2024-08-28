@@ -1,40 +1,59 @@
 import Foundation
 
 /**
- Links:
+ # Links:
  - https://developers.facebook.com/docs/app-events/getting-started-app-events-ios
  - https://developers.facebook.com/docs/analytics/quickstart-list/ios/
- 
- Pod sample: `pod 'FacebookSDK', '~> 9.0.1'`
- Package sample: `.package(url: "https://github.com/facebook/facebook-ios-sdk.git", from: "9.0.1"),`
 
- Integration sample:
+ # Package example:
+ ```
+ // swift-tools-version: 5.10
+
+ import PackageDescription
+
+ let package = Package(
+     name: "Example",
+     dependencies: [
+         .package(name: "Tracker", path: "./swift-event-tracker"),
+         .package(url: "https://github.com/facebook/facebook-ios-sdk", from: "17.0.0"),
+     ],
+     targets: [
+         .target(name: "Example", dependencies:  [.product(name: "FacebookCore", package: "facebook-ios-sdk"), "Tracker"]),
+     ]
+ )
+ ```
+
+ # Integration example:
  ```
  import class FacebookCore.AppEvents
  import class FacebookCore.Settings
  import Tracker
 
- extension FacebookCore.AppEvents: FacebookServiceAdapter {
-     public static func logEvent(_ eventName: String, parameters: [String: Any]) {
-         logEvent(Self.Name(rawValue: eventName), parameters: parameters)
+ extension AppEvents: FacebookServiceAdapter {
+     public func clearUserID() {
+         self.userID = nil
      }
 
-     public static func updateUserProperties(_ properties: [String: Any]) {
-         updateUserProperties(properties, handler: nil)
+     public func logEvent(_ eventName: String, parameters: [String: Any]) {
+         var namedParameters = [AppEvents.ParameterName: Any]()
+         for (key, value) in parameters {
+             namedParameters[AppEvents.ParameterName(rawValue: key)] = value
+         }
+         logEvent(AppEvents.Name(rawValue: eventName), parameters: namedParameters)
      }
  }
 
- extension FacebookCore.Settings: FacebookSettingsAdapter {}
+ extension Settings: FacebookSettingsAdapter {}
  ```
  */
 
 public protocol FacebookServiceAdapter {
-    static var userID: String? { get set }
+    var userID: String? { get set }
 
-    static func clearUserID()
-    static func logEvent(_ eventName: String, parameters: [String : Any])
+    func clearUserID()
+    func logEvent(_ eventName: String, parameters: [String : Any])
 }
 
 public protocol FacebookSettingsAdapter {
-    static var isAutoLogAppEventsEnabled: Bool { get set }
+    var isAutoLogAppEventsEnabled: Bool { get set }
 }

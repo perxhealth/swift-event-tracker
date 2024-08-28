@@ -59,8 +59,8 @@ final class MixpanelServiceProviderShould: XCTestCase {
     func testTrackEventWithExpectedScreenName() throws {
         sut.trackScreen(someScreen)
         XCTAssertTrue(adapter.trackEventPropertiesCalled)
-        try AssertTrue(adapter.trackEventPropertiesReceivedArguments?.event?.hasPrefix(someScreenName))
-        try AssertTrue(adapter.trackEventPropertiesReceivedArguments?.event?.hasSuffix(" viewed"))
+        try AssertTrue(adapter.trackEventPropertiesReceivedArguments?.event.hasPrefix(someScreenName))
+        try AssertTrue(adapter.trackEventPropertiesReceivedArguments?.event.hasSuffix(" viewed"))
     }
 
     func testSetExpectedProperty() {
@@ -79,13 +79,13 @@ final class MixpanelServiceProviderShould: XCTestCase {
 
     func testSetExpectedUserId() {
         sut.setUserId(someUserId)
-        XCTAssertEqual(adapter.userId, someUserId)
+        XCTAssertEqual(adapter.identifyReceivedDistinctId, someUserId)
     }
 
     func testResetUserId() {
         sut.setUserId(someUserId)
         sut.resetUserId()
-        XCTAssertNil(adapter.userId)
+        XCTAssertTrue(adapter.resetUserIdCalled)
     }
 
     func testDisableTracking() {
@@ -98,7 +98,7 @@ final class MixpanelServiceProviderShould: XCTestCase {
     func testEnableTracking() {
         sut.disableTracking(true)
         sut.disableTracking(false)
-        XCTAssertTrue(adapter.optInTrackingDistinctIdPropertiesCalled)
+        XCTAssertTrue(adapter.optInTrackingCalled)
         adapter.hasOptedOutTrackingReturnValue = false
         XCTAssertFalse(sut.trackingDisabled)
     }

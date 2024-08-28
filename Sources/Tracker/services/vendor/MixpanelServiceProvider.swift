@@ -12,15 +12,15 @@ public final class MixpanelServiceProvider: AbstractProvider, Service {
     }
 
     public func trackEvent(_ event: Event) {
-        adapter.track(event: event.name, properties: event.parameters)
+        adapter.track(event.name, properties: event.parameters)
     }
 
     public func setUserId(_ userId: String) {
-        adapter.userId = userId
+        adapter.identify(userId)
     }
 
     public func resetUserId() {
-        adapter.userId = nil
+        adapter.resetUserId()
     }
 
     public func setProperty(_ key: String, value: String) {
@@ -38,7 +38,7 @@ public final class MixpanelServiceProvider: AbstractProvider, Service {
         if flag {
             adapter.optOutTracking()
         } else {
-            adapter.optInTracking(distinctId: nil, properties: nil)
+            adapter.optInTracking()
         }
     }
 }

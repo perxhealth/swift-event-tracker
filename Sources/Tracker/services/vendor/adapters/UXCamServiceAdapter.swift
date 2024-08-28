@@ -1,12 +1,28 @@
 import Foundation
 
 /**
- Links:
+ # Links:
  - https://help.uxcam.com/hc/en-us/categories/115000129131-Developer-Guide
 
- Pod sample: `pod 'UXCam'`
+ # Package example:
+ ```
+ // swift-tools-version: 5.10
 
- Integration sample:
+ import PackageDescription
+
+ let package = Package(
+     name: "Example",
+     dependencies: [
+         .package(name: "Tracker", path: "./swift-event-tracker"),
+         .package(url: "https://github.com/uxcam/uxcam-ios-sdk", from: "3.0.0"),
+     ],
+     targets: [
+         .target(name: "Example", dependencies:  [.product(name: "UXCam", package: "uxcam-ios-sdk"), "Tracker"]),
+     ]
+ )
+ ```
+
+ # Integration example:
  ```
  import Tracker
  import class UXCam.UXCam

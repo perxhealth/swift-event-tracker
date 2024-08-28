@@ -13,14 +13,6 @@ public final class FirebaseAnalyticsServiceProvider: AbstractProvider, Service {
         adapter.logEvent(event.name, parameters: event.parameters)
     }
 
-    public func trackScreen(_ screen: Screen) {
-        if let screen = screen as? FirebaseAnalyticsScreen {
-            adapter.setScreenName(screen.name, screenClass: screen.screenClass)
-        } else {
-            adapter.setScreenName(screen.name, screenClass: nil)
-        }
-    }
-
     public func setUserId(_ userId: String) {
         adapter.setUserID(userId)
     }

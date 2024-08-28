@@ -1,12 +1,28 @@
 import Foundation
 
 /**
- Links:
+ # Links:
  - https://docs.bugsee.com/sdk/ios/custom/
 
- Pod sample: `pod 'Bugsee'`
+ # Package example:
+ ```
+ // swift-tools-version: 5.10
 
- Integration sample:
+ import PackageDescription
+
+ let package = Package(
+     name: "Example",
+     dependencies: [
+         .package(name: "Tracker", path: "./swift-event-tracker"),
+         .package(url: "https://github.com/bugsee/spm", from: "5.0.0"),
+     ],
+     targets: [
+         .target(name: "Example", dependencies:  [.product(name: "Bugsee", package: "spm"), "Tracker"]),
+     ]
+ )
+ ```
+
+ # Integration example:
  ```
  import class Bugsee.Bugsee
  import Tracker

@@ -62,7 +62,7 @@ final class CountlyServiceProviderShould: XCTestCase {
     func testTrackEventWithExpectedParameters() {
         sut.trackEvent(someEvent)
         for (key, value) in someEvent.parameters {
-            XCTAssertEqual(adapter.recordEventSegmentationReceivedArguments?.segmentation?[key], value)
+            XCTAssertEqual(adapter.recordEventSegmentationReceivedArguments?.segmentation?[key] as! String, value)
         }
     }
 
@@ -82,7 +82,7 @@ final class CountlyServiceProviderShould: XCTestCase {
         sut.trackScreen(someScreen)
         XCTAssertTrue(adapter.recordViewSegmentationCalled)
         for (key, value) in someScreen.segmentation {
-            XCTAssertEqual(adapter.recordViewSegmentationReceivedArguments?.segmentation[key], value)
+            XCTAssertEqual(adapter.recordViewSegmentationReceivedArguments?.segmentation[key] as! String, value)
         }
     }
 

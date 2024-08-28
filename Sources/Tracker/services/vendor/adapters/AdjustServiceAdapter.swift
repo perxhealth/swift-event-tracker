@@ -1,15 +1,31 @@
 import Foundation
 
 /**
- Links:
+ # Links:
  - https://github.com/adjust/ios_sdk#event-tracking
 
- Pod sample: `pod 'Adjust'`
-
- Integration sample:
+ # Package example:
  ```
- import class Adjust.Adjust
- import class Adjust.ADJEvent
+ // swift-tools-version: 5.10
+
+ import PackageDescription
+
+ let package = Package(
+     name: "Example",
+     dependencies: [
+         .package(name: "Tracker", path: "./swift-event-tracker"),
+         .package(url: "https://github.com/adjust/ios_sdk", from: "5.0.0"),
+     ],
+     targets: [
+         .target(name: "Example", dependencies: [.product(name: "AdjustSdk", package: "ios_sdk"), "Tracker"]),
+     ]
+ )
+ ```
+
+ # Integration example:
+ ```
+ import class AdjustSdk.Adjust
+ import class AdjustSdk.ADJEvent
  import Tracker
 
  extension Adjust: AdjustServiceAdapter {
@@ -19,6 +35,14 @@ import Foundation
          }
          event.setValuesForKeys(parameters)
          Adjust.trackEvent(event)
+     }
+
+     public static func setEnabled(_ flag: Bool) {
+         if flag {
+             Adjust.enable()
+         } else {
+             Adjust.disable()
+         }
      }
  }
  ```

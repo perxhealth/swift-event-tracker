@@ -1,12 +1,28 @@
 import Foundation
 
 /**
- Links:
+ # Links:
  - https://firebase.google.com/docs/crashlytics/upgrade-sdk
  
- Pod sample: `pod 'Firebase/Crashlytics'`
+ # Package example:
+ ```
+ // swift-tools-version: 5.10
 
- Integration sample:
+ import PackageDescription
+
+ let package = Package(
+     name: "Example",
+     dependencies: [
+         .package(name: "Tracker", path: "./swift-event-tracker"),
+         .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "11.0.0"),
+     ],
+     targets: [
+         .target(name: "Example", dependencies:  [.product(name: "FirebaseCrashlytics", package: "firebase-ios-sdk"), "Tracker"]),
+     ]
+ )
+ ```
+
+ # Integration example:
  ```
  import class FirebaseCrashlytics.Crashlytics
  import Tracker
@@ -21,6 +37,6 @@ public protocol CrashlyticsServiceAdapter: AnyObject {
     func record(error: Swift.Error)
     func setCrashlyticsCollectionEnabled(_ flag: Bool)
     func isCrashlyticsCollectionEnabled() -> Bool
-    func setCustomValue(_ value: Any, forKey: String)
-    func setUserID(_ userId: String)
+    func setCustomValue(_ value: Any?, forKey: String)
+    func setUserID(_ userId: String?)
 }

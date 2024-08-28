@@ -1,19 +1,33 @@
 import Foundation
 
 /**
-Links:
+# Links:
 - https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/tracking_custom_events/
 
- Pod sample: `pod 'Appboy-iOS-SDK'`
-
- Integration sample:
+ # Package example:
  ```
- import class Appboy_iOS_SDK.Appboy
+ // swift-tools-version: 5.10
+
+ import PackageDescription
+
+ let package = Package(
+     name: "Example",
+     dependencies: [
+         .package(name: "Tracker", path: "./swift-event-tracker"),
+         .package(url: "https://github.com/Appboy/appboy-ios-sdk", from: "4.0.0"),
+     ],
+     targets: [
+         .target(name: "Example", dependencies:  [.product(name: "Appboy_iOS_SDK", package: "appboy-ios-sdk"), "Tracker"]),
+     ]
+ )
+ ```
+
+ # Integration example:
+ ```
+ import class AppboyKit.Appboy
  import Tracker
 
- import Appboy_iOS_SDK
-
- extension Appboy_iOS_SDK.Appboy: BrazeServiceAdapter {
+ extension Appboy: BrazeServiceAdapter {
      public func setCustomAttributeWithKey(_ key: String, andStringValue value: String) {
          Appboy.sharedInstance()?.user.setCustomAttributeWithKey(key, andStringValue: value)
      }
@@ -22,7 +36,7 @@ Links:
          Appboy.sharedInstance()?.user.unsetCustomAttribute(withKey: key)
      }
  }
- ```
+```
 */
 
 public protocol BrazeServiceAdapter: AnyObject {

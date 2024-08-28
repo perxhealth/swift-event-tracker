@@ -1,17 +1,17 @@
 import Foundation
 
 /**
-Links:
+# Links:
 - https://support.appsflyer.com/hc/en-us/articles/207032066-iOS-SDK-integration-for-developers#core-apis
 
- Pod sample: `pod 'AppsFlyerFramework', '~> 5.4.4'`
+ # Pod sample: `pod 'AppsFlyerFramework', '~> 5.4.4'`
 
- Integration sample:
+ # Integration example:
  ```
  import class AppsFlyerLib.AppsFlyerTracker
  import Tracker
 
- extension AppsFlyerLib.AppsFlyerTracker: AppsFlyerV5ServiceAdapter {}
+ extension AppsFlyerTracker: AppsFlyerV5ServiceAdapter {}
  ```
 */
 

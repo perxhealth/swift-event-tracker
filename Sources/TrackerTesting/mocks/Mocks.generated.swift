@@ -435,11 +435,11 @@ public class CountlyServiceAdapterMock: CountlyServiceAdapter {
     public var recordEventSegmentationCalled: Bool {
         return recordEventSegmentationCallsCount > 0
     }
-    public var recordEventSegmentationReceivedArguments: (eventName: String, segmentation: [String: String]?)?
-    public var recordEventSegmentationReceivedInvocations: [(eventName: String, segmentation: [String: String]?)] = []
-    public var recordEventSegmentationClosure: ((String, [String: String]?) -> Void)?
+    public var recordEventSegmentationReceivedArguments: (eventName: String, segmentation: [String: Any]?)?
+    public var recordEventSegmentationReceivedInvocations: [(eventName: String, segmentation: [String: Any]?)] = []
+    public var recordEventSegmentationClosure: ((String, [String: Any]?) -> Void)?
 
-    public func recordEvent(_ eventName: String, segmentation: [String: String]?) {
+    public func recordEvent(_ eventName: String, segmentation: [String: Any]?) {
         recordEventSegmentationCallsCount += 1
         recordEventSegmentationReceivedArguments = (eventName: eventName, segmentation: segmentation)
         recordEventSegmentationReceivedInvocations.append((eventName: eventName, segmentation: segmentation))
@@ -469,11 +469,11 @@ public class CountlyServiceAdapterMock: CountlyServiceAdapter {
     public var recordViewSegmentationCalled: Bool {
         return recordViewSegmentationCallsCount > 0
     }
-    public var recordViewSegmentationReceivedArguments: (view: String, segmentation: [String: String])?
-    public var recordViewSegmentationReceivedInvocations: [(view: String, segmentation: [String: String])] = []
-    public var recordViewSegmentationClosure: ((String, [String: String]) -> Void)?
+    public var recordViewSegmentationReceivedArguments: (view: String, segmentation: [String: Any])?
+    public var recordViewSegmentationReceivedInvocations: [(view: String, segmentation: [String: Any])] = []
+    public var recordViewSegmentationClosure: ((String, [String: Any]) -> Void)?
 
-    public func recordView(_ view: String, segmentation: [String: String]) {
+    public func recordView(_ view: String, segmentation: [String: Any]) {
         recordViewSegmentationCallsCount += 1
         recordViewSegmentationReceivedArguments = (view: view, segmentation: segmentation)
         recordViewSegmentationReceivedInvocations.append((view: view, segmentation: segmentation))
@@ -670,11 +670,11 @@ public class CrashlyticsServiceAdapterMock: CrashlyticsServiceAdapter {
     public var setCustomValueForKeyCalled: Bool {
         return setCustomValueForKeyCallsCount > 0
     }
-    public var setCustomValueForKeyReceivedArguments: (value: Any, forKey: String)?
-    public var setCustomValueForKeyReceivedInvocations: [(value: Any, forKey: String)] = []
-    public var setCustomValueForKeyClosure: ((Any, String) -> Void)?
+    public var setCustomValueForKeyReceivedArguments: (value: Any?, forKey: String)?
+    public var setCustomValueForKeyReceivedInvocations: [(value: Any?, forKey: String)] = []
+    public var setCustomValueForKeyClosure: ((Any?, String) -> Void)?
 
-    public func setCustomValue(_ value: Any, forKey: String) {
+    public func setCustomValue(_ value: Any?, forKey: String) {
         setCustomValueForKeyCallsCount += 1
         setCustomValueForKeyReceivedArguments = (value: value, forKey: forKey)
         setCustomValueForKeyReceivedInvocations.append((value: value, forKey: forKey))
@@ -688,10 +688,10 @@ public class CrashlyticsServiceAdapterMock: CrashlyticsServiceAdapter {
         return setUserIDCallsCount > 0
     }
     public var setUserIDReceivedUserId: String?
-    public var setUserIDReceivedInvocations: [String] = []
-    public var setUserIDClosure: ((String) -> Void)?
+    public var setUserIDReceivedInvocations: [String?] = []
+    public var setUserIDClosure: ((String?) -> Void)?
 
-    public func setUserID(_ userId: String) {
+    public func setUserID(_ userId: String?) {
         setUserIDCallsCount += 1
         setUserIDReceivedUserId = userId
         setUserIDReceivedInvocations.append(userId)
@@ -726,32 +726,32 @@ public class FacebookServiceAdapterMock: FacebookServiceAdapter {
 
     public init() {}
 
-    public static var userID: String?
+    public var userID: String?
 
     // MARK: clearUserID
 
-    public static var clearUserIDCallsCount = 0
-    public static var clearUserIDCalled: Bool {
+    public var clearUserIDCallsCount = 0
+    public var clearUserIDCalled: Bool {
         return clearUserIDCallsCount > 0
     }
-    public static var clearUserIDClosure: (() -> Void)?
+    public var clearUserIDClosure: (() -> Void)?
 
-    public static func clearUserID() {
+    public func clearUserID() {
         clearUserIDCallsCount += 1
         clearUserIDClosure?()
     }
 
     // MARK: logEvent
 
-    public static var logEventParametersCallsCount = 0
-    public static var logEventParametersCalled: Bool {
+    public var logEventParametersCallsCount = 0
+    public var logEventParametersCalled: Bool {
         return logEventParametersCallsCount > 0
     }
-    public static var logEventParametersReceivedArguments: (eventName: String, parameters: [String : Any])?
-    public static var logEventParametersReceivedInvocations: [(eventName: String, parameters: [String : Any])] = []
-    public static var logEventParametersClosure: ((String, [String : Any]) -> Void)?
+    public var logEventParametersReceivedArguments: (eventName: String, parameters: [String : Any])?
+    public var logEventParametersReceivedInvocations: [(eventName: String, parameters: [String : Any])] = []
+    public var logEventParametersClosure: ((String, [String : Any]) -> Void)?
 
-    public static func logEvent(_ eventName: String, parameters: [String : Any]) {
+    public func logEvent(_ eventName: String, parameters: [String : Any]) {
         logEventParametersCallsCount += 1
         logEventParametersReceivedArguments = (eventName: eventName, parameters: parameters)
         logEventParametersReceivedInvocations.append((eventName: eventName, parameters: parameters))
@@ -762,15 +762,15 @@ public class FacebookServiceAdapterMock: FacebookServiceAdapter {
 
 // MARK: - FacebookSettingsAdapter
 
-public class FacebookSettingsAdapterMock: FacebookV6SettingsAdapter {
+public class FacebookSettingsAdapterMock: FacebookSettingsAdapter {
 
     public init() {}
 
-    public static var isAutoLogAppEventsEnabled: Bool {
+    public var isAutoLogAppEventsEnabled: Bool {
         get { return underlyingIsAutoLogAppEventsEnabled }
         set(value) { underlyingIsAutoLogAppEventsEnabled = value }
     }
-    public static var underlyingIsAutoLogAppEventsEnabled: Bool!
+    public var underlyingIsAutoLogAppEventsEnabled: Bool!
 
 }
 
@@ -836,23 +836,6 @@ public class FirebaseAnalyticsServiceAdapterMock: FirebaseAnalyticsServiceAdapte
         setAnalyticsCollectionEnabledReceivedEnabled = enabled
         setAnalyticsCollectionEnabledReceivedInvocations.append(enabled)
         setAnalyticsCollectionEnabledClosure?(enabled)
-    }
-
-    // MARK: setScreenName
-
-    public static var setScreenNameScreenClassCallsCount = 0
-    public static var setScreenNameScreenClassCalled: Bool {
-        return setScreenNameScreenClassCallsCount > 0
-    }
-    public static var setScreenNameScreenClassReceivedArguments: (name: String?, screenClass: String?)?
-    public static var setScreenNameScreenClassReceivedInvocations: [(name: String?, screenClass: String?)] = []
-    public static var setScreenNameScreenClassClosure: ((String?, String?) -> Void)?
-
-    public static func setScreenName(_ name: String?, screenClass: String?) {
-        setScreenNameScreenClassCallsCount += 1
-        setScreenNameScreenClassReceivedArguments = (name: name, screenClass: screenClass)
-        setScreenNameScreenClassReceivedInvocations.append((name: name, screenClass: screenClass))
-        setScreenNameScreenClassClosure?(name, screenClass)
     }
 
     // MARK: setUserID
@@ -956,8 +939,6 @@ public class MixpanelServiceAdapterMock: MixpanelServiceAdapter {
 
     public init() {}
 
-    public var userId: String?
-
     // MARK: hasOptedOutTracking
 
     public var hasOptedOutTrackingCallsCount = 0
@@ -974,19 +955,15 @@ public class MixpanelServiceAdapterMock: MixpanelServiceAdapter {
 
     // MARK: optInTracking
 
-    public var optInTrackingDistinctIdPropertiesCallsCount = 0
-    public var optInTrackingDistinctIdPropertiesCalled: Bool {
-        return optInTrackingDistinctIdPropertiesCallsCount > 0
+    public var optInTrackingCallsCount = 0
+    public var optInTrackingCalled: Bool {
+        return optInTrackingCallsCount > 0
     }
-    public var optInTrackingDistinctIdPropertiesReceivedArguments: (distinctId: String?, properties: [String: Any]?)?
-    public var optInTrackingDistinctIdPropertiesReceivedInvocations: [(distinctId: String?, properties: [String: Any]?)] = []
-    public var optInTrackingDistinctIdPropertiesClosure: ((String?, [String: Any]?) -> Void)?
+    public var optInTrackingClosure: (() -> Void)?
 
-    public func optInTracking(distinctId: String?, properties: [String: Any]?) {
-        optInTrackingDistinctIdPropertiesCallsCount += 1
-        optInTrackingDistinctIdPropertiesReceivedArguments = (distinctId: distinctId, properties: properties)
-        optInTrackingDistinctIdPropertiesReceivedInvocations.append((distinctId: distinctId, properties: properties))
-        optInTrackingDistinctIdPropertiesClosure?(distinctId, properties)
+    public func optInTracking() {
+        optInTrackingCallsCount += 1
+        optInTrackingClosure?()
     }
 
     // MARK: optOutTracking
@@ -1025,11 +1002,11 @@ public class MixpanelServiceAdapterMock: MixpanelServiceAdapter {
     public var trackEventPropertiesCalled: Bool {
         return trackEventPropertiesCallsCount > 0
     }
-    public var trackEventPropertiesReceivedArguments: (event: String?, properties: [String: Any]?)?
-    public var trackEventPropertiesReceivedInvocations: [(event: String?, properties: [String: Any]?)] = []
-    public var trackEventPropertiesClosure: ((String?, [String: Any]?) -> Void)?
+    public var trackEventPropertiesReceivedArguments: (event: String, properties: [AnyHashable: Any]?)?
+    public var trackEventPropertiesReceivedInvocations: [(event: String, properties: [AnyHashable: Any]?)] = []
+    public var trackEventPropertiesClosure: ((String, [AnyHashable: Any]?) -> Void)?
 
-    public func track(event: String?, properties: [String: Any]?) {
+    public func track(_ event: String, properties: [AnyHashable: Any]?) {
         trackEventPropertiesCallsCount += 1
         trackEventPropertiesReceivedArguments = (event: event, properties: properties)
         trackEventPropertiesReceivedInvocations.append((event: event, properties: properties))
@@ -1051,6 +1028,36 @@ public class MixpanelServiceAdapterMock: MixpanelServiceAdapter {
         unsetPropertiesReceivedProperties = properties
         unsetPropertiesReceivedInvocations.append(properties)
         unsetPropertiesClosure?(properties)
+    }
+
+    // MARK: identify
+
+    public var identifyCallsCount = 0
+    public var identifyCalled: Bool {
+        return identifyCallsCount > 0
+    }
+    public var identifyReceivedDistinctId: String?
+    public var identifyReceivedInvocations: [String] = []
+    public var identifyClosure: ((String) -> Void)?
+
+    public func identify(_ distinctId: String) {
+        identifyCallsCount += 1
+        identifyReceivedDistinctId = distinctId
+        identifyReceivedInvocations.append(distinctId)
+        identifyClosure?(distinctId)
+    }
+
+    // MARK: resetUserId
+
+    public var resetUserIdCallsCount = 0
+    public var resetUserIdCalled: Bool {
+        return resetUserIdCallsCount > 0
+    }
+    public var resetUserIdClosure: (() -> Void)?
+
+    public func resetUserId() {
+        resetUserIdCallsCount += 1
+        resetUserIdClosure?()
     }
 
 }

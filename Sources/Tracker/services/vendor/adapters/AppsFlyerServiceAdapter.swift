@@ -1,13 +1,28 @@
 import Foundation
 
 /**
-Links:
+# Links:
 - https://support.appsflyer.com/hc/en-us/articles/207032066-iOS-SDK-integration-for-developers#core-apis
 
- Pod sample: `pod 'AppsFlyerFramework', '~> 6.2.2'`
- Package sample: `.package(url: "https://github.com/AppsFlyerSDK/AppsFlyerFramework.git", from: "6.2.2"),`
+ # Package example:
+ ```
+ // swift-tools-version: 5.10
 
- Integration sample:
+ import PackageDescription
+
+ let package = Package(
+     name: "Example",
+     dependencies: [
+         .package(name: "Tracker", path: "./swift-event-tracker"),
+         .package(url: "https://github.com/AppsFlyerSDK/AppsFlyerFramework", from: "6.0.0"),
+     ],
+     targets: [
+         .target(name: "Example", dependencies: [.product(name: "AppsFlyerLib", package: "AppsFlyerFramework"), "Tracker"]),
+     ]
+ )
+ ```
+
+ # Integration example:
  ```
  import class AppsFlyerLib.AppsFlyerLib
  import Tracker
