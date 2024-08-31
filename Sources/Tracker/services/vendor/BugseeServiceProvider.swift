@@ -18,6 +18,7 @@ public final class BugseeServiceProvider: AbstractProvider, Service {
     }
 
     public func resetProperties() {
+        userProperties = [:]
         _ = adapter.clearAllAttribute()
     }
 
