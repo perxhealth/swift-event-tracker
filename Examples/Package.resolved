@@ -1,5 +1,5 @@
 {
-  "originHash" : "696dbd7b39a4b0fe5703c5fafccb01443e3944dea28f9363a07dea55383fd6fd",
+  "originHash" : "c409eddc0af264975f29951145277245b013165634a01779fe7748f6e58660ce",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -233,6 +233,24 @@
       "state" : {
         "revision" : "a8f55566d9adbbb3e48d04632b4eb345ca6096ab",
         "version" : "5.3.0"
+      }
+    },
+    {
+      "identity" : "swift-analytics",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dankinsoid/swift-analytics.git",
+      "state" : {
+        "revision" : "491ef60f39bc62a98396ea7f89d1bfd996888162",
+        "version" : "1.9.0"
+      }
+    },
+    {
+      "identity" : "swift-log",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-log.git",
+      "state" : {
+        "revision" : "9cb486020ebf03bfa5b5df985387a14a98744537",
+        "version" : "1.6.1"
       }
     },
     {
