@@ -1,0 +1,15 @@
+{
+  "originHash" : "12dd97e0e545fcd4109d072aec387f0d79bc9c1ba8247255efa62d628d006951",
+  "pins" : [
+    {
+      "identity" : "swift-analytics",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dankinsoid/swift-analytics.git",
+      "state" : {
+        "revision" : "491ef60f39bc62a98396ea7f89d1bfd996888162",
+        "version" : "1.9.0"
+      }
+    }
+  ],
+  "version" : 3
+}

@@ -12,6 +12,10 @@ let package = Package(
     ],
     products: [
         .library(
+            name: "SwiftAnalyticsTracking",
+            targets: ["SwiftAnalyticsTracking"]
+        ),
+        .library(
             name: "Tracker",
             targets: ["Tracker"]
         ),
@@ -20,8 +24,21 @@ let package = Package(
             targets: ["TrackerTesting"]
         ),
     ],
-    dependencies: [],
+    dependencies: [
+        .package(url: "https://github.com/dankinsoid/swift-analytics.git", from: "1.9.0"),
+    ],
     targets: [
+        .target(
+            name: "SwiftAnalyticsTracking",
+            dependencies: [
+                .product(name: "SwiftAnalytics", package: "swift-analytics"),
+                "Tracker",
+            ]
+        ),
+        .testTarget(
+            name: "SwiftAnalyticsTrackingTests",
+            dependencies: ["SwiftAnalyticsTracking", "TrackerTesting"]
+        ),
         .target(
             name: "Tracker"
         ),
