@@ -24,8 +24,7 @@ import Foundation
 
  # Integration example:
  ```
- import class AdjustSdk.Adjust
- import class AdjustSdk.ADJEvent
+ import AdjustSdk
  import Tracker
 
  extension Adjust: AdjustServiceAdapter {

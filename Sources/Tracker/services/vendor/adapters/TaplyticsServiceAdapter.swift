@@ -24,7 +24,7 @@ import Foundation
 
  # Integration example:
  ```
- import class Taplytics.Taplytics
+ import Taplytics
  import Tracker
 
  extension Taplytics: TaplyticsServiceAdapter {}

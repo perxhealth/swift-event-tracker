@@ -25,7 +25,7 @@ import Foundation
 
  # Integration example:
  ```
- import class AppCenterAnalytics.Analytics
+ import AppCenterAnalytics
  import Tracker
 
  extension Analytics: AppCenterAnalyticsServiceAdapter {}

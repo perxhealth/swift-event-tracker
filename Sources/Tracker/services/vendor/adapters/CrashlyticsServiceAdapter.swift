@@ -24,10 +24,10 @@ import Foundation
 
  # Integration example:
  ```
- import class FirebaseCrashlytics.Crashlytics
+ import FirebaseCrashlytics
  import Tracker
 
- extension FirebaseCrashlytics.Crashlytics: CrashlyticsServiceAdapter {}
+ extension Crashlytics: CrashlyticsServiceAdapter {}
  ```
  */
 

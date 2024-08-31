@@ -1,5 +1,5 @@
 import class AppboyKit.Appboy
-import Tracker
+import protocol Tracker.BrazeServiceAdapter
 
 extension Appboy: BrazeServiceAdapter {
     public func setCustomAttributeWithKey(_ key: String, andStringValue value: String) {

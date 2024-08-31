@@ -1,4 +1,4 @@
 import class AppCenterAnalytics.Analytics
-import Tracker
+import protocol Tracker.AppCenterAnalyticsServiceAdapter
 
 extension Analytics: AppCenterAnalyticsServiceAdapter {}

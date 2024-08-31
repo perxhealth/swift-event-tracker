@@ -1,4 +1,4 @@
 import class AppsFlyerLib.AppsFlyerLib
-import Tracker
+import protocol Tracker.AppsFlyerServiceAdapter
 
 extension AppsFlyerLib: AppsFlyerServiceAdapter {}

@@ -24,7 +24,7 @@ import Foundation
 
  # Integration example:
  ```
- import class FirebaseAnalytics.Analytics
+ import FirebaseAnalytics
  import Tracker
 
  extension Analytics: FirebaseAnalyticsServiceAdapter {}

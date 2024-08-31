@@ -24,7 +24,7 @@ import Foundation
 
  # Integration example:
  ```
- import class AppboyKit.Appboy
+ import AppboyKit
  import Tracker
 
  extension Appboy: BrazeServiceAdapter {

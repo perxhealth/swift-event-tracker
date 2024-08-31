@@ -24,7 +24,7 @@ import Foundation
 
  # Integration example:
  ```
- import struct Logging.Logger
+ import Logging
  import Tracker
 
  extension Logger: SwiftLoggerServiceAdapter {}

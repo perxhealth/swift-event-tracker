@@ -1,5 +1,5 @@
-import Mixpanel
-import Tracker
+import class Mixpanel.Mixpanel
+import protocol Tracker.MixpanelServiceAdapter
 
 extension Mixpanel: MixpanelServiceAdapter {
     public func resetUserId() {

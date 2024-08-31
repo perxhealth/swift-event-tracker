@@ -1,4 +1,4 @@
 import class Taplytics.Taplytics
-import Tracker
+import protocol Tracker.TaplyticsServiceAdapter
 
 extension Taplytics: TaplyticsServiceAdapter {}

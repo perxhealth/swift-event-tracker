@@ -1,6 +1,6 @@
 import class AdjustSdk.Adjust
 import class AdjustSdk.ADJEvent
-import Tracker
+import protocol Tracker.AdjustServiceAdapter
 
 extension Adjust: AdjustServiceAdapter {
     public static func trackEvent(_ eventName: String, parameters: [String: String]) {

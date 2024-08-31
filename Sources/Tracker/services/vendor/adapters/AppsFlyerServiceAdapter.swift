@@ -24,7 +24,7 @@ import Foundation
 
  # Integration example:
  ```
- import class AppsFlyerLib.AppsFlyerLib
+ import AppsFlyerLib
  import Tracker
 
  extension AppsFlyerLib: AppsFlyerServiceAdapter {}

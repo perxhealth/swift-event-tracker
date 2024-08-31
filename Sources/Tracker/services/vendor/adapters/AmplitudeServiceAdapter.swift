@@ -21,7 +21,7 @@ import Foundation
 
  # Integration example:
  ```
- import class Amplitude.Amplitude
+ import Amplitude
  import Tracker
 
  extension Amplitude: AmplitudeServiceAdapter {}

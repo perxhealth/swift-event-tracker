@@ -1,4 +1,4 @@
 import class Instabug.Instabug
-import Tracker
+import protocol Tracker.InstabugServiceAdapter
 
 extension Instabug: InstabugServiceAdapter {}

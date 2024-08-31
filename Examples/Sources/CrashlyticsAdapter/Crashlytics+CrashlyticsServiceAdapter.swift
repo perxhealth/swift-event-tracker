@@ -1,4 +1,4 @@
 import class FirebaseCrashlytics.Crashlytics
-import Tracker
+import protocol Tracker.CrashlyticsServiceAdapter
 
 extension Crashlytics: CrashlyticsServiceAdapter {}

@@ -24,7 +24,7 @@ import Foundation
 
  # Integration example:
  ```
- import class Instabug.Instabug
+ import Instabug
  import Tracker
 
  extension Instabug: InstabugServiceAdapter {}

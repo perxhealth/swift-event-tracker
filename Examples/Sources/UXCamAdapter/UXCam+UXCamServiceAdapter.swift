@@ -1,4 +1,4 @@
 import class UXCam.UXCam
-import Tracker
+import protocol Tracker.UXCamServiceAdapter
 
 extension UXCam: UXCamServiceAdapter {}

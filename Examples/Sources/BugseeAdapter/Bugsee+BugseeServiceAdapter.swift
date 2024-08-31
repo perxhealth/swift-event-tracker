@@ -1,4 +1,4 @@
 import class Bugsee.Bugsee
-import Tracker
+import protocol Tracker.BugseeServiceAdapter
 
 extension Bugsee: BugseeServiceAdapter {}

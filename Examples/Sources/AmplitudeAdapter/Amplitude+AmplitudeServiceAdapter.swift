@@ -1,4 +1,4 @@
 import class Amplitude.Amplitude
-import Tracker
+import protocol Tracker.AmplitudeServiceAdapter
 
 extension Amplitude: AmplitudeServiceAdapter {}

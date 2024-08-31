@@ -1,5 +1,5 @@
 import struct Logging.Logger
-import Tracker
+import protocol Tracker.SwiftLoggerServiceAdapter
 
 extension Logger: SwiftLoggerServiceAdapter {
     public func log(_ message: String) {

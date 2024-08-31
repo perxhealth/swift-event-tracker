@@ -24,7 +24,7 @@ import Foundation
 
  # Integration example:
  ```
- import class Bugsee.Bugsee
+ import Bugsee
  import Tracker
 
  extension Bugsee: BugseeServiceAdapter {}

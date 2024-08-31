@@ -25,8 +25,7 @@ import Foundation
 
  # Integration example:
  ```
- import class FacebookCore.AppEvents
- import class FacebookCore.Settings
+ import FacebookCore
  import Tracker
 
  extension AppEvents: FacebookServiceAdapter {

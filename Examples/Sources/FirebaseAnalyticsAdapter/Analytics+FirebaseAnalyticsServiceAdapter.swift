@@ -1,4 +1,4 @@
 import class FirebaseAnalytics.Analytics
-import Tracker
+import protocol Tracker.FirebaseAnalyticsServiceAdapter
 
 extension Analytics: FirebaseAnalyticsServiceAdapter {}

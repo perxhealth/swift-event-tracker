@@ -28,32 +28,17 @@ import Foundation
  import Mixpanel
  import Tracker
 
- extension MixpanelInstance: MixpanelServiceAdapter {
-     public func optInTracking(distinctId: String?, properties: [String: Any]?) {
-         optInTracking(distinctId: distinctId, properties: dictionaryToProperties(properties))
+ extension Mixpanel: MixpanelServiceAdapter {
+     public func resetUserId() {
+         identify(anonymousId)
      }
 
      public func set(property: String, to value: String) {
-         people.set(property: property, to: value)
+         people.set(property, to: value)
      }
 
      public func unset(properties: [String]) {
-         people.unset(properties: properties)
-     }
-
-     public func track(event: String?, properties: [String: Any]?) {
-         track(event: event, properties: dictionaryToProperties(properties))
-     }
-
-     private func dictionaryToProperties(_ dictionary: [String: Any]?) -> Properties? {
-         guard let dictionary = dictionary else {
-             return nil
-         }
-         return dictionaryToProperties(dictionary)
-     }
-
-     private func dictionaryToProperties(_ dictionary: [String: Any]) -> Properties {
-         dictionary.reduce(into: [String: MixpanelType]()) { $0[$1.key] = $1.value as? MixpanelType }
+         people.unset(properties)
      }
  }
  ```

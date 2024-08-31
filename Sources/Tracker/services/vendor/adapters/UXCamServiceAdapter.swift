@@ -25,7 +25,7 @@ import Foundation
  # Integration example:
  ```
  import Tracker
- import class UXCam.UXCam
+ import UXCam
 
  extension UXCam: UXCamServiceAdapter {}
  ```

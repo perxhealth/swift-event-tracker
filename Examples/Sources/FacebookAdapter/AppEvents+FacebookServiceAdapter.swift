@@ -1,6 +1,7 @@
 import class FacebookCore.AppEvents
 import class FacebookCore.Settings
-import Tracker
+import protocol Tracker.FacebookServiceAdapter
+import protocol Tracker.FacebookSettingsAdapter
 
 extension AppEvents: FacebookServiceAdapter {
     public func clearUserID() {

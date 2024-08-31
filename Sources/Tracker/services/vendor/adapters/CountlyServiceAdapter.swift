@@ -24,8 +24,7 @@ import Foundation
 
  # Integration example:
  ```
- import class Countly.Countly
- import class Countly.CountlyUserDetails
+ import Countly
  import Tracker
 
  extension Countly: CountlyServiceAdapter {
