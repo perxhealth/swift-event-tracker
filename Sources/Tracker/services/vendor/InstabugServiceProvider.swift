@@ -7,6 +7,7 @@ public final class InstabugServiceProvider: AbstractProvider, Service {
 
     public init(adapter: InstabugServiceAdapter.Type) {
         self.adapter = adapter
+        super.init(userIdPropertyKey: Self.defaultFallbackUserIdPropertyKey)
     }
 
     public func trackEvent(_ event: Event) {

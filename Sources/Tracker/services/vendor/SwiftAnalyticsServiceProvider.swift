@@ -7,6 +7,7 @@ public final class SwiftAnalyticsServiceProvider: AbstractProvider, Service {
 
     public init(adapter: SwiftAnalyticsServiceAdapter) {
         self.adapter = adapter
+        super.init(userIdPropertyKey: Self.defaultFallbackUserIdPropertyKey)
     }
 
     public func trackEvent(_ event: Event) {

@@ -7,6 +7,7 @@ public final class SwiftLoggerServiceProvider: AbstractProvider, Service {
 
     public init(adapter: SwiftLoggerServiceAdapter) {
         self.adapter = adapter
+        super.init(userIdPropertyKey: Self.defaultFallbackUserIdPropertyKey)
     }
 
     public func trackEvent(_ event: Event) {
@@ -15,9 +16,9 @@ public final class SwiftLoggerServiceProvider: AbstractProvider, Service {
                 .parameters
                 .map { $0.key + " = " + $0.value }
                 .joined(separator: ", ")
-            adapter.log("Tracking event: \(event.name); with parameters: \(stringParams)")
+            adapter.log("Event: \(event.name); parameters: \(stringParams)")
         } else {
-            adapter.log("Tracking event: \(event.name)")
+            adapter.log("Event: \(event.name)")
         }
     }
 }

@@ -7,6 +7,7 @@ public final class SwiftMetricsServiceProvider: AbstractProvider, Service {
 
     public init(adapter: SwiftMetricsServiceAdapter.Type) {
         self.adapter = adapter
+        super.init(userIdPropertyKey: Self.defaultFallbackUserIdPropertyKey)
     }
 
     public func trackEvent(_ event: Event) {

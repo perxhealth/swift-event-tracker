@@ -7,6 +7,7 @@ public final class BugseeServiceProvider: AbstractProvider, Service {
 
     public init(adapter: BugseeServiceAdapter.Type) {
         self.adapter = adapter
+        super.init(userIdPropertyKey: Self.defaultFallbackUserIdPropertyKey)
     }
 
     public func trackEvent(_ event: Event) {
