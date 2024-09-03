@@ -55,34 +55,34 @@ final class FacebookServiceProviderShould: XCTestCase {
 
     func testTrackEventWithExpectedName() {
         sut.trackEvent(someEvent)
-        XCTAssertTrue(adapter.logEventParametersCalled)
-        XCTAssertEqual(adapter.logEventParametersReceivedArguments?.eventName, someEventName)
+        XCTAssertTrue(adapter.logEventEventNameStringParametersStringAnyVoidCalled)
+        XCTAssertEqual(adapter.logEventEventNameStringParametersStringAnyVoidReceivedArguments?.eventName, someEventName)
     }
 
     func testTrackEventWithExpectedParameters() {
         sut.trackEvent(someEvent)
         for (key, value) in someEvent.parameters {
-            XCTAssertEqual(adapter.logEventParametersReceivedArguments?.parameters[key] as? String, value)
+            XCTAssertEqual(adapter.logEventEventNameStringParametersStringAnyVoidReceivedArguments?.parameters[key] as? String, value)
         }
     }
 
     func testTrackEventWithExpectedScreenName() throws {
         sut.trackScreen(someScreen)
-        XCTAssertTrue(adapter.logEventParametersCalled)
-        try AssertTrue(adapter.logEventParametersReceivedArguments?.eventName.hasPrefix(someScreenName))
-        try AssertTrue(adapter.logEventParametersReceivedArguments?.eventName.hasSuffix(" viewed"))
+        XCTAssertTrue(adapter.logEventEventNameStringParametersStringAnyVoidCalled)
+        try AssertTrue(adapter.logEventEventNameStringParametersStringAnyVoidReceivedArguments?.eventName.hasPrefix(someScreenName))
+        try AssertTrue(adapter.logEventEventNameStringParametersStringAnyVoidReceivedArguments?.eventName.hasSuffix(" viewed"))
     }
 
     func testSetExpectedProperty() {
         sut.setProperty(somePropertyKey, value: somePropertyValue)
-        XCTAssertTrue(adapter.logEventParametersCalled)
-        XCTAssertEqual(adapter.logEventParametersReceivedArguments?.eventName, "Set property")
+        XCTAssertTrue(adapter.logEventEventNameStringParametersStringAnyVoidCalled)
+        XCTAssertEqual(adapter.logEventEventNameStringParametersStringAnyVoidReceivedArguments?.eventName, "Set property")
     }
 
     func testRemovePropertiesOnResetProperties() throws {
         sut.resetProperties()
-        XCTAssertTrue(adapter.logEventParametersCalled)
-        XCTAssertEqual(adapter.logEventParametersReceivedArguments?.eventName, "Reset properties")
+        XCTAssertTrue(adapter.logEventEventNameStringParametersStringAnyVoidCalled)
+        XCTAssertEqual(adapter.logEventEventNameStringParametersStringAnyVoidReceivedArguments?.eventName, "Reset properties")
     }
 
     func testSetExpectedUserId() {

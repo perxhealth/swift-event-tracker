@@ -31,6 +31,7 @@ import Foundation
  ```
  */
 
+// sourcery: AutoMockable
 public protocol TaplyticsServiceAdapter {
     static func hasUserOptedOutTracking() -> Bool
     static func logEvent(_ eventName: String)

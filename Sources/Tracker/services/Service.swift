@@ -1,5 +1,6 @@
 import Foundation
 
+// sourcery: AutoMockable
 public protocol Service {
     var supportedTags: [Tag] { get }
 

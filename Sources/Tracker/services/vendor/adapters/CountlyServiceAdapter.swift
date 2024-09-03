@@ -41,6 +41,7 @@ import Foundation
  ```
 */
 
+// sourcery: AutoMockable
 public protocol CountlyServiceAdapter {
     func recordEvent(_ eventName: String, segmentation: [String: Any]?)
     func recordView(_ view: String)
@@ -51,6 +52,7 @@ public protocol CountlyServiceAdapter {
     func cancelConsentForAllFeatures()
 }
 
+// sourcery: AutoMockable
 public protocol CountlyUserDetailsAdapter {
     func set(_ key: String, value: String)
     func unSet(_ key: String)

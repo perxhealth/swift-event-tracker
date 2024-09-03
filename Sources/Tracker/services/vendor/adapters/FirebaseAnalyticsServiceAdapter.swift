@@ -31,6 +31,7 @@ import Foundation
  ```
  */
 
+// sourcery: AutoMockable
 public protocol FirebaseAnalyticsServiceAdapter {
     // swiftlint:disable:next discouraged_optional_collection
     static func logEvent(_ name: String, parameters: [String: Any]?)

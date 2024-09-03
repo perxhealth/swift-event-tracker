@@ -53,56 +53,56 @@ final class FirebaseAnalyticsServiceProviderShould: XCTestCase {
 
     func testTrackEventWithExpectedName() {
         sut.trackEvent(someEvent)
-        XCTAssertTrue(adapter.logEventParametersCalled)
-        XCTAssertEqual(adapter.logEventParametersReceivedArguments?.name, someEventName)
+        XCTAssertTrue(adapter.logEventNameStringParametersStringAnyVoidCalled)
+        XCTAssertEqual(adapter.logEventNameStringParametersStringAnyVoidReceivedArguments?.name, someEventName)
     }
 
     func testTrackEventWithExpectedParameters() {
         sut.trackEvent(someEvent)
         for (key, value) in someEvent.parameters {
-            XCTAssertEqual(adapter.logEventParametersReceivedArguments?.parameters?[key] as? String, value)
+            XCTAssertEqual(adapter.logEventNameStringParametersStringAnyVoidReceivedArguments?.parameters?[key] as? String, value)
         }
     }
 
     func testSetExpectedProperty() {
         sut.setProperty(somePropertyKey, value: somePropertyValue)
-        XCTAssertTrue(adapter.setUserPropertyForNameCalled)
-        XCTAssertEqual(adapter.setUserPropertyForNameReceivedArguments?.forName, somePropertyKey)
-        XCTAssertEqual(adapter.setUserPropertyForNameReceivedArguments?.value, somePropertyValue)
+        XCTAssertTrue(adapter.setUserPropertyValueStringForNameStringVoidCalled)
+        XCTAssertEqual(adapter.setUserPropertyValueStringForNameStringVoidReceivedArguments?.forName, somePropertyKey)
+        XCTAssertEqual(adapter.setUserPropertyValueStringForNameStringVoidReceivedArguments?.value, somePropertyValue)
     }
 
     func testRemovePropertiesOnResetProperties() {
         sut.setProperty(somePropertyKey, value: somePropertyValue)
         sut.resetProperties()
-        XCTAssertEqual(adapter.setUserPropertyForNameCallsCount, 2)
-        XCTAssertEqual(adapter.setUserPropertyForNameReceivedArguments?.forName, somePropertyKey)
-        XCTAssertNil(adapter.setUserPropertyForNameReceivedArguments?.value)
+        XCTAssertEqual(adapter.setUserPropertyValueStringForNameStringVoidCallsCount, 2)
+        XCTAssertEqual(adapter.setUserPropertyValueStringForNameStringVoidReceivedArguments?.forName, somePropertyKey)
+        XCTAssertNil(adapter.setUserPropertyValueStringForNameStringVoidReceivedArguments?.value)
     }
 
     func testSetExpectedUserId() {
         sut.setUserId(someUserId)
-        XCTAssertTrue(adapter.setUserIDCalled)
-        XCTAssertEqual(adapter.setUserIDReceivedUserId, someUserId)
+        XCTAssertTrue(adapter.setUserIDUserIdStringVoidCalled)
+        XCTAssertEqual(adapter.setUserIDUserIdStringVoidReceivedUserId, someUserId)
     }
 
     func testResetUserId() {
         sut.setUserId(someUserId)
         sut.resetUserId()
-        XCTAssertTrue(adapter.setUserIDCalled)
-        XCTAssertNil(adapter.setUserIDReceivedUserId)
+        XCTAssertTrue(adapter.setUserIDUserIdStringVoidCalled)
+        XCTAssertNil(adapter.setUserIDUserIdStringVoidReceivedUserId)
     }
 
     func testDisableTracking() throws {
         sut.disableTracking(true)
-        XCTAssertTrue(adapter.setAnalyticsCollectionEnabledCalled)
-        try AssertFalse(adapter.setAnalyticsCollectionEnabledReceivedEnabled)
+        XCTAssertTrue(adapter.setAnalyticsCollectionEnabledEnabledBoolVoidCalled)
+        try AssertFalse(adapter.setAnalyticsCollectionEnabledEnabledBoolVoidReceivedEnabled)
         XCTAssertTrue(sut.trackingDisabled)
     }
 
     func testEnableTracking() throws {
         sut.disableTracking(false)
-        XCTAssertTrue(adapter.setAnalyticsCollectionEnabledCalled)
-        try AssertTrue(adapter.setAnalyticsCollectionEnabledReceivedEnabled)
+        XCTAssertTrue(adapter.setAnalyticsCollectionEnabledEnabledBoolVoidCalled)
+        try AssertTrue(adapter.setAnalyticsCollectionEnabledEnabledBoolVoidReceivedEnabled)
         XCTAssertFalse(sut.trackingDisabled)
     }
 }

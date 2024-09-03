@@ -55,72 +55,72 @@ final class CountlyServiceProviderShould: XCTestCase {
 
     func testTrackEventWithExpectedName() {
         sut.trackEvent(someEvent)
-        XCTAssertTrue(adapter.recordEventSegmentationCalled)
-        XCTAssertEqual(adapter.recordEventSegmentationReceivedArguments?.eventName, someEventName)
+        XCTAssertTrue(adapter.recordEventEventNameStringSegmentationStringAnyVoidCalled)
+        XCTAssertEqual(adapter.recordEventEventNameStringSegmentationStringAnyVoidReceivedArguments?.eventName, someEventName)
     }
 
     func testTrackEventWithExpectedParameters() {
         sut.trackEvent(someEvent)
         for (key, value) in someEvent.parameters {
-            XCTAssertEqual(adapter.recordEventSegmentationReceivedArguments?.segmentation?[key] as! String, value)
+            XCTAssertEqual(adapter.recordEventEventNameStringSegmentationStringAnyVoidReceivedArguments?.segmentation?[key] as! String, value)
         }
     }
 
     func testTrackScreenWithExpectedName() {
         sut.trackScreen(someScreen)
-        XCTAssertTrue(adapter.recordViewSegmentationCalled)
-        XCTAssertEqual(adapter.recordViewSegmentationReceivedArguments?.view, someScreenName)
+        XCTAssertTrue(adapter.recordViewViewStringSegmentationStringAnyVoidCalled)
+        XCTAssertEqual(adapter.recordViewViewStringSegmentationStringAnyVoidReceivedArguments?.view, someScreenName)
     }
 
     func testTrackEventWithExpectedScreenName() {
         sut.trackScreen(someScreen)
-        XCTAssertTrue(adapter.recordViewSegmentationCalled)
-        XCTAssertEqual(adapter.recordViewSegmentationReceivedArguments?.view, someScreenName)
+        XCTAssertTrue(adapter.recordViewViewStringSegmentationStringAnyVoidCalled)
+        XCTAssertEqual(adapter.recordViewViewStringSegmentationStringAnyVoidReceivedArguments?.view, someScreenName)
     }
 
     func testTrackScreenWithExpectedSegmentation() {
         sut.trackScreen(someScreen)
-        XCTAssertTrue(adapter.recordViewSegmentationCalled)
+        XCTAssertTrue(adapter.recordViewViewStringSegmentationStringAnyVoidCalled)
         for (key, value) in someScreen.segmentation {
-            XCTAssertEqual(adapter.recordViewSegmentationReceivedArguments?.segmentation[key] as! String, value)
+            XCTAssertEqual(adapter.recordViewViewStringSegmentationStringAnyVoidReceivedArguments?.segmentation[key] as! String, value)
         }
     }
 
     func testSetExpectedProperty() {
         sut.setProperty(somePropertyKey, value: somePropertyValue)
-        XCTAssertTrue(userAdapter.setValueCalled)
-        XCTAssertEqual(userAdapter.setValueReceivedArguments?.key, somePropertyKey)
-        XCTAssertEqual(userAdapter.setValueReceivedArguments?.value, somePropertyValue)
+        XCTAssertTrue(userAdapter.setKeyStringValueStringVoidCalled)
+        XCTAssertEqual(userAdapter.setKeyStringValueStringVoidReceivedArguments?.key, somePropertyKey)
+        XCTAssertEqual(userAdapter.setKeyStringValueStringVoidReceivedArguments?.value, somePropertyValue)
     }
 
     func testRemovePropertiesOnResetProperties() {
         sut.setProperty(somePropertyKey, value: somePropertyValue)
         sut.resetProperties()
-        XCTAssertTrue(userAdapter.unSetCalled)
-        XCTAssertEqual(userAdapter.unSetReceivedKey, somePropertyKey)
+        XCTAssertTrue(userAdapter.unSetKeyStringVoidCalled)
+        XCTAssertEqual(userAdapter.unSetKeyStringVoidReceivedKey, somePropertyKey)
     }
 
     func testSetExpectedUserId() {
         sut.setUserId(someUserId)
-        XCTAssertTrue(adapter.userLoggedInCalled)
-        XCTAssertEqual(adapter.userLoggedInReceivedUserID, someUserId)
+        XCTAssertTrue(adapter.userLoggedInUserIDStringVoidCalled)
+        XCTAssertEqual(adapter.userLoggedInUserIDStringVoidReceivedUserID, someUserId)
     }
 
     func testResetUserId() {
         sut.setUserId(someUserId)
         sut.resetUserId()
-        XCTAssertTrue(adapter.userLoggedOutCalled)
+        XCTAssertTrue(adapter.userLoggedOutVoidCalled)
     }
 
     func testDisableTracking() {
         sut.disableTracking(true)
-        XCTAssertTrue(adapter.cancelConsentForAllFeaturesCalled)
+        XCTAssertTrue(adapter.cancelConsentForAllFeaturesVoidCalled)
         XCTAssertTrue(sut.trackingDisabled)
     }
 
     func testEnableTracking() {
         sut.disableTracking(false)
-        XCTAssertTrue(adapter.giveConsentForAllFeaturesCalled)
+        XCTAssertTrue(adapter.giveConsentForAllFeaturesVoidCalled)
         XCTAssertFalse(sut.trackingDisabled)
     }
 }

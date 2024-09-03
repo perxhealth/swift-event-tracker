@@ -31,6 +31,7 @@ import Foundation
  ```
  */
 
+// sourcery: AutoMockable
 public protocol BugseeServiceAdapter {
     static func clearAllAttribute() -> Bool
     static func event(_ eventName: String, params: [AnyHashable: Any])

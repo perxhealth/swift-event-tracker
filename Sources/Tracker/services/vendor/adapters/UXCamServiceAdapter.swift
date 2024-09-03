@@ -31,6 +31,7 @@ import Foundation
  ```
  */
 
+// sourcery: AutoMockable
 public protocol UXCamServiceAdapter {
     static func logEvent(_ eventName: String, withProperties: [String: Any]?)
     static func optInOverall()

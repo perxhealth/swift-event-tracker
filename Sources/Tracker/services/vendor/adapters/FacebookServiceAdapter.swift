@@ -46,6 +46,7 @@ import Foundation
  ```
  */
 
+// sourcery: AutoMockable
 public protocol FacebookServiceAdapter {
     var userID: String? { get set }
 
@@ -53,6 +54,7 @@ public protocol FacebookServiceAdapter {
     func logEvent(_ eventName: String, parameters: [String : Any])
 }
 
+// sourcery: AutoMockable
 public protocol FacebookSettingsAdapter {
     var isAutoLogAppEventsEnabled: Bool { get set }
 }

@@ -26,6 +26,7 @@ import Foundation
  A reference implementation of the `SwiftAnalyticsServiceAdapter` is provided by the **SwiftAnalyticsTracking** product.
  */
 
+// sourcery: AutoMockable
 public protocol SwiftAnalyticsServiceAdapter {
     func send(_ event: String, parameters: [String: String])
     mutating func setParameter(name: String, value: String)

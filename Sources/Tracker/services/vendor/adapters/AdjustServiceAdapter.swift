@@ -47,6 +47,7 @@ import Foundation
  ```
  */
 
+// sourcery: AutoMockable
 public protocol AdjustServiceAdapter {
     static func trackEvent(_ eventName: String, parameters: [String: String])
     static func setEnabled(_ flag: Bool)

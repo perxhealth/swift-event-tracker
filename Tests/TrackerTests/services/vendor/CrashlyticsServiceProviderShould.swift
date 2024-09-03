@@ -53,62 +53,62 @@ final class CrashlyticsServiceProviderShould: XCTestCase {
 
     func testTrackEventWithExpectedName() {
         sut.trackEvent(someEvent)
-        XCTAssertTrue(adapter.logCalled)
-        XCTAssertEqual(adapter.logReceivedMsg, someEventName)
+        XCTAssertTrue(adapter.logMsgStringVoidCalled)
+        XCTAssertEqual(adapter.logMsgStringVoidReceivedMsg, someEventName)
     }
 
     func testTrackEventWithExpectedParameters() {
         sut.trackEvent(someEvent)
-        XCTAssertEqual(adapter.setCustomValueForKeyCallsCount, 2)
+        XCTAssertEqual(adapter.setCustomValueValueAnyForKeyStringVoidCallsCount, 2)
     }
 
     func testTrackEventWithExpectedScreenName() throws {
         sut.trackScreen(someScreen)
-        XCTAssertTrue(adapter.logCalled)
-        try AssertTrue(adapter.logReceivedMsg?.hasPrefix(someScreenName))
-        try AssertTrue(adapter.logReceivedMsg?.hasSuffix(" viewed"))
+        XCTAssertTrue(adapter.logMsgStringVoidCalled)
+        try AssertTrue(adapter.logMsgStringVoidReceivedMsg?.hasPrefix(someScreenName))
+        try AssertTrue(adapter.logMsgStringVoidReceivedMsg?.hasSuffix(" viewed"))
     }
 
     func testSetExpectedProperty() {
         sut.setProperty(somePropertyKey, value: somePropertyValue)
-        XCTAssertTrue(adapter.setCustomValueForKeyCalled)
-        XCTAssertEqual(adapter.setCustomValueForKeyReceivedArguments?.forKey, somePropertyKey)
-        XCTAssertEqual(adapter.setCustomValueForKeyReceivedArguments?.value as? String, somePropertyValue)
+        XCTAssertTrue(adapter.setCustomValueValueAnyForKeyStringVoidCalled)
+        XCTAssertEqual(adapter.setCustomValueValueAnyForKeyStringVoidReceivedArguments?.forKey, somePropertyKey)
+        XCTAssertEqual(adapter.setCustomValueValueAnyForKeyStringVoidReceivedArguments?.value as? String, somePropertyValue)
     }
 
     func testRemovePropertiesOnResetProperties() {
         sut.setProperty(somePropertyKey, value: somePropertyValue)
         sut.resetProperties()
-        XCTAssertEqual(adapter.setCustomValueForKeyReceivedArguments?.forKey, somePropertyKey)
-        XCTAssertEqual(adapter.setCustomValueForKeyReceivedArguments?.value as? String, "")
+        XCTAssertEqual(adapter.setCustomValueValueAnyForKeyStringVoidReceivedArguments?.forKey, somePropertyKey)
+        XCTAssertEqual(adapter.setCustomValueValueAnyForKeyStringVoidReceivedArguments?.value as? String, "")
     }
 
     func testSetExpectedUserId() {
         sut.setUserId(someUserId)
-        XCTAssertTrue(adapter.setUserIDCalled)
-        XCTAssertEqual(adapter.setUserIDReceivedUserId, someUserId)
+        XCTAssertTrue(adapter.setUserIDUserIdStringVoidCalled)
+        XCTAssertEqual(adapter.setUserIDUserIdStringVoidReceivedUserId, someUserId)
     }
 
     func testResetUserId() {
         sut.setUserId(someUserId)
         sut.resetUserId()
-        XCTAssertTrue(adapter.setUserIDCalled)
-        XCTAssertEqual(adapter.setUserIDReceivedUserId, "")
+        XCTAssertTrue(adapter.setUserIDUserIdStringVoidCalled)
+        XCTAssertEqual(adapter.setUserIDUserIdStringVoidReceivedUserId, "")
     }
 
     func testDisableTracking() throws {
         sut.disableTracking(true)
-        XCTAssertTrue(adapter.setCrashlyticsCollectionEnabledCalled)
-        try AssertFalse(adapter.setCrashlyticsCollectionEnabledReceivedFlag)
-        adapter.isCrashlyticsCollectionEnabledReturnValue = false
+        XCTAssertTrue(adapter.setCrashlyticsCollectionEnabledFlagBoolVoidCalled)
+        try AssertFalse(adapter.setCrashlyticsCollectionEnabledFlagBoolVoidReceivedFlag)
+        adapter.isCrashlyticsCollectionEnabledBoolReturnValue = false
         XCTAssertTrue(sut.trackingDisabled)
     }
 
     func testEnableTracking() throws {
         sut.disableTracking(false)
-        XCTAssertTrue(adapter.setCrashlyticsCollectionEnabledCalled)
-        try AssertTrue(adapter.setCrashlyticsCollectionEnabledReceivedFlag)
-        adapter.isCrashlyticsCollectionEnabledReturnValue = true
+        XCTAssertTrue(adapter.setCrashlyticsCollectionEnabledFlagBoolVoidCalled)
+        try AssertTrue(adapter.setCrashlyticsCollectionEnabledFlagBoolVoidReceivedFlag)
+        adapter.isCrashlyticsCollectionEnabledBoolReturnValue = true
         XCTAssertFalse(sut.trackingDisabled)
     }
 }

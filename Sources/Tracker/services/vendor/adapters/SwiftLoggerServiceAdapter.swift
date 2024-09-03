@@ -31,6 +31,7 @@ import Foundation
  ```
  */
 
+// sourcery: AutoMockable
 public protocol SwiftLoggerServiceAdapter {
     func log(_ message: String)
 }

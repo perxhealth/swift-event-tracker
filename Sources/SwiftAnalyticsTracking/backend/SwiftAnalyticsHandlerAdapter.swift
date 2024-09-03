@@ -5,9 +5,9 @@ import Tracker
 /**
  [SwiftAnalytics](https://github.com/dankinsoid/swift-analytics) backend.
 
- Instruct SwiftAnalytics to use your analytics backend as the one the whole application (including all libraries) should use with:
+ Instruct SwiftAnalytics to use `SwiftAnalyticsHandlerAdapter` as the backend for the whole application (including all libraries) with:
  ```
- AnalyticsSystem.bootstrap(MyAnalyticsHandler())
+ AnalyticsSystem.bootstrap(SwiftAnalyticsHandlerAdapter(eventTracker: yourEventTracker))
  ```
  */
 public struct SwiftAnalyticsHandlerAdapter: AnalyticsHandler {

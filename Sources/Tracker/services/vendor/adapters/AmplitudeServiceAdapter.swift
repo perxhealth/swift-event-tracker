@@ -28,6 +28,7 @@ import Foundation
  ```
  */
 
+// sourcery: AutoMockable
 public protocol AmplitudeServiceAdapter: AnyObject {
     var optOut: Bool { get set }
     

@@ -50,28 +50,28 @@ final class AmplitudeServiceProviderShould: XCTestCase {
 
     func testTrackEventWithExpectedName() {
         sut.trackEvent(someEvent)
-        XCTAssertTrue(adapter.logEventWithEventPropertiesCalled)
-        XCTAssertEqual(adapter.logEventWithEventPropertiesReceivedArguments?.eventType, someEventName)
+        XCTAssertTrue(adapter.logEventEventTypeStringWithEventPropertiesAnyHashableAnyVoidCalled)
+        XCTAssertEqual(adapter.logEventEventTypeStringWithEventPropertiesAnyHashableAnyVoidReceivedArguments?.eventType, someEventName)
     }
 
     func testTrackEventWithExpectedParameters() {
         sut.trackEvent(someEvent)
         for (key, value) in someEvent.parameters {
-            XCTAssertEqual(adapter.logEventWithEventPropertiesReceivedArguments?.withEventProperties?[key] as? String, value)
+            XCTAssertEqual(adapter.logEventEventTypeStringWithEventPropertiesAnyHashableAnyVoidReceivedArguments?.withEventProperties?[key] as? String, value)
         }
     }
 
     func testTrackEventWithExpectedScreenName() throws {
         sut.trackScreen(someScreen)
-        XCTAssertTrue(adapter.logEventWithEventPropertiesCalled)
-        try AssertTrue(adapter.logEventWithEventPropertiesReceivedArguments?.eventType?.hasPrefix(someScreenName))
-        try AssertTrue(adapter.logEventWithEventPropertiesReceivedArguments?.eventType?.hasSuffix(" viewed"))
+        XCTAssertTrue(adapter.logEventEventTypeStringWithEventPropertiesAnyHashableAnyVoidCalled)
+        try AssertTrue(adapter.logEventEventTypeStringWithEventPropertiesAnyHashableAnyVoidReceivedArguments?.eventType.hasPrefix(someScreenName))
+        try AssertTrue(adapter.logEventEventTypeStringWithEventPropertiesAnyHashableAnyVoidReceivedArguments?.eventType.hasSuffix(" viewed"))
     }
 
     func testSetExpectedProperty() {
         sut.setProperty(somePropertyKey, value: somePropertyValue)
-        XCTAssertTrue(adapter.setUserPropertiesCalled)
-        for (key, value) in adapter.setUserPropertiesReceivedDictionary ?? [:] {
+        XCTAssertTrue(adapter.setUserPropertiesDictionaryAnyHashableAnyVoidCalled)
+        for (key, value) in adapter.setUserPropertiesDictionaryAnyHashableAnyVoidReceivedDictionary ?? [:] {
             XCTAssertEqual(key.base as? String, somePropertyKey)
             XCTAssertEqual(value as? String, somePropertyValue)
         }
@@ -80,20 +80,20 @@ final class AmplitudeServiceProviderShould: XCTestCase {
     func testRemovePropertiesOnResetProperties() {
         sut.setProperty(somePropertyKey, value: somePropertyValue)
         sut.resetProperties()
-        XCTAssertTrue(adapter.clearUserPropertiesCalled)
+        XCTAssertTrue(adapter.clearUserPropertiesVoidCalled)
     }
 
     func testSetExpectedUserId() {
         sut.setUserId(someUserId)
-        XCTAssertTrue(adapter.setUserIdCalled)
-        XCTAssertEqual(adapter.setUserIdReceivedId, someUserId)
+        XCTAssertTrue(adapter.setUserIdIdStringVoidCalled)
+        XCTAssertEqual(adapter.setUserIdIdStringVoidReceivedId, someUserId)
     }
 
     func testResetUserId() {
         sut.setUserId(someUserId)
         sut.resetUserId()
-        XCTAssertTrue(adapter.setUserIdCalled)
-        XCTAssertNil(adapter.setUserIdReceivedId)
+        XCTAssertTrue(adapter.setUserIdIdStringVoidCalled)
+        XCTAssertNil(adapter.setUserIdIdStringVoidReceivedId)
     }
 
     func testDisableTracking() {

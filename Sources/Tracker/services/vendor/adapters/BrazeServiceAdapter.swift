@@ -39,6 +39,7 @@ import Foundation
 ```
 */
 
+// sourcery: AutoMockable
 public protocol BrazeServiceAdapter: AnyObject {
     func changeUser(_ userId: String)
     func logCustomEvent(_ eventName: String, withProperties: [AnyHashable: Any]?)

@@ -1,5 +1,6 @@
 import Foundation
 
+// sourcery: AutoMockable
 public protocol Taggable {
     var excludedTags: [Tag] { get }
     var requiredTags: [Tag] { get }

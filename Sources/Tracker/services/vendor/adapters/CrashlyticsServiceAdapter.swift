@@ -31,6 +31,7 @@ import Foundation
  ```
  */
 
+// sourcery: AutoMockable
 public protocol CrashlyticsServiceAdapter: AnyObject {
     func deleteUnsentReports()
     func log(_ msg: String)

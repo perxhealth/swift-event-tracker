@@ -31,6 +31,7 @@ import Foundation
  ```
  */
 
+// sourcery: AutoMockable
 public protocol SwiftMetricsServiceAdapter {
     static func incrementCounter(_ label: String,  dimensions: [(String, String)])
 }

@@ -31,6 +31,7 @@ import Foundation
  ```
  */
 
+// sourcery: AutoMockable
 public protocol InstabugServiceAdapter {
     static func logUserEvent(withName: String)
     static func removeUserAttribute(forKey: String)

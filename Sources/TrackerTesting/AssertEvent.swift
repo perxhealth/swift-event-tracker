@@ -2,11 +2,11 @@ import Foundation
 import Tracker
 import XCTest
 
-public func AssertTrackEventCalled(_ provider: ServiceMock,
+public func AsserttrackEventEventEventVoidCalled(_ provider: ServiceMock,
                                  message: @autoclosure () -> String = "",
                                  file: StaticString = #file,
                                  line: UInt = #line) {
-    XCTAssertTrue(provider.trackEventCalled,
+    XCTAssertTrue(provider.trackEventEventEventVoidCalled,
                   message(),
                   file: file,
                   line: line)
@@ -16,7 +16,7 @@ public func AssertTrackEventNotCalled(_ provider: ServiceMock,
                                     message: @autoclosure () -> String = "",
                                     file: StaticString = #file,
                                     line: UInt = #line) {
-    XCTAssertFalse(provider.trackEventCalled,
+    XCTAssertFalse(provider.trackEventEventEventVoidCalled,
                    message(),
                    file: file,
                    line: line)
@@ -28,7 +28,7 @@ public func AssertEventTracked(_ event: NamedEvent,
                                message: @autoclosure () -> String = "",
                                file: StaticString = #file,
                                line: UInt = #line) {
-    let lastEvent = provider.trackEventReceivedEvent
+    let lastEvent = provider.trackEventEventEventVoidReceivedEvent
     XCTAssertEqual(lastEvent?.name,
                    event.name,
                    message(),
@@ -46,7 +46,7 @@ public func AssertEventNotTracked(_ event: NamedEvent,
                                   message: @autoclosure () -> String = "",
                                   file: StaticString = #file,
                                   line: UInt = #line) {
-    XCTAssertNotEqual(provider.trackEventReceivedEvent?.name,
+    XCTAssertNotEqual(provider.trackEventEventEventVoidReceivedEvent?.name,
                       event.name,
                       message(),
                       file: file,
@@ -65,7 +65,7 @@ public func AssertEventsTracked(_ events: NamedEvent...,
                          file: file,
                          line: line)
     let selected = provider
-        .trackEventReceivedInvocations
+        .trackEventEventEventVoidReceivedInvocations
         .filter { event in !ignoreAdditionalEvents || events.map { $0.name }.contains(event.name) }
     XCTAssertEqual(selected.map { $0.name },
                    events.map { $0.name },

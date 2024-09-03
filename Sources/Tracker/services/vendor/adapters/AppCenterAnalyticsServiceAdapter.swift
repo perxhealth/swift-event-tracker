@@ -32,6 +32,7 @@ import Foundation
  ```
  */
 
+// sourcery: AutoMockable
 public protocol AppCenterAnalyticsServiceAdapter {
     static func pause()
     static func resume()

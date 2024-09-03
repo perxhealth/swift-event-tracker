@@ -31,6 +31,7 @@ import Foundation
  ```
 */
 
+// sourcery: AutoMockable
 public protocol AppsFlyerServiceAdapter: AnyObject {
     var customData: [AnyHashable: Any]? { get set }
     var customerUserID: String? { get set }

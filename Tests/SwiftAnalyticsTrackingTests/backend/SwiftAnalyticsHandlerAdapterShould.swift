@@ -23,7 +23,7 @@ final class SwiftAnalyticsHandlerAdapterShould: XCTestCase {
         analytics.send("some event")
         analytics.send("another event")
 
-        XCTAssertEqual(serviceProvider.trackEventCallsCount, 2)
+        XCTAssertEqual(serviceProvider.trackEventEventEventVoidCallsCount, 2)
     }
 
     func testTrackEventsWithExpectedName() {
@@ -31,7 +31,7 @@ final class SwiftAnalyticsHandlerAdapterShould: XCTestCase {
         let analytics = Analytics()
         analytics.send("some event")
 
-        let event = serviceProvider.trackEventReceivedEvent
+        let event = serviceProvider.trackEventEventEventVoidReceivedEvent
         XCTAssertEqual(event?.name, "some event")
     }
 
@@ -40,7 +40,7 @@ final class SwiftAnalyticsHandlerAdapterShould: XCTestCase {
         let analytics = Analytics()
         analytics.send("some event", parameters: ["array": .array([1, "two", .dictionary(["three": 3])])])
 
-        let event = serviceProvider.trackEventReceivedEvent
+        let event = serviceProvider.trackEventEventEventVoidReceivedEvent
         XCTAssertEqual(event?.parameters, ["array": "[1,\"two\",{\"three\":3}]"])
     }
 
@@ -50,7 +50,7 @@ final class SwiftAnalyticsHandlerAdapterShould: XCTestCase {
         analytics.parameters = ["dict": .dictionary(["array": .array([false, true])])]
         analytics.send("some event")
 
-        let event = serviceProvider.trackEventReceivedEvent
+        let event = serviceProvider.trackEventEventEventVoidReceivedEvent
         XCTAssertEqual(event?.parameters, ["dict": "{\"array\":[false,true]}"])
     }
 
@@ -72,7 +72,7 @@ final class SwiftAnalyticsHandlerAdapterShould: XCTestCase {
         analytics.parameters["conflicting"] = "another value"
         analytics.send("some event", parameters: ["not shared": 1234, "conflicting": "different value"])
 
-        let event = serviceProvider.trackEventReceivedEvent
+        let event = serviceProvider.trackEventEventEventVoidReceivedEvent
         XCTAssertEqual(event?.parameters, ["not shared": "1234", "conflicting": "different value", "shared": "some value"])
     }
 }

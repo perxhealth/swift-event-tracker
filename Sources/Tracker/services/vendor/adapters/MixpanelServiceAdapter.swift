@@ -44,6 +44,7 @@ import Foundation
  ```
  */
 
+// sourcery: AutoMockable
 public protocol MixpanelServiceAdapter: AnyObject {
     func identify(_ distinctId: String)
     func resetUserId()
