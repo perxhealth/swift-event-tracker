@@ -1,5 +1,5 @@
 @testable import Tracker
-import TrackerTesting
+@testable import TrackerTesting
 import XCTest
 
 final class FirebaseAnalyticsServiceProviderShould: XCTestCase {
@@ -51,6 +51,10 @@ final class FirebaseAnalyticsServiceProviderShould: XCTestCase {
         receivedEventDescription = nil
     }
 
+    func testSupportedTags() {
+        XCTAssertEqual(sut.supportedTags, [.firebaseAnalytics, .analytics])
+    }
+
     func testTrackEventWithExpectedName() {
         sut.trackEvent(someEvent)
         XCTAssertTrue(adapter.logEventNameStringParametersStringAnyVoidCalled)
@@ -66,6 +70,7 @@ final class FirebaseAnalyticsServiceProviderShould: XCTestCase {
 
     func testSetExpectedProperty() {
         sut.setProperty(somePropertyKey, value: somePropertyValue)
+        XCTAssertEqual(sut.userProperties[somePropertyKey] as? String, somePropertyValue)
         XCTAssertTrue(adapter.setUserPropertyValueStringForNameStringVoidCalled)
         XCTAssertEqual(adapter.setUserPropertyValueStringForNameStringVoidReceivedArguments?.forName, somePropertyKey)
         XCTAssertEqual(adapter.setUserPropertyValueStringForNameStringVoidReceivedArguments?.value, somePropertyValue)
@@ -74,6 +79,7 @@ final class FirebaseAnalyticsServiceProviderShould: XCTestCase {
     func testRemovePropertiesOnResetProperties() {
         sut.setProperty(somePropertyKey, value: somePropertyValue)
         sut.resetProperties()
+        XCTAssertEqual(sut.userProperties.count, 0)
         XCTAssertEqual(adapter.setUserPropertyValueStringForNameStringVoidCallsCount, 2)
         XCTAssertEqual(adapter.setUserPropertyValueStringForNameStringVoidReceivedArguments?.forName, somePropertyKey)
         XCTAssertNil(adapter.setUserPropertyValueStringForNameStringVoidReceivedArguments?.value)

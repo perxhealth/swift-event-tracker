@@ -2,10 +2,9 @@
 @testable import TrackerTesting
 import XCTest
 
-final class FacebookServiceProviderShould: XCTestCase {
-    var sut: FacebookServiceProvider!
-    var adapter: FacebookServiceAdapterMock!
-    var settingsAdapter: FacebookSettingsAdapterMock!
+final class BrazeServiceProviderShould: XCTestCase {
+    var sut: BrazeServiceProvider!
+    var adapter: BrazeServiceAdapterMock!
 
     var someEvent: EventMock!
     var anotherEvent: EventMock!
@@ -40,9 +39,8 @@ final class FacebookServiceProviderShould: XCTestCase {
         someScreen.name = someScreenName
         anotherScreen = ScreenMock(name: anotherScreenName)
 
-        adapter = FacebookServiceAdapterMock()
-        settingsAdapter = FacebookSettingsAdapterMock()
-        sut = FacebookServiceProvider(adapter: adapter, settingsAdapter: settingsAdapter)
+        adapter = BrazeServiceAdapterMock()
+        sut = BrazeServiceProvider(adapter: adapter)
     }
 
     override func tearDown() {
@@ -51,63 +49,65 @@ final class FacebookServiceProviderShould: XCTestCase {
     }
 
     func testSupportedTags() {
-        XCTAssertEqual(sut.supportedTags, [.facebook, .analytics])
+        XCTAssertEqual(sut.supportedTags, [.braze, .analytics])
     }
 
     func testTrackEventWithExpectedName() {
         sut.trackEvent(someEvent)
-        XCTAssertTrue(adapter.logEventEventNameStringParametersStringAnyVoidCalled)
-        XCTAssertEqual(adapter.logEventEventNameStringParametersStringAnyVoidReceivedArguments?.eventName, someEventName)
+        XCTAssertTrue(adapter.logCustomEventEventNameStringWithPropertiesAnyHashableAnyVoidCalled)
+        XCTAssertEqual(adapter.logCustomEventEventNameStringWithPropertiesAnyHashableAnyVoidReceivedArguments?.eventName, someEventName)
     }
 
     func testTrackEventWithExpectedParameters() {
         sut.trackEvent(someEvent)
         for (key, value) in someEvent.parameters {
-            XCTAssertEqual(adapter.logEventEventNameStringParametersStringAnyVoidReceivedArguments?.parameters[key] as? String, value)
+            XCTAssertEqual(adapter.logCustomEventEventNameStringWithPropertiesAnyHashableAnyVoidReceivedArguments?.withProperties?[key] as? String, value)
         }
     }
 
     func testTrackEventWithExpectedScreenName() throws {
         sut.trackScreen(someScreen)
-        XCTAssertTrue(adapter.logEventEventNameStringParametersStringAnyVoidCalled)
-        try AssertTrue(adapter.logEventEventNameStringParametersStringAnyVoidReceivedArguments?.eventName.hasPrefix(someScreenName))
-        try AssertTrue(adapter.logEventEventNameStringParametersStringAnyVoidReceivedArguments?.eventName.hasSuffix(" viewed"))
+        XCTAssertTrue(adapter.logCustomEventEventNameStringWithPropertiesAnyHashableAnyVoidCalled)
+        try AssertTrue(adapter.logCustomEventEventNameStringWithPropertiesAnyHashableAnyVoidReceivedArguments?.eventName.hasPrefix(someScreenName))
+        try AssertTrue(adapter.logCustomEventEventNameStringWithPropertiesAnyHashableAnyVoidReceivedArguments?.eventName.hasSuffix(" viewed"))
     }
 
     func testSetExpectedProperty() {
         sut.setProperty(somePropertyKey, value: somePropertyValue)
-        XCTAssertEqual(sut.userProperties[somePropertyKey] as? String, somePropertyValue)
-        XCTAssertTrue(adapter.logEventEventNameStringParametersStringAnyVoidCalled)
-        XCTAssertEqual(adapter.logEventEventNameStringParametersStringAnyVoidReceivedArguments?.eventName, "Set property")
+        XCTAssertEqual(sut.userProperties.count, 1)
+        XCTAssertTrue(adapter.setCustomAttributeWithKeyKeyStringAndStringValueValueStringVoidCalled)
+        XCTAssertEqual(adapter.setCustomAttributeWithKeyKeyStringAndStringValueValueStringVoidReceivedArguments?.key, somePropertyKey)
+        XCTAssertEqual(adapter.setCustomAttributeWithKeyKeyStringAndStringValueValueStringVoidReceivedArguments?.value, somePropertyValue)
     }
 
-    func testRemovePropertiesOnResetProperties() throws {
+    func testRemovePropertiesOnResetProperties() {
+        sut.setProperty(somePropertyKey, value: somePropertyValue)
         sut.resetProperties()
         XCTAssertEqual(sut.userProperties.count, 0)
-        XCTAssertTrue(adapter.logEventEventNameStringParametersStringAnyVoidCalled)
-        XCTAssertEqual(adapter.logEventEventNameStringParametersStringAnyVoidReceivedArguments?.eventName, "Reset properties")
+        XCTAssertTrue(adapter.unsetCustomAttributeWithKeyKeyStringVoidCalled)
+        XCTAssertEqual(adapter.unsetCustomAttributeWithKeyKeyStringVoidReceivedKey, somePropertyKey)
     }
 
     func testSetExpectedUserId() {
         sut.setUserId(someUserId)
-        XCTAssertEqual(adapter.userID, someUserId)
+        XCTAssertTrue(adapter.changeUserUserIdStringVoidCalled)
+        XCTAssertEqual(adapter.changeUserUserIdStringVoidReceivedUserId, someUserId)
     }
 
-    func testResetUserId() throws {
+    func testResetUserId() {
         sut.setUserId(someUserId)
         sut.resetUserId()
-        XCTAssertNil(adapter.userID)
+        XCTAssertTrue(adapter.changeUserUserIdStringVoidCalled)
+        XCTAssertEqual(adapter.changeUserUserIdStringVoidReceivedUserId, "")
     }
 
-    func testDisableTracking() throws {
+    func testDisableTracking() {
         sut.disableTracking(true)
-        XCTAssertTrue(settingsAdapter.isAutoLogAppEventsEnabled)
         XCTAssertTrue(sut.trackingDisabled)
     }
 
-    func testEnableTracking() throws {
+    func testEnableTracking() {
         sut.disableTracking(false)
-        XCTAssertFalse(settingsAdapter.isAutoLogAppEventsEnabled)
         XCTAssertFalse(sut.trackingDisabled)
     }
 }

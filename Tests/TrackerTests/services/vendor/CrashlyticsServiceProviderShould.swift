@@ -1,5 +1,5 @@
 @testable import Tracker
-import TrackerTesting
+@testable import TrackerTesting
 import XCTest
 
 final class CrashlyticsServiceProviderShould: XCTestCase {
@@ -8,14 +8,13 @@ final class CrashlyticsServiceProviderShould: XCTestCase {
 
     var someEvent: EventMock!
     var anotherEvent: EventMock!
-    var someScreen: FirebaseAnalyticsScreenMock!
+    var someScreen: ScreenMock!
     var anotherScreen: ScreenMock!
 
     var someEventName: String!
     var anotherEventName: String!
     var parameters: [String: String]!
     var someScreenName: String!
-    var someScreenClass: String!
     var anotherScreenName: String!
     var somePropertyKey: String!
     var somePropertyValue: String!
@@ -29,7 +28,6 @@ final class CrashlyticsServiceProviderShould: XCTestCase {
         anotherEventName = "another event name"
         parameters = ["param0": "value0", "param1": "value1"]
         someScreenName = "some screen name"
-        someScreenClass = "some screen class"
         anotherScreenName = "another screen name"
         somePropertyKey = "some property key"
         somePropertyValue = "some property value"
@@ -37,9 +35,8 @@ final class CrashlyticsServiceProviderShould: XCTestCase {
 
         someEvent = EventMock(name: someEventName, parameters: parameters)
         anotherEvent = EventMock(name: anotherEventName)
-        someScreen = FirebaseAnalyticsScreenMock()
+        someScreen = ScreenMock()
         someScreen.name = someScreenName
-        someScreen.screenClass = someScreenClass
         anotherScreen = ScreenMock(name: anotherScreenName)
 
         adapter = CrashlyticsServiceAdapterMock()
@@ -49,6 +46,10 @@ final class CrashlyticsServiceProviderShould: XCTestCase {
     override func tearDown() {
         super.tearDown()
         receivedEventDescription = nil
+    }
+
+    func testSupportedTags() {
+        XCTAssertEqual(sut.supportedTags, [.crashlytics, .crashReporting])
     }
 
     func testTrackEventWithExpectedName() {
@@ -71,6 +72,7 @@ final class CrashlyticsServiceProviderShould: XCTestCase {
 
     func testSetExpectedProperty() {
         sut.setProperty(somePropertyKey, value: somePropertyValue)
+        XCTAssertEqual(sut.userProperties[somePropertyKey] as? String, somePropertyValue)
         XCTAssertTrue(adapter.setCustomValueValueAnyForKeyStringVoidCalled)
         XCTAssertEqual(adapter.setCustomValueValueAnyForKeyStringVoidReceivedArguments?.forKey, somePropertyKey)
         XCTAssertEqual(adapter.setCustomValueValueAnyForKeyStringVoidReceivedArguments?.value as? String, somePropertyValue)
@@ -79,6 +81,7 @@ final class CrashlyticsServiceProviderShould: XCTestCase {
     func testRemovePropertiesOnResetProperties() {
         sut.setProperty(somePropertyKey, value: somePropertyValue)
         sut.resetProperties()
+        XCTAssertEqual(sut.userProperties.count, 0)
         XCTAssertEqual(adapter.setCustomValueValueAnyForKeyStringVoidReceivedArguments?.forKey, somePropertyKey)
         XCTAssertEqual(adapter.setCustomValueValueAnyForKeyStringVoidReceivedArguments?.value as? String, "")
     }

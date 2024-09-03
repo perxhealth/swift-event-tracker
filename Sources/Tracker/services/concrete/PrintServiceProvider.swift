@@ -1,7 +1,7 @@
 import Foundation
 
 public final class PrintServiceProvider: AbstractProvider, Service {
-    public let supportedTags: [Tag] = [.debugging]
+    public let supportedTags: [Tag] = [.debugging, .logging]
 
     private let canBeDisabled: Bool
     private let put: (String) -> Void

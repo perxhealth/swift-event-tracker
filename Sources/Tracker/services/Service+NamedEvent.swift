@@ -7,7 +7,7 @@ extension Service {
     }
 
     public func setUserId(_ userId: String) {
-        let event = NamedEvent("Set user") + ["userId": userId]
+        let event = NamedEvent("Set user") + [AbstractProvider.defaultFallbackUserIdPropertyKey: userId]
         trackEvent(event)
     }
 

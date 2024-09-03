@@ -61,6 +61,13 @@ final class EventTrackerShould: XCTestCase {
         XCTAssertEqual(anotherProvider.trackEventEventEventVoidReceivedEvent?.name, anotherEvent.name)
     }
 
+    func testDoNotTrackEventIfTrackingDisabled() {
+        someProvider.trackingDisabled = true
+        sut.trackEvent(NamedEvent("some event"))
+        XCTAssertFalse(someProvider.trackEventEventEventVoidCalled)
+        XCTAssertTrue(anotherProvider.trackEventEventEventVoidCalled)
+    }
+
     func testTrackEventsOnlyIfConditionIsMet() {
         sut.trackEvent(someEvent, given: { true })
         sut.trackEvent(anotherEvent, given: { false })
@@ -126,6 +133,15 @@ final class EventTrackerShould: XCTestCase {
         XCTAssertEqual(someProvider.setPropertyKeyStringValueStringVoidReceivedArguments?.value, somePropertyValue)
     }
 
+    func testDoNotTrackScreenIfTrackingDisabled() {
+        someProvider.trackingDisabled = true
+        let screen = ScreenMock()
+        screen.name = "some screen name"
+        sut.trackScreen(screen)
+        XCTAssertFalse(someProvider.trackScreenScreenScreenVoidCalled)
+        XCTAssertTrue(anotherProvider.trackScreenScreenScreenVoidCalled)
+    }
+
     func testTrackScreensWithExpectedName() {
         sut.trackScreen(someScreen)
         XCTAssertEqual(someProvider.trackScreenScreenScreenVoidReceivedScreen?.name, someScreenName)
@@ -145,7 +161,7 @@ final class EventTrackerShould: XCTestCase {
         XCTAssertNotEqual(someProvider.trackScreenScreenScreenVoidReceivedScreen?.name, anotherScreenName)
     }
 
-    func testExecuteTrackedScreenThenOnlyIfConditionIsMet() {
+    func testExecuteTrackedScreenOnlyIfConditionIsMet() {
         var executed = false
         sut.trackScreen(someScreen, given: { true }, then: { executed = true })
         sut.trackScreen(anotherScreen, given: { false }, then: { XCTFail("must not invoke then when given condition is not met") })
@@ -154,7 +170,7 @@ final class EventTrackerShould: XCTestCase {
         XCTAssertNotEqual(someProvider.trackScreenScreenScreenVoidReceivedScreen?.name, anotherScreenName)
     }
 
-    func testExecuteTrackedScreenThenOnlyIfAutoclosureConditionIsMet() {
+    func testExecuteTrackedScreenOnlyIfAutoclosureConditionIsMet() {
         var executed = false
         sut.trackScreen(someScreen, given: true, then: executed = true)
         sut.trackScreen(anotherScreen, given: false, then: XCTFail("must not invoke then when given condition is not met"))
@@ -168,6 +184,13 @@ final class EventTrackerShould: XCTestCase {
         XCTAssertEqual(someProvider.setUserIdUserIdStringVoidReceivedUserId, someUserId)
     }
 
+    func testDoNotSetUserIdIfTrackingDisabled() {
+        someProvider.trackingDisabled = true
+        sut.setUserId(someUserId)
+        XCTAssertFalse(someProvider.setUserIdUserIdStringVoidCalled)
+        XCTAssertTrue(anotherProvider.setUserIdUserIdStringVoidCalled)
+    }
+
     func testSetExpectedUserIdOnlyIfTagsMatch() {
         sut.setUserId(someUserId, forTags: [.analytics])
         XCTAssertNil(someProvider.setUserIdUserIdStringVoidReceivedUserId)
@@ -175,8 +198,16 @@ final class EventTrackerShould: XCTestCase {
     }
 
     func testForwardSetPropertiesToProviders() {
-        sut.resetProperties()
-        XCTAssertTrue(someProvider.resetPropertiesVoidCalled)
+        sut.setProperty("key", value: "value")
+        XCTAssertTrue(someProvider.setPropertyKeyStringValueStringVoidCalled)
+        XCTAssertTrue(anotherProvider.setPropertyKeyStringValueStringVoidCalled)
+    }
+
+    func testDoNotForwardSetetPropertiesToProvidersIfTrackingDisabled() {
+        someProvider.trackingDisabled = true
+        sut.setProperty("key", value: "value")
+        XCTAssertFalse(someProvider.setPropertyKeyStringValueStringVoidCalled)
+        XCTAssertTrue(anotherProvider.setPropertyKeyStringValueStringVoidCalled)
     }
 
     func testForwardSetPropertiesToProvidersOnlyIfTagsMatch() {
@@ -190,6 +221,13 @@ final class EventTrackerShould: XCTestCase {
         XCTAssertTrue(someProvider.resetPropertiesVoidCalled)
     }
 
+    func testForwardResetetPropertiesToProvidersEvenIfTrackingDisabled() {
+        someProvider.trackingDisabled = true
+        sut.resetProperties()
+        XCTAssertTrue(someProvider.resetPropertiesVoidCalled)
+        XCTAssertTrue(anotherProvider.resetPropertiesVoidCalled)
+    }
+
     func testForwardResetPropertiesToProvidersOnlyIfTagsMatch() {
         sut.resetProperties(forTags: [.debugging])
         XCTAssertTrue(someProvider.resetPropertiesVoidCalled)
@@ -200,5 +238,33 @@ final class EventTrackerShould: XCTestCase {
         XCTAssertFalse(someProvider.trackingDisabled)
         sut.disableTracking(true)
         try AssertTrue(someProvider.disableTrackingFlagBoolVoidReceivedFlag)
+    }
+
+    func testSupportedTags() {
+        XCTAssertEqual(sut.supportedTags, [.crashReporting, .debugging, .analytics])
+    }
+
+    func testTrackingIsDisabledIfAllProvidersDisabled() {
+        someProvider.trackingDisabled = true
+        anotherProvider.trackingDisabled = true
+        XCTAssertTrue(sut.trackingDisabled)
+    }
+
+    func testTrackingIsEnabledIfSomeProvidersAreEnabled() {
+        someProvider.trackingDisabled = false
+        anotherProvider.trackingDisabled = true
+        XCTAssertFalse(sut.trackingDisabled)
+    }
+
+    func testDisableTrackingOnlyIfTagsMatch() {
+        sut.disableTracking(true, forTags: [.analytics])
+        XCTAssertEqual(someProvider.disableTrackingFlagBoolVoidReceivedInvocations, [])
+        XCTAssertEqual(anotherProvider.disableTrackingFlagBoolVoidReceivedInvocations, [true])
+    }
+
+    func testEnableTrackingOnlyIfTagsMatch() {
+        sut.disableTracking(false, forTags: [.crashReporting])
+        XCTAssertEqual(someProvider.disableTrackingFlagBoolVoidReceivedInvocations, [false])
+        XCTAssertEqual(anotherProvider.disableTrackingFlagBoolVoidReceivedInvocations, [])
     }
 }

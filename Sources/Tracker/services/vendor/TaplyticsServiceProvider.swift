@@ -51,7 +51,7 @@ public final class TaplyticsServiceProvider: AbstractProvider, Service {
 
     private func setUserAttributes() {
         var userAttributes = [AnyHashable: Any]()
-        userAttributes["user_id"] = userId
+        userAttributes[Self.defaultFallbackUserIdPropertyKey] = userId
         userAttributes["customData"] = userProperties
         adapter.setUserAttributes(userAttributes)
     }

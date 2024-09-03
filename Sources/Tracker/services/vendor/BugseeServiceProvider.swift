@@ -15,6 +15,7 @@ public final class BugseeServiceProvider: AbstractProvider, Service {
     }
 
     public func setProperty(_ key: String, value: String) {
+        userProperties[key] = value
         _ = adapter.setAttribute(key, value: value)
     }
 

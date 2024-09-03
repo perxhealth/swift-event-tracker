@@ -2,8 +2,9 @@
 import TrackerTesting
 import XCTest
 
-final class PrintServiceProviderShould: XCTestCase {
-    var sut: PrintServiceProvider!
+final class SwiftLoggerServiceProviderShould: XCTestCase {
+    var sut: SwiftLoggerServiceProvider!
+    var adapter: SwiftLoggerServiceAdapterMock!
 
     var someEvent: EventMock!
     var anotherEvent: EventMock!
@@ -33,7 +34,9 @@ final class PrintServiceProviderShould: XCTestCase {
         anotherEvent = EventMock(name: anotherEventName)
         someScreen = ScreenMock(name: someScreenName)
 
-        sut = PrintServiceProvider(canBeDisabled: false) { eventdescription in
+        adapter = SwiftLoggerServiceAdapterMock()
+        sut = SwiftLoggerServiceProvider(adapter: adapter)
+        adapter.logMessageStringVoidClosure = { eventdescription in
             self.receivedEventDescription = eventdescription
         }
     }
@@ -44,7 +47,7 @@ final class PrintServiceProviderShould: XCTestCase {
     }
 
     func testSupportedTags() {
-        XCTAssertEqual(sut.supportedTags, [.debugging, .logging])
+        XCTAssertEqual(sut.supportedTags, [.swiftLogger, .logging])
     }
 
     func testTrackEventWithExpectedName() throws {
@@ -92,23 +95,25 @@ final class PrintServiceProviderShould: XCTestCase {
         try AssertTrue(receivedEventDescription?.contains(someUserId))
     }
 
-    func testTrackEventOnResetUserId() throws {
+    func testResetUserIdUpdatesUserProperties() {
+        sut.setUserId(someUserId)
         sut.resetUserId()
-        try AssertTrue(receivedEventDescription?.contains("Reset user"))
+        XCTAssertNil(sut.userProperties[AbstractProvider.defaultFallbackUserIdPropertyKey])
     }
 
-    func testInformWhenTrackingDisabled() {
-        sut.disableTracking(true)
-        XCTAssertEqual(receivedEventDescription, "Disabling tracking")
+    func testResetUserIdTracksEventWithExpectedEventName() throws {
+        sut.setUserId(someUserId)
+        sut.resetUserId()
+        try AssertTrue(receivedEventDescription?.contains("Set property"))
     }
 
-    func testUpdateTrackingDisabledPropertyOnlyWhenCanBeDisabled() {
-        let provider = PrintServiceProvider(canBeDisabled: true) { eventdescription in
-            self.receivedEventDescription = eventdescription
-        }
-        provider.disableTracking(true)
+    func testDisableTrackingTracksEventWithExpectedEventName() {
         sut.disableTracking(true)
-        XCTAssertTrue(provider.trackingDisabled)
+        XCTAssertTrue(sut.trackingDisabled)
+    }
+
+    func testEnableTracking() {
+        sut.disableTracking(false)
         XCTAssertFalse(sut.trackingDisabled)
     }
 }

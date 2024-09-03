@@ -7,6 +7,7 @@ public final class AdjustServiceProvider: AbstractProvider, Service {
 
     public init(adapter: AdjustServiceAdapter.Type) {
         self.adapter = adapter
+        super.init(userIdPropertyKey: Self.defaultFallbackUserIdPropertyKey)
     }
 
     public func trackEvent(_ event: Event) {

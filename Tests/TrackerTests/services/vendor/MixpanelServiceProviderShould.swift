@@ -1,5 +1,5 @@
 @testable import Tracker
-import TrackerTesting
+@testable import TrackerTesting
 import XCTest
 
 final class MixpanelServiceProviderShould: XCTestCase {
@@ -43,6 +43,10 @@ final class MixpanelServiceProviderShould: XCTestCase {
         receivedEventDescription = nil
     }
 
+    func testSupportedTags() {
+        XCTAssertEqual(sut.supportedTags, [.mixpanel, .analytics])
+    }
+
     func testTrackEventWithExpectedName() {
         sut.trackEvent(someEvent)
         XCTAssertTrue(adapter.trackEventStringPropertiesAnyHashableAnyVoidCalled)
@@ -65,6 +69,7 @@ final class MixpanelServiceProviderShould: XCTestCase {
 
     func testSetExpectedProperty() {
         sut.setProperty(somePropertyKey, value: somePropertyValue)
+        XCTAssertEqual(sut.userProperties[somePropertyKey] as? String, somePropertyValue)
         XCTAssertTrue(adapter.setPropertyStringToValueStringVoidCalled)
         XCTAssertEqual(adapter.setPropertyStringToValueStringVoidReceivedArguments?.property, somePropertyKey)
         XCTAssertEqual(adapter.setPropertyStringToValueStringVoidReceivedArguments?.value, somePropertyValue)
@@ -73,6 +78,7 @@ final class MixpanelServiceProviderShould: XCTestCase {
     func testRemovePropertiesOnResetProperties() {
         sut.setProperty(somePropertyKey, value: somePropertyValue)
         sut.resetProperties()
+        XCTAssertEqual(sut.userProperties.count, 0)
         XCTAssertTrue(adapter.unsetPropertiesStringVoidCalled)
         XCTAssertEqual(adapter.unsetPropertiesStringVoidReceivedProperties, [somePropertyKey])
     }

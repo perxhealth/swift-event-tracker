@@ -34,6 +34,7 @@ public final class AmplitudeServiceProvider: AbstractProvider, Service {
     }
 
     public override func disableTracking(_ flag: Bool) {
+        super.disableTracking(flag)
         adapter.optOut = flag
     }
 }

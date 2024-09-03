@@ -1,5 +1,5 @@
 @testable import Tracker
-import TrackerTesting
+@testable import TrackerTesting
 import XCTest
 
 final class CountlyServiceProviderShould: XCTestCase {
@@ -53,6 +53,10 @@ final class CountlyServiceProviderShould: XCTestCase {
         receivedEventDescription = nil
     }
 
+    func testSupportedTags() {
+        XCTAssertEqual(sut.supportedTags, [.countly, .analytics])
+    }
+
     func testTrackEventWithExpectedName() {
         sut.trackEvent(someEvent)
         XCTAssertTrue(adapter.recordEventEventNameStringSegmentationStringAnyVoidCalled)
@@ -72,12 +76,6 @@ final class CountlyServiceProviderShould: XCTestCase {
         XCTAssertEqual(adapter.recordViewViewStringSegmentationStringAnyVoidReceivedArguments?.view, someScreenName)
     }
 
-    func testTrackEventWithExpectedScreenName() {
-        sut.trackScreen(someScreen)
-        XCTAssertTrue(adapter.recordViewViewStringSegmentationStringAnyVoidCalled)
-        XCTAssertEqual(adapter.recordViewViewStringSegmentationStringAnyVoidReceivedArguments?.view, someScreenName)
-    }
-
     func testTrackScreenWithExpectedSegmentation() {
         sut.trackScreen(someScreen)
         XCTAssertTrue(adapter.recordViewViewStringSegmentationStringAnyVoidCalled)
@@ -88,6 +86,7 @@ final class CountlyServiceProviderShould: XCTestCase {
 
     func testSetExpectedProperty() {
         sut.setProperty(somePropertyKey, value: somePropertyValue)
+        XCTAssertEqual(sut.userProperties[somePropertyKey] as? String, somePropertyValue)
         XCTAssertTrue(userAdapter.setKeyStringValueStringVoidCalled)
         XCTAssertEqual(userAdapter.setKeyStringValueStringVoidReceivedArguments?.key, somePropertyKey)
         XCTAssertEqual(userAdapter.setKeyStringValueStringVoidReceivedArguments?.value, somePropertyValue)
