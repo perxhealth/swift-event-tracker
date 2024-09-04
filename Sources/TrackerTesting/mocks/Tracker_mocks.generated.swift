@@ -290,22 +290,6 @@ public class AppsFlyerServiceAdapterMock: AppsFlyerServiceAdapter {
 
 
 }
-public class AppseeAnalyticsScreenMock: AppseeAnalyticsScreen {
-
-    public init() {}
-
-    public var actions: [String] = []
-    public var name: String {
-        get { return underlyingName }
-        set(value) { underlyingName = value }
-    }
-    public var underlyingName: (String)!
-    public var excludedTags: [Tag] = []
-    public var requiredTags: [Tag] = []
-
-
-
-}
 public class BrazeServiceAdapterMock: BrazeServiceAdapter {
 
     public init() {}
