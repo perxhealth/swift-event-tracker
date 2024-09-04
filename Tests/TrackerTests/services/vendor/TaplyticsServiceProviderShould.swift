@@ -93,7 +93,7 @@ final class TaplyticsServiceProviderShould: XCTestCase {
     func testSetExpectedUserId() {
         sut.setUserId(someUserId)
         XCTAssertTrue(adapter.setUserAttributesAttributesAnyHashableAnyVoidCalled)
-        XCTAssertEqual(adapter.setUserAttributesAttributesAnyHashableAnyVoidReceivedAttributes?[AbstractProvider.defaultFallbackUserIdPropertyKey] as? String, someUserId)
+        XCTAssertEqual(adapter.setUserAttributesAttributesAnyHashableAnyVoidReceivedAttributes?["user_id"] as? String, someUserId)
     }
 
     func testResetUserId() {

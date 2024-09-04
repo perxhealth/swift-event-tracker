@@ -2,6 +2,7 @@ import Foundation
 
 /**
  # Links:
+ - https://docs.taplytics.com/docs/ios-sdk
  - https://github.com/taplytics/taplytics-ios-sdk/blob/master/START.md
 
  # Package example:
