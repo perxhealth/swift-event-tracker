@@ -50,7 +50,7 @@ final class InstabugServiceProviderShould: XCTestCase {
     }
 
     func testSupportedTags() {
-        XCTAssertEqual(sut.supportedTags, [.instabug, .crashReporting])
+        XCTAssertEqual(sut.supportedTags, [.instabug, .crashReporting, .nativeProperties])
     }
 
     func testTrackEventWithExpectedName() {

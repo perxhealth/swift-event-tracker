@@ -50,7 +50,7 @@ final class AdjustServiceProviderShould: XCTestCase {
     }
 
     func testSupportedTags() {
-        XCTAssertEqual(sut.supportedTags, [.adjust, .analytics])
+        XCTAssertEqual(sut.supportedTags, [.adjust, .analytics, .nativeEventParameters])
     }
 
     func testTrackEventWithExpectedName() {

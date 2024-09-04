@@ -1,7 +1,7 @@
 import Foundation
 
 public final class SwiftMetricsServiceProvider: AbstractProvider, Service {
-    public let supportedTags: [Tag] = [.swiftMetrics, .analytics]
+    public var supportedTags: [Tag] = [.swiftMetrics, .analytics, .nativeEventParameters]
 
     private let adapter: SwiftMetricsServiceAdapter.Type
 

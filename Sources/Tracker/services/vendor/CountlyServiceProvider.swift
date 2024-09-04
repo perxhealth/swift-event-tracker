@@ -1,7 +1,7 @@
 import Foundation
 
 public final class CountlyServiceProvider: AbstractProvider, Service {
-    public let supportedTags: [Tag] = [.countly, .analytics]
+    public var supportedTags: [Tag] = [.countly, .analytics, .nativeEventParameters, .nativeProperties, .nativeScreen, .nativeUserId]
 
     private let adapter: CountlyServiceAdapter
     private let userAdapter: CountlyUserDetailsAdapter

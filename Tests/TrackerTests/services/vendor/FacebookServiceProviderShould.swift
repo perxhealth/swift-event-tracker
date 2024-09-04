@@ -51,7 +51,7 @@ final class FacebookServiceProviderShould: XCTestCase {
     }
 
     func testSupportedTags() {
-        XCTAssertEqual(sut.supportedTags, [.facebook, .analytics])
+        XCTAssertEqual(sut.supportedTags, [.facebook, .analytics, .nativeEventParameters, .nativeUserId])
     }
 
     func testTrackEventWithExpectedName() {

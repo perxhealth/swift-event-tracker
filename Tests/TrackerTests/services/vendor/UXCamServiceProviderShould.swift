@@ -50,7 +50,7 @@ final class UXCamServiceProviderShould: XCTestCase {
     }
 
     func testSupportedTags() {
-        XCTAssertEqual(sut.supportedTags, [.uxCam, .analytics])
+        XCTAssertEqual(sut.supportedTags, [.uxCam, .analytics, .nativeEventParameters, .nativeProperties, .nativeUserId])
     }
 
     func testTrackEventWithExpectedName() {

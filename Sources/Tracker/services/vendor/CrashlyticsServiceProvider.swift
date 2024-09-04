@@ -1,7 +1,8 @@
 import Foundation
 
 public final class CrashlyticsServiceProvider: AbstractProvider, Service {
-    public let supportedTags: [Tag] = [.crashlytics, .crashReporting]
+    public var supportedTags: [Tag] = [.crashlytics, .crashReporting, .nativeProperties, .nativeUserId]
+
     public override var trackingDisabled: Bool { !adapter.isCrashlyticsCollectionEnabled() }
 
     private let adapter: CrashlyticsServiceAdapter

@@ -49,7 +49,7 @@ final class BrazeServiceProviderShould: XCTestCase {
     }
 
     func testSupportedTags() {
-        XCTAssertEqual(sut.supportedTags, [.braze, .analytics])
+        XCTAssertEqual(sut.supportedTags, [.braze, .analytics, .nativeEventParameters, .nativeProperties, .nativeUserId])
     }
 
     func testTrackEventWithExpectedName() {

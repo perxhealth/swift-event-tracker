@@ -1,7 +1,7 @@
 import Foundation
 
 public final class FacebookServiceProvider: AbstractProvider, Service {
-    public let supportedTags: [Tag] = [.facebook, .analytics]
+    public var supportedTags: [Tag] = [.facebook, .analytics, .nativeEventParameters, .nativeUserId]
 
     private var adapter: FacebookServiceAdapter
     private var settingsAdapter: FacebookSettingsAdapter

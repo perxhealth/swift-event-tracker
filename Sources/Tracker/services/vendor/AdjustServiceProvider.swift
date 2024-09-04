@@ -1,7 +1,7 @@
 import Foundation
 
 public final class AdjustServiceProvider: AbstractProvider, Service {
-    public let supportedTags: [Tag] = [.adjust, .analytics]
+    public var supportedTags: [Tag] = [.adjust, .analytics, .nativeEventParameters]
 
     private let adapter: AdjustServiceAdapter.Type
 

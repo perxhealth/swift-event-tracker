@@ -50,7 +50,7 @@ final class BugseeServiceProviderShould: XCTestCase {
     }
 
     func testSupportedTags() {
-        XCTAssertEqual(sut.supportedTags, [.bugsee, .crashReporting])
+        XCTAssertEqual(sut.supportedTags, [.bugsee, .crashReporting, .nativeEventParameters, .nativeProperties])
     }
 
     func testTrackEventWithExpectedName() {

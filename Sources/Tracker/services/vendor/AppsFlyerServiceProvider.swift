@@ -1,7 +1,8 @@
 import Foundation
 
 public final class AppsFlyerServiceProvider: AbstractProvider, Service {
-    public let supportedTags: [Tag] = [.appsFlyer, .analytics]
+    public var supportedTags: [Tag] = [.appsFlyer, .analytics, .nativeEventParameters, .nativeProperties, .nativeUserId]
+    
     public override var trackingDisabled: Bool { adapter.isStopped }
 
     private let adapter: AppsFlyerServiceAdapter

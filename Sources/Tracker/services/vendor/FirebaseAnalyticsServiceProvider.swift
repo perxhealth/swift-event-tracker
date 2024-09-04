@@ -1,7 +1,7 @@
 import Foundation
 
 public final class FirebaseAnalyticsServiceProvider: AbstractProvider, Service {
-    public let supportedTags: [Tag] = [.firebaseAnalytics, .analytics]
+    public var supportedTags: [Tag] = [.firebaseAnalytics, .analytics, .nativeEventParameters, .nativeProperties, .nativeUserId]
 
     private let adapter: FirebaseAnalyticsServiceAdapter.Type
 

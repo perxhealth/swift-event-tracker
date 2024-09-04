@@ -1,7 +1,7 @@
 import Foundation
 
 public final class BrazeServiceProvider: AbstractProvider, Service {
-    public let supportedTags: [Tag] = [.braze, .analytics]
+    public var supportedTags: [Tag] = [.braze, .analytics, .nativeEventParameters, .nativeProperties, .nativeUserId]
 
     private let adapter: BrazeServiceAdapter
 

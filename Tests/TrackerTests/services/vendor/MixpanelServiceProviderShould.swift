@@ -44,7 +44,7 @@ final class MixpanelServiceProviderShould: XCTestCase {
     }
 
     func testSupportedTags() {
-        XCTAssertEqual(sut.supportedTags, [.mixpanel, .analytics])
+        XCTAssertEqual(sut.supportedTags, [.mixpanel, .analytics, .nativeEventParameters, .nativeProperties, .nativeUserId])
     }
 
     func testTrackEventWithExpectedName() {

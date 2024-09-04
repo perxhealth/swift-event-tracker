@@ -1,7 +1,7 @@
 import Foundation
 
 public final class SwiftLoggerServiceProvider: AbstractProvider, Service {
-    public let supportedTags: [Tag] = [.swiftLogger, .logging]
+    public var supportedTags: [Tag] = [.swiftLogger, .logging]
 
     private let adapter: SwiftLoggerServiceAdapter
 

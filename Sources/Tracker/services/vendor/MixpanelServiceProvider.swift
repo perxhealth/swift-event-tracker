@@ -1,7 +1,7 @@
 import Foundation
 
 public final class MixpanelServiceProvider: AbstractProvider, Service {
-    public let supportedTags: [Tag] = [.mixpanel, .analytics]
+    public var supportedTags: [Tag] = [.mixpanel, .analytics, .nativeEventParameters, .nativeProperties, .nativeUserId]
 
     public override var trackingDisabled: Bool { adapter.hasOptedOutTracking() }
 

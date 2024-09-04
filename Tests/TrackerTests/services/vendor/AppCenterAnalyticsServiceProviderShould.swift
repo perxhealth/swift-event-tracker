@@ -50,7 +50,7 @@ final class AppCenterAnalyticsServiceProviderShould: XCTestCase {
     }
 
     func testSupportedTags() {
-        XCTAssertEqual(sut.supportedTags, [.appCenterAnalytics, .analytics])
+        XCTAssertEqual(sut.supportedTags, [.appCenterAnalytics, .analytics, .nativeEventParameters])
     }
 
     func testTrackEventWithExpectedName() {

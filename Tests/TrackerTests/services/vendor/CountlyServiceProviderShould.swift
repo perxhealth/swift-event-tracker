@@ -54,7 +54,7 @@ final class CountlyServiceProviderShould: XCTestCase {
     }
 
     func testSupportedTags() {
-        XCTAssertEqual(sut.supportedTags, [.countly, .analytics])
+        XCTAssertEqual(sut.supportedTags, [.countly, .analytics, .nativeEventParameters, .nativeProperties, .nativeScreen, .nativeUserId])
     }
 
     func testTrackEventWithExpectedName() {

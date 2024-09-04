@@ -1,7 +1,7 @@
 import Foundation
 
 public final class BugseeServiceProvider: AbstractProvider, Service {
-    public let supportedTags: [Tag] = [.bugsee, .crashReporting]
+    public var supportedTags: [Tag] = [.bugsee, .crashReporting, .nativeEventParameters, .nativeProperties]
 
     private let adapter: BugseeServiceAdapter.Type
 

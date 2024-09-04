@@ -1,7 +1,8 @@
 import Foundation
 
 public final class AmplitudeServiceProvider: AbstractProvider, Service {
-    public let supportedTags: [Tag] = [.amplitude, .analytics]
+    public var supportedTags: [Tag] = [.amplitude, .analytics, .nativeEventParameters, .nativeProperties, .nativeUserId]
+    
     public override var trackingDisabled: Bool { adapter.optOut }
 
     private let adapter: AmplitudeServiceAdapter

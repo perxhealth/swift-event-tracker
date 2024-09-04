@@ -1,7 +1,7 @@
 import Foundation
 
 public final class UXCamServiceProvider: AbstractProvider, Service {
-    public let supportedTags: [Tag] = [.uxCam, .analytics]
+    public var supportedTags: [Tag] = [.uxCam, .analytics, .nativeEventParameters, .nativeProperties, .nativeUserId]
 
     public override var trackingDisabled: Bool { !adapter.optInOverallStatus() }
 

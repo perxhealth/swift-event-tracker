@@ -1,7 +1,7 @@
 import Foundation
 
 public final class TaplyticsServiceProvider: AbstractProvider, Service {
-    public let supportedTags: [Tag] = [.taplytics, .analytics]
+    public var supportedTags: [Tag] = [.taplytics, .analytics, .nativeProperties]
 
     public override var trackingDisabled: Bool { adapter.hasUserOptedOutTracking() }
 

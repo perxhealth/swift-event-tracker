@@ -1,7 +1,7 @@
 import Foundation
 
 public final class SwiftAnalyticsServiceProvider: AbstractProvider, Service {
-    public let supportedTags: [Tag] = [.swiftAnalytics, .analytics]
+    public var supportedTags: [Tag] = [.swiftAnalytics, .analytics, .nativeEventParameters, .nativeProperties]
 
     private var adapter: SwiftAnalyticsServiceAdapter
 

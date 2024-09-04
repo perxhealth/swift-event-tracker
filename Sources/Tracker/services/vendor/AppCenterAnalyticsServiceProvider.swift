@@ -1,7 +1,7 @@
 import Foundation
 
 public final class AppCenterAnalyticsServiceProvider: AbstractProvider, Service {
-    public let supportedTags: [Tag] = [.appCenterAnalytics, .analytics]
+    public var supportedTags: [Tag] = [.appCenterAnalytics, .analytics, .nativeEventParameters]
 
     private let adapter: AppCenterAnalyticsServiceAdapter.Type
 

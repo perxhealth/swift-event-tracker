@@ -49,7 +49,7 @@ final class AppsFlyerServiceProviderShould: XCTestCase {
     }
 
     func testSupportedTags() {
-        XCTAssertEqual(sut.supportedTags, [.appsFlyer, .analytics])
+        XCTAssertEqual(sut.supportedTags, [.appsFlyer, .analytics, .nativeEventParameters, .nativeProperties, .nativeUserId])
     }
 
     func testTrackEventWithExpectedName() {

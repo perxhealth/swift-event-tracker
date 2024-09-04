@@ -49,7 +49,7 @@ final class CrashlyticsServiceProviderShould: XCTestCase {
     }
 
     func testSupportedTags() {
-        XCTAssertEqual(sut.supportedTags, [.crashlytics, .crashReporting])
+        XCTAssertEqual(sut.supportedTags, [.crashlytics, .crashReporting, .nativeProperties, .nativeUserId])
     }
 
     func testTrackEventWithExpectedName() {

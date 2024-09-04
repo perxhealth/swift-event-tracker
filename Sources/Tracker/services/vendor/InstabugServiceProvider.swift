@@ -1,7 +1,7 @@
 import Foundation
 
 public final class InstabugServiceProvider: AbstractProvider, Service {
-    public let supportedTags: [Tag] = [.instabug, .crashReporting]
+    public var supportedTags: [Tag] = [.instabug, .crashReporting, .nativeProperties]
 
     private let adapter: InstabugServiceAdapter.Type
 

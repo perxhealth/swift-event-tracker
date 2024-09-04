@@ -52,7 +52,7 @@ final class FirebaseAnalyticsServiceProviderShould: XCTestCase {
     }
 
     func testSupportedTags() {
-        XCTAssertEqual(sut.supportedTags, [.firebaseAnalytics, .analytics])
+        XCTAssertEqual(sut.supportedTags, [.firebaseAnalytics, .analytics, .nativeEventParameters, .nativeProperties, .nativeUserId])
     }
 
     func testTrackEventWithExpectedName() {

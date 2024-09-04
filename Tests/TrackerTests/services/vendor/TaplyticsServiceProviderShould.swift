@@ -50,7 +50,7 @@ final class TaplyticsServiceProviderShould: XCTestCase {
     }
 
     func testSupportedTags() {
-        XCTAssertEqual(sut.supportedTags, [.taplytics, .analytics])
+        XCTAssertEqual(sut.supportedTags, [.taplytics, .analytics, .nativeProperties])
     }
 
     func testTrackEventWithExpectedName() {

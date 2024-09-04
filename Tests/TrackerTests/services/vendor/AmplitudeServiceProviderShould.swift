@@ -49,7 +49,7 @@ final class AmplitudeServiceProviderShould: XCTestCase {
     }
 
     func testSupportedTags() {
-        XCTAssertEqual(sut.supportedTags, [.amplitude, .analytics])
+        XCTAssertEqual(sut.supportedTags, [.amplitude, .analytics, .nativeEventParameters, .nativeProperties, .nativeUserId])
     }
 
     func testTrackEventWithExpectedName() {

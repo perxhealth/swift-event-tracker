@@ -50,7 +50,7 @@ final class SwiftMetricsServiceProviderShould: XCTestCase {
     }
 
     func testSupportedTags() {
-        XCTAssertEqual(sut.supportedTags, [.swiftMetrics, .analytics])
+        XCTAssertEqual(sut.supportedTags, [.swiftMetrics, .analytics, .nativeEventParameters])
     }
 
     func testTrackEventWithExpectedName() {
