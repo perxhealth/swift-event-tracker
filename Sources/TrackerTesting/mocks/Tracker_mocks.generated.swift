@@ -1212,6 +1212,104 @@ public class ScreenMock: Screen {
 
 
 }
+public class SegmentScreenMock: SegmentScreen {
+
+    public init() {}
+
+    public var category: String?
+    public var properties: [String: Any] = [:]
+    public var name: String {
+        get { return underlyingName }
+        set(value) { underlyingName = value }
+    }
+    public var underlyingName: (String)!
+    public var excludedTags: [Tag] = []
+    public var requiredTags: [Tag] = []
+
+
+
+}
+public class SegmentServiceAdapterMock: SegmentServiceAdapter {
+
+    public init() {}
+
+    public var enabled: Bool {
+        get { return underlyingEnabled }
+        set(value) { underlyingEnabled = value }
+    }
+    public var underlyingEnabled: (Bool)!
+
+
+    //MARK: - setTraits
+
+    public var setTraitsTraitsStringAnyVoidCallsCount = 0
+    public var setTraitsTraitsStringAnyVoidCalled: Bool {
+        return setTraitsTraitsStringAnyVoidCallsCount > 0
+    }
+    public var setTraitsTraitsStringAnyVoidReceivedTraits: ([String: Any])?
+    public var setTraitsTraitsStringAnyVoidReceivedInvocations: [([String: Any])] = []
+    public var setTraitsTraitsStringAnyVoidClosure: (([String: Any]) -> Void)?
+
+    public func setTraits(_ traits: [String: Any]) {
+        setTraitsTraitsStringAnyVoidCallsCount += 1
+        setTraitsTraitsStringAnyVoidReceivedTraits = traits
+        setTraitsTraitsStringAnyVoidReceivedInvocations.append(traits)
+        setTraitsTraitsStringAnyVoidClosure?(traits)
+    }
+
+    //MARK: - setUserId
+
+    public var setUserIdUserIdStringVoidCallsCount = 0
+    public var setUserIdUserIdStringVoidCalled: Bool {
+        return setUserIdUserIdStringVoidCallsCount > 0
+    }
+    public var setUserIdUserIdStringVoidReceivedUserId: (String)?
+    public var setUserIdUserIdStringVoidReceivedInvocations: [(String)?] = []
+    public var setUserIdUserIdStringVoidClosure: ((String?) -> Void)?
+
+    public func setUserId(_ userId: String?) {
+        setUserIdUserIdStringVoidCallsCount += 1
+        setUserIdUserIdStringVoidReceivedUserId = userId
+        setUserIdUserIdStringVoidReceivedInvocations.append(userId)
+        setUserIdUserIdStringVoidClosure?(userId)
+    }
+
+    //MARK: - track
+
+    public var trackNameStringPropertiesStringAnyVoidCallsCount = 0
+    public var trackNameStringPropertiesStringAnyVoidCalled: Bool {
+        return trackNameStringPropertiesStringAnyVoidCallsCount > 0
+    }
+    public var trackNameStringPropertiesStringAnyVoidReceivedArguments: (name: String, properties: [String: Any])?
+    public var trackNameStringPropertiesStringAnyVoidReceivedInvocations: [(name: String, properties: [String: Any])] = []
+    public var trackNameStringPropertiesStringAnyVoidClosure: ((String, [String: Any]) -> Void)?
+
+    public func track(name: String, properties: [String: Any]) {
+        trackNameStringPropertiesStringAnyVoidCallsCount += 1
+        trackNameStringPropertiesStringAnyVoidReceivedArguments = (name: name, properties: properties)
+        trackNameStringPropertiesStringAnyVoidReceivedInvocations.append((name: name, properties: properties))
+        trackNameStringPropertiesStringAnyVoidClosure?(name, properties)
+    }
+
+    //MARK: - trackScreen
+
+    public var trackScreenTitleStringCategoryStringPropertiesStringAnyVoidCallsCount = 0
+    public var trackScreenTitleStringCategoryStringPropertiesStringAnyVoidCalled: Bool {
+        return trackScreenTitleStringCategoryStringPropertiesStringAnyVoidCallsCount > 0
+    }
+    public var trackScreenTitleStringCategoryStringPropertiesStringAnyVoidReceivedArguments: (title: String, category: String?, properties: [String: Any])?
+    public var trackScreenTitleStringCategoryStringPropertiesStringAnyVoidReceivedInvocations: [(title: String, category: String?, properties: [String: Any])] = []
+    public var trackScreenTitleStringCategoryStringPropertiesStringAnyVoidClosure: ((String, String?, [String: Any]) -> Void)?
+
+    public func trackScreen(title: String, category: String?, properties: [String: Any]) {
+        trackScreenTitleStringCategoryStringPropertiesStringAnyVoidCallsCount += 1
+        trackScreenTitleStringCategoryStringPropertiesStringAnyVoidReceivedArguments = (title: title, category: category, properties: properties)
+        trackScreenTitleStringCategoryStringPropertiesStringAnyVoidReceivedInvocations.append((title: title, category: category, properties: properties))
+        trackScreenTitleStringCategoryStringPropertiesStringAnyVoidClosure?(title, category, properties)
+    }
+
+
+}
 public class ServiceMock: Service {
 
     public init() {}

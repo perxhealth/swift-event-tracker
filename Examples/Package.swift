@@ -4,6 +4,7 @@ import PackageDescription
 
 let package = Package(
     name: "Examples",
+//    platforms: [.iOS(.v13)],
     dependencies: [
         .package(name: "Tracker", path: "../"),
         .package(url: "https://github.com/adjust/ios_sdk", from: "5.0.0"),
@@ -17,6 +18,7 @@ let package = Package(
         .package(url: "https://github.com/facebook/facebook-ios-sdk", from: "17.0.0"),
         .package(url: "https://github.com/Instabug/Instabug-SP", from: "13.0.0"),
         .package(url: "https://github.com/mixpanel/mixpanel-iphone", from: "5.0.0"),
+//        .package(url: "https://github.com/segmentio/analytics-swift", from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-log.git", from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-metrics", "1.0.0" ..< "3.0.0"),
         .package(url: "https://github.com/taplytics/taplytics-ios-sdk", from: "4.0.0"),
@@ -71,6 +73,10 @@ let package = Package(
             name: "MixpanelAdapter",
             dependencies:  [.product(name: "Mixpanel", package: "mixpanel-iphone"), "Tracker"]
         ),
+//        .target(
+//            name: "SegmentAdapter",
+//            dependencies: [.product(name: "Segment", package: "analytics-swift"), "Tracker"]
+//        ),
         .target(
             name: "SwiftLogger",
             dependencies: [.product(name: "Logging", package: "swift-log"), "Tracker"]
