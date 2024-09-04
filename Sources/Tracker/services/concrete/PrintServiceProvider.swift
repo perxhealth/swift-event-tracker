@@ -3,10 +3,11 @@ import Foundation
 public final class PrintServiceProvider: AbstractProvider, Service {
     public var supportedTags: [Tag] = [.debugging, .logging]
 
-    private let canBeDisabled: Bool
+    let canBeDisabled: Bool
+
     private let put: (String) -> Void
 
-    public init(canBeDisabled: Bool, put: @escaping (String) -> Void = { print($0) }) {
+    public init(canBeDisabled: Bool = true, put: @escaping (String) -> Void = { print($0) }) {
         self.canBeDisabled = canBeDisabled
         self.put = put
     }

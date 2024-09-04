@@ -3,7 +3,7 @@ import Foundation
 public struct EventTracker {
     private var serviceProviders: [Service]
     
-    public init(serviceProviders: [Service]) {
+    public init(serviceProviders: [Service] = [PrintServiceProvider()]) {
         self.serviceProviders = serviceProviders
     }
     
