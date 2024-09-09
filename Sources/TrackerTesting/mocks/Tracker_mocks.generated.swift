@@ -1197,6 +1197,159 @@ public class MixpanelServiceAdapterMock: MixpanelServiceAdapter {
 
 
 }
+public class PostHogScreenMock: PostHogScreen {
+
+    public init() {}
+
+    public var properties: [String: Any] = [:]
+    public var name: String {
+        get { return underlyingName }
+        set(value) { underlyingName = value }
+    }
+    public var underlyingName: (String)!
+    public var excludedTags: [Tag] = []
+    public var requiredTags: [Tag] = []
+
+
+
+}
+public class PostHogServiceAdapterMock: PostHogServiceAdapter {
+
+    public init() {}
+
+
+
+    //MARK: - register
+
+    public var registerPropertiesStringAnyVoidCallsCount = 0
+    public var registerPropertiesStringAnyVoidCalled: Bool {
+        return registerPropertiesStringAnyVoidCallsCount > 0
+    }
+    public var registerPropertiesStringAnyVoidReceivedProperties: ([String: Any])?
+    public var registerPropertiesStringAnyVoidReceivedInvocations: [([String: Any])] = []
+    public var registerPropertiesStringAnyVoidClosure: (([String: Any]) -> Void)?
+
+    public func register(_ properties: [String: Any]) {
+        registerPropertiesStringAnyVoidCallsCount += 1
+        registerPropertiesStringAnyVoidReceivedProperties = properties
+        registerPropertiesStringAnyVoidReceivedInvocations.append(properties)
+        registerPropertiesStringAnyVoidClosure?(properties)
+    }
+
+    //MARK: - unregister
+
+    public var unregisterKeyStringVoidCallsCount = 0
+    public var unregisterKeyStringVoidCalled: Bool {
+        return unregisterKeyStringVoidCallsCount > 0
+    }
+    public var unregisterKeyStringVoidReceivedKey: (String)?
+    public var unregisterKeyStringVoidReceivedInvocations: [(String)] = []
+    public var unregisterKeyStringVoidClosure: ((String) -> Void)?
+
+    public func unregister(_ key: String) {
+        unregisterKeyStringVoidCallsCount += 1
+        unregisterKeyStringVoidReceivedKey = key
+        unregisterKeyStringVoidReceivedInvocations.append(key)
+        unregisterKeyStringVoidClosure?(key)
+    }
+
+    //MARK: - identify
+
+    public var identifyDistinctIdStringVoidCallsCount = 0
+    public var identifyDistinctIdStringVoidCalled: Bool {
+        return identifyDistinctIdStringVoidCallsCount > 0
+    }
+    public var identifyDistinctIdStringVoidReceivedDistinctId: (String)?
+    public var identifyDistinctIdStringVoidReceivedInvocations: [(String)] = []
+    public var identifyDistinctIdStringVoidClosure: ((String) -> Void)?
+
+    public func identify(_ distinctId: String) {
+        identifyDistinctIdStringVoidCallsCount += 1
+        identifyDistinctIdStringVoidReceivedDistinctId = distinctId
+        identifyDistinctIdStringVoidReceivedInvocations.append(distinctId)
+        identifyDistinctIdStringVoidClosure?(distinctId)
+    }
+
+    //MARK: - capture
+
+    public var captureEventStringPropertiesStringAnyVoidCallsCount = 0
+    public var captureEventStringPropertiesStringAnyVoidCalled: Bool {
+        return captureEventStringPropertiesStringAnyVoidCallsCount > 0
+    }
+    public var captureEventStringPropertiesStringAnyVoidReceivedArguments: (event: String, properties: [String: Any]?)?
+    public var captureEventStringPropertiesStringAnyVoidReceivedInvocations: [(event: String, properties: [String: Any]?)] = []
+    public var captureEventStringPropertiesStringAnyVoidClosure: ((String, [String: Any]?) -> Void)?
+
+    public func capture(_ event: String, properties: [String: Any]?) {
+        captureEventStringPropertiesStringAnyVoidCallsCount += 1
+        captureEventStringPropertiesStringAnyVoidReceivedArguments = (event: event, properties: properties)
+        captureEventStringPropertiesStringAnyVoidReceivedInvocations.append((event: event, properties: properties))
+        captureEventStringPropertiesStringAnyVoidClosure?(event, properties)
+    }
+
+    //MARK: - screen
+
+    public var screenScreenTitleStringPropertiesStringAnyVoidCallsCount = 0
+    public var screenScreenTitleStringPropertiesStringAnyVoidCalled: Bool {
+        return screenScreenTitleStringPropertiesStringAnyVoidCallsCount > 0
+    }
+    public var screenScreenTitleStringPropertiesStringAnyVoidReceivedArguments: (screenTitle: String, properties: [String: Any]?)?
+    public var screenScreenTitleStringPropertiesStringAnyVoidReceivedInvocations: [(screenTitle: String, properties: [String: Any]?)] = []
+    public var screenScreenTitleStringPropertiesStringAnyVoidClosure: ((String, [String: Any]?) -> Void)?
+
+    public func screen(_ screenTitle: String, properties: [String: Any]?) {
+        screenScreenTitleStringPropertiesStringAnyVoidCallsCount += 1
+        screenScreenTitleStringPropertiesStringAnyVoidReceivedArguments = (screenTitle: screenTitle, properties: properties)
+        screenScreenTitleStringPropertiesStringAnyVoidReceivedInvocations.append((screenTitle: screenTitle, properties: properties))
+        screenScreenTitleStringPropertiesStringAnyVoidClosure?(screenTitle, properties)
+    }
+
+    //MARK: - optIn
+
+    public var optInVoidCallsCount = 0
+    public var optInVoidCalled: Bool {
+        return optInVoidCallsCount > 0
+    }
+    public var optInVoidClosure: (() -> Void)?
+
+    public func optIn() {
+        optInVoidCallsCount += 1
+        optInVoidClosure?()
+    }
+
+    //MARK: - optOut
+
+    public var optOutVoidCallsCount = 0
+    public var optOutVoidCalled: Bool {
+        return optOutVoidCallsCount > 0
+    }
+    public var optOutVoidClosure: (() -> Void)?
+
+    public func optOut() {
+        optOutVoidCallsCount += 1
+        optOutVoidClosure?()
+    }
+
+    //MARK: - isOptOut
+
+    public var isOptOutBoolCallsCount = 0
+    public var isOptOutBoolCalled: Bool {
+        return isOptOutBoolCallsCount > 0
+    }
+    public var isOptOutBoolReturnValue: Bool!
+    public var isOptOutBoolClosure: (() -> Bool)?
+
+    public func isOptOut() -> Bool {
+        isOptOutBoolCallsCount += 1
+        if let isOptOutBoolClosure = isOptOutBoolClosure {
+            return isOptOutBoolClosure()
+        } else {
+            return isOptOutBoolReturnValue
+        }
+    }
+
+
+}
 public class ScreenMock: Screen {
 
     public init() {}
