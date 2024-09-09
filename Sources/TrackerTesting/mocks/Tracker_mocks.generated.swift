@@ -1064,6 +1064,231 @@ public class InstabugServiceAdapterMock: InstabugServiceAdapter {
 
 
 }
+public class LocalyticsServiceAdapterMock: LocalyticsServiceAdapter {
+
+    public init() {}
+
+
+    static func reset()
+    {
+         //MARK: - tagEvent
+        tagEventEventNameStringAttributesStringStringVoidCallsCount = 0
+        tagEventEventNameStringAttributesStringStringVoidReceivedArguments = nil
+        tagEventEventNameStringAttributesStringStringVoidReceivedInvocations = []
+        tagEventEventNameStringAttributesStringStringVoidClosure = nil
+
+
+         //MARK: - tagScreen
+        tagScreenScreenNameStringVoidCallsCount = 0
+        tagScreenScreenNameStringVoidReceivedScreenName = nil
+        tagScreenScreenNameStringVoidReceivedInvocations = []
+        tagScreenScreenNameStringVoidClosure = nil
+
+
+         //MARK: - setLoggingEnabled
+        setLoggingEnabledLoggingEnabledBoolVoidCallsCount = 0
+        setLoggingEnabledLoggingEnabledBoolVoidReceivedLoggingEnabled = nil
+        setLoggingEnabledLoggingEnabledBoolVoidReceivedInvocations = []
+        setLoggingEnabledLoggingEnabledBoolVoidClosure = nil
+
+
+         //MARK: - setCustomerId
+        setCustomerIdCustomerIdStringVoidCallsCount = 0
+        setCustomerIdCustomerIdStringVoidReceivedCustomerId = nil
+        setCustomerIdCustomerIdStringVoidReceivedInvocations = []
+        setCustomerIdCustomerIdStringVoidClosure = nil
+
+
+         //MARK: - setValue
+        setValueValueStringForIdentifierStringVoidCallsCount = 0
+        setValueValueStringForIdentifierStringVoidReceivedArguments = nil
+        setValueValueStringForIdentifierStringVoidReceivedInvocations = []
+        setValueValueStringForIdentifierStringVoidClosure = nil
+
+
+         //MARK: - isOptedOut
+        isOptedOutBoolCallsCount = 0
+        isOptedOutBoolClosure = nil
+
+
+         //MARK: - setOptedOut
+        setOptedOutOptedOutBoolVoidCallsCount = 0
+        setOptedOutOptedOutBoolVoidReceivedOptedOut = nil
+        setOptedOutOptedOutBoolVoidReceivedInvocations = []
+        setOptedOutOptedOutBoolVoidClosure = nil
+
+
+         //MARK: - isPrivacyOptedOut
+        isPrivacyOptedOutBoolCallsCount = 0
+        isPrivacyOptedOutBoolClosure = nil
+
+
+         //MARK: - setPrivacyOptedOut
+        setPrivacyOptedOutOptedOutBoolVoidCallsCount = 0
+        setPrivacyOptedOutOptedOutBoolVoidReceivedOptedOut = nil
+        setPrivacyOptedOutOptedOutBoolVoidReceivedInvocations = []
+        setPrivacyOptedOutOptedOutBoolVoidClosure = nil
+
+
+    }
+
+    //MARK: - tagEvent
+
+    public static var tagEventEventNameStringAttributesStringStringVoidCallsCount = 0
+    public static var tagEventEventNameStringAttributesStringStringVoidCalled: Bool {
+        return tagEventEventNameStringAttributesStringStringVoidCallsCount > 0
+    }
+    public static var tagEventEventNameStringAttributesStringStringVoidReceivedArguments: (eventName: String, attributes: [String: String]?)?
+    public static var tagEventEventNameStringAttributesStringStringVoidReceivedInvocations: [(eventName: String, attributes: [String: String]?)] = []
+    public static var tagEventEventNameStringAttributesStringStringVoidClosure: ((String, [String: String]?) -> Void)?
+
+    public static func tagEvent(_ eventName: String, attributes: [String: String]?) {
+        tagEventEventNameStringAttributesStringStringVoidCallsCount += 1
+        tagEventEventNameStringAttributesStringStringVoidReceivedArguments = (eventName: eventName, attributes: attributes)
+        tagEventEventNameStringAttributesStringStringVoidReceivedInvocations.append((eventName: eventName, attributes: attributes))
+        tagEventEventNameStringAttributesStringStringVoidClosure?(eventName, attributes)
+    }
+
+    //MARK: - tagScreen
+
+    public static var tagScreenScreenNameStringVoidCallsCount = 0
+    public static var tagScreenScreenNameStringVoidCalled: Bool {
+        return tagScreenScreenNameStringVoidCallsCount > 0
+    }
+    public static var tagScreenScreenNameStringVoidReceivedScreenName: (String)?
+    public static var tagScreenScreenNameStringVoidReceivedInvocations: [(String)] = []
+    public static var tagScreenScreenNameStringVoidClosure: ((String) -> Void)?
+
+    public static func tagScreen(_ screenName: String) {
+        tagScreenScreenNameStringVoidCallsCount += 1
+        tagScreenScreenNameStringVoidReceivedScreenName = screenName
+        tagScreenScreenNameStringVoidReceivedInvocations.append(screenName)
+        tagScreenScreenNameStringVoidClosure?(screenName)
+    }
+
+    //MARK: - setLoggingEnabled
+
+    public static var setLoggingEnabledLoggingEnabledBoolVoidCallsCount = 0
+    public static var setLoggingEnabledLoggingEnabledBoolVoidCalled: Bool {
+        return setLoggingEnabledLoggingEnabledBoolVoidCallsCount > 0
+    }
+    public static var setLoggingEnabledLoggingEnabledBoolVoidReceivedLoggingEnabled: (Bool)?
+    public static var setLoggingEnabledLoggingEnabledBoolVoidReceivedInvocations: [(Bool)] = []
+    public static var setLoggingEnabledLoggingEnabledBoolVoidClosure: ((Bool) -> Void)?
+
+    public static func setLoggingEnabled(_ loggingEnabled: Bool) {
+        setLoggingEnabledLoggingEnabledBoolVoidCallsCount += 1
+        setLoggingEnabledLoggingEnabledBoolVoidReceivedLoggingEnabled = loggingEnabled
+        setLoggingEnabledLoggingEnabledBoolVoidReceivedInvocations.append(loggingEnabled)
+        setLoggingEnabledLoggingEnabledBoolVoidClosure?(loggingEnabled)
+    }
+
+    //MARK: - setCustomerId
+
+    public static var setCustomerIdCustomerIdStringVoidCallsCount = 0
+    public static var setCustomerIdCustomerIdStringVoidCalled: Bool {
+        return setCustomerIdCustomerIdStringVoidCallsCount > 0
+    }
+    public static var setCustomerIdCustomerIdStringVoidReceivedCustomerId: (String)?
+    public static var setCustomerIdCustomerIdStringVoidReceivedInvocations: [(String)?] = []
+    public static var setCustomerIdCustomerIdStringVoidClosure: ((String?) -> Void)?
+
+    public static func setCustomerId(_ customerId: String?) {
+        setCustomerIdCustomerIdStringVoidCallsCount += 1
+        setCustomerIdCustomerIdStringVoidReceivedCustomerId = customerId
+        setCustomerIdCustomerIdStringVoidReceivedInvocations.append(customerId)
+        setCustomerIdCustomerIdStringVoidClosure?(customerId)
+    }
+
+    //MARK: - setValue
+
+    public static var setValueValueStringForIdentifierStringVoidCallsCount = 0
+    public static var setValueValueStringForIdentifierStringVoidCalled: Bool {
+        return setValueValueStringForIdentifierStringVoidCallsCount > 0
+    }
+    public static var setValueValueStringForIdentifierStringVoidReceivedArguments: (value: String?, forIdentifier: String)?
+    public static var setValueValueStringForIdentifierStringVoidReceivedInvocations: [(value: String?, forIdentifier: String)] = []
+    public static var setValueValueStringForIdentifierStringVoidClosure: ((String?, String) -> Void)?
+
+    public static func setValue(_ value: String?, forIdentifier: String) {
+        setValueValueStringForIdentifierStringVoidCallsCount += 1
+        setValueValueStringForIdentifierStringVoidReceivedArguments = (value: value, forIdentifier: forIdentifier)
+        setValueValueStringForIdentifierStringVoidReceivedInvocations.append((value: value, forIdentifier: forIdentifier))
+        setValueValueStringForIdentifierStringVoidClosure?(value, forIdentifier)
+    }
+
+    //MARK: - isOptedOut
+
+    public static var isOptedOutBoolCallsCount = 0
+    public static var isOptedOutBoolCalled: Bool {
+        return isOptedOutBoolCallsCount > 0
+    }
+    public static var isOptedOutBoolReturnValue: Bool!
+    public static var isOptedOutBoolClosure: (() -> Bool)?
+
+    public static func isOptedOut() -> Bool {
+        isOptedOutBoolCallsCount += 1
+        if let isOptedOutBoolClosure = isOptedOutBoolClosure {
+            return isOptedOutBoolClosure()
+        } else {
+            return isOptedOutBoolReturnValue
+        }
+    }
+
+    //MARK: - setOptedOut
+
+    public static var setOptedOutOptedOutBoolVoidCallsCount = 0
+    public static var setOptedOutOptedOutBoolVoidCalled: Bool {
+        return setOptedOutOptedOutBoolVoidCallsCount > 0
+    }
+    public static var setOptedOutOptedOutBoolVoidReceivedOptedOut: (Bool)?
+    public static var setOptedOutOptedOutBoolVoidReceivedInvocations: [(Bool)] = []
+    public static var setOptedOutOptedOutBoolVoidClosure: ((Bool) -> Void)?
+
+    public static func setOptedOut(_ optedOut: Bool) {
+        setOptedOutOptedOutBoolVoidCallsCount += 1
+        setOptedOutOptedOutBoolVoidReceivedOptedOut = optedOut
+        setOptedOutOptedOutBoolVoidReceivedInvocations.append(optedOut)
+        setOptedOutOptedOutBoolVoidClosure?(optedOut)
+    }
+
+    //MARK: - isPrivacyOptedOut
+
+    public static var isPrivacyOptedOutBoolCallsCount = 0
+    public static var isPrivacyOptedOutBoolCalled: Bool {
+        return isPrivacyOptedOutBoolCallsCount > 0
+    }
+    public static var isPrivacyOptedOutBoolReturnValue: Bool!
+    public static var isPrivacyOptedOutBoolClosure: (() -> Bool)?
+
+    public static func isPrivacyOptedOut() -> Bool {
+        isPrivacyOptedOutBoolCallsCount += 1
+        if let isPrivacyOptedOutBoolClosure = isPrivacyOptedOutBoolClosure {
+            return isPrivacyOptedOutBoolClosure()
+        } else {
+            return isPrivacyOptedOutBoolReturnValue
+        }
+    }
+
+    //MARK: - setPrivacyOptedOut
+
+    public static var setPrivacyOptedOutOptedOutBoolVoidCallsCount = 0
+    public static var setPrivacyOptedOutOptedOutBoolVoidCalled: Bool {
+        return setPrivacyOptedOutOptedOutBoolVoidCallsCount > 0
+    }
+    public static var setPrivacyOptedOutOptedOutBoolVoidReceivedOptedOut: (Bool)?
+    public static var setPrivacyOptedOutOptedOutBoolVoidReceivedInvocations: [(Bool)] = []
+    public static var setPrivacyOptedOutOptedOutBoolVoidClosure: ((Bool) -> Void)?
+
+    public static func setPrivacyOptedOut(_ optedOut: Bool) {
+        setPrivacyOptedOutOptedOutBoolVoidCallsCount += 1
+        setPrivacyOptedOutOptedOutBoolVoidReceivedOptedOut = optedOut
+        setPrivacyOptedOutOptedOutBoolVoidReceivedInvocations.append(optedOut)
+        setPrivacyOptedOutOptedOutBoolVoidClosure?(optedOut)
+    }
+
+
+}
 public class MixpanelServiceAdapterMock: MixpanelServiceAdapter {
 
     public init() {}

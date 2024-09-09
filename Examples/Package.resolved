@@ -1,5 +1,5 @@
 {
-  "originHash" : "658f685d46010d4073f271ce323ba5eefcf01cbe1632d27a6829f5355cdc283a",
+  "originHash" : "df5030ca0fbdd244995af48241905b5d3cb51a7cd2e6f02a36331edb41598627",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -179,6 +179,15 @@
       "state" : {
         "revision" : "a0bc79961d7be727d258d33d5a6b2f1023270ba1",
         "version" : "1.22.5"
+      }
+    },
+    {
+      "identity" : "localytics-swiftpm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/localytics/Localytics-swiftpm.git",
+      "state" : {
+        "revision" : "65b9da6e4d7c5e2cb625ce19370382a6804208cf",
+        "version" : "6.3.1"
       }
     },
     {
