@@ -13,7 +13,6 @@ final class CountlyServiceProviderShould: XCTestCase {
     var anotherScreen: ScreenMock!
 
     var someEventName: String!
-    var anotherEventName: String!
     var parameters: [String: String]!
     var someScreenName: String!
     var someScreenSegmentation: [String: String]!
@@ -27,7 +26,6 @@ final class CountlyServiceProviderShould: XCTestCase {
     override func setUp() {
         super.setUp()
         someEventName = "some event name"
-        anotherEventName = "another event name"
         parameters = ["param0": "value0", "param1": "value1"]
         someScreenName = "some screen name"
         someScreenSegmentation = ["some key": "some value"]
@@ -37,7 +35,6 @@ final class CountlyServiceProviderShould: XCTestCase {
         someUserId = "some userId"
 
         someEvent = EventMock(name: someEventName, parameters: parameters)
-        anotherEvent = EventMock(name: anotherEventName)
         someScreen = CountlyScreenMock()
         someScreen.name = someScreenName
         someScreen.segmentation = someScreenSegmentation

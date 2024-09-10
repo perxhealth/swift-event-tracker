@@ -12,7 +12,6 @@ final class SegmentServiceProviderShould: XCTestCase {
     var anotherScreen: ScreenMock!
 
     var someEventName: String!
-    var anotherEventName: String!
     var parameters: [String: String]!
     var someScreenName: String!
     var someScreenProperties: [String: String]!
@@ -26,7 +25,6 @@ final class SegmentServiceProviderShould: XCTestCase {
     override func setUp() {
         super.setUp()
         someEventName = "some event name"
-        anotherEventName = "another event name"
         parameters = ["param0": "value0", "param1": "value1"]
         someScreenName = "some screen name"
         someScreenProperties = ["some key": "some value"]
@@ -36,7 +34,6 @@ final class SegmentServiceProviderShould: XCTestCase {
         someUserId = "some userId"
 
         someEvent = EventMock(name: someEventName, parameters: parameters)
-        anotherEvent = EventMock(name: anotherEventName)
         someScreen = SegmentScreenMock()
         someScreen.name = someScreenName
         someScreen.properties = someScreenProperties

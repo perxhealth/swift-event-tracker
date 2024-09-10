@@ -13,7 +13,6 @@ final class FacebookServiceProviderShould: XCTestCase {
     var anotherScreen: ScreenMock!
 
     var someEventName: String!
-    var anotherEventName: String!
     var parameters: [String: String]!
     var someScreenName: String!
     var anotherScreenName: String!
@@ -26,7 +25,6 @@ final class FacebookServiceProviderShould: XCTestCase {
     override func setUp() {
         super.setUp()
         someEventName = "some event name"
-        anotherEventName = "another event name"
         parameters = ["param0": "value0", "param1": "value1"]
         someScreenName = "some screen name"
         anotherScreenName = "another screen name"
@@ -35,7 +33,6 @@ final class FacebookServiceProviderShould: XCTestCase {
         someUserId = "some userId"
 
         someEvent = EventMock(name: someEventName, parameters: parameters)
-        anotherEvent = EventMock(name: anotherEventName)
         someScreen = ScreenMock()
         someScreen.name = someScreenName
         anotherScreen = ScreenMock(name: anotherScreenName)

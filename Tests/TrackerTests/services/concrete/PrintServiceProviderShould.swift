@@ -10,7 +10,6 @@ final class PrintServiceProviderShould: XCTestCase {
     var someScreen: ScreenMock!
 
     var someEventName: String!
-    var anotherEventName: String!
     var parameters: [String: String]!
     var someScreenName: String!
     var somePropertyKey: String!
@@ -22,7 +21,6 @@ final class PrintServiceProviderShould: XCTestCase {
     override func setUp() {
         super.setUp()
         someEventName = "some event name"
-        anotherEventName = "another event name"
         parameters = ["param0": "value0", "param1": "value1"]
         someScreenName = "some screen name"
         somePropertyKey = "some property key"
@@ -30,7 +28,6 @@ final class PrintServiceProviderShould: XCTestCase {
         someUserId = "some userId"
 
         someEvent = EventMock(name: someEventName, parameters: parameters)
-        anotherEvent = EventMock(name: anotherEventName)
         someScreen = ScreenMock(name: someScreenName)
 
         sut = PrintServiceProvider(canBeDisabled: false) { eventdescription in
