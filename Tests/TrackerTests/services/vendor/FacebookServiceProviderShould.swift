@@ -10,12 +10,10 @@ final class FacebookServiceProviderShould: XCTestCase {
     var someEvent: EventMock!
     var anotherEvent: EventMock!
     var someScreen: ScreenMock!
-    var anotherScreen: ScreenMock!
 
     var someEventName: String!
     var parameters: [String: String]!
     var someScreenName: String!
-    var anotherScreenName: String!
     var somePropertyKey: String!
     var somePropertyValue: String!
     var someUserId: String!
@@ -27,7 +25,6 @@ final class FacebookServiceProviderShould: XCTestCase {
         someEventName = "some event name"
         parameters = ["param0": "value0", "param1": "value1"]
         someScreenName = "some screen name"
-        anotherScreenName = "another screen name"
         somePropertyKey = "some property key"
         somePropertyValue = "some property value"
         someUserId = "some userId"
@@ -35,7 +32,6 @@ final class FacebookServiceProviderShould: XCTestCase {
         someEvent = EventMock(name: someEventName, parameters: parameters)
         someScreen = ScreenMock()
         someScreen.name = someScreenName
-        anotherScreen = ScreenMock(name: anotherScreenName)
 
         adapter = FacebookServiceAdapterMock()
         settingsAdapter = FacebookSettingsAdapterMock()

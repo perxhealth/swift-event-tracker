@@ -68,9 +68,18 @@ final class CountlyServiceProviderShould: XCTestCase {
     }
 
     func testTrackScreenWithExpectedName() {
+        sut.trackScreen(anotherScreen)
+        XCTAssertEqual(adapter.recordViewViewStringVoidCallsCount, 1)
+        XCTAssertEqual(adapter.recordViewViewStringVoidReceivedView, anotherScreenName)
+    }
+
+    func testTrackScreenWithExpectedProperties() {
         sut.trackScreen(someScreen)
-        XCTAssertTrue(adapter.recordViewViewStringSegmentationStringAnyVoidCalled)
+        XCTAssertEqual(adapter.recordViewViewStringSegmentationStringAnyVoidCallsCount, 1)
         XCTAssertEqual(adapter.recordViewViewStringSegmentationStringAnyVoidReceivedArguments?.view, someScreenName)
+        for (key, value) in someScreen.segmentation {
+            XCTAssertEqual(adapter.recordViewViewStringSegmentationStringAnyVoidReceivedArguments?.segmentation[key] as! String, value)
+        }
     }
 
     func testTrackScreenWithExpectedSegmentation() {

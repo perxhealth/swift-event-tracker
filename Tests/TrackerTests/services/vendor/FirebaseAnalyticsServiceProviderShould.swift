@@ -8,14 +8,9 @@ final class FirebaseAnalyticsServiceProviderShould: XCTestCase {
 
     var someEvent: EventMock!
     var anotherEvent: EventMock!
-    var someScreen: FirebaseAnalyticsScreenMock!
-    var anotherScreen: ScreenMock!
 
     var someEventName: String!
     var parameters: [String: String]!
-    var someScreenName: String!
-    var someScreenClass: String!
-    var anotherScreenName: String!
     var somePropertyKey: String!
     var somePropertyValue: String!
     var someUserId: String!
@@ -26,18 +21,11 @@ final class FirebaseAnalyticsServiceProviderShould: XCTestCase {
         super.setUp()
         someEventName = "some event name"
         parameters = ["param0": "value0", "param1": "value1"]
-        someScreenName = "some screen name"
-        someScreenClass = "some screen class"
-        anotherScreenName = "another screen name"
         somePropertyKey = "some property key"
         somePropertyValue = "some property value"
         someUserId = "some userId"
 
         someEvent = EventMock(name: someEventName, parameters: parameters)
-        someScreen = FirebaseAnalyticsScreenMock()
-        someScreen.name = someScreenName
-        someScreen.screenClass = someScreenClass
-        anotherScreen = ScreenMock(name: anotherScreenName)
 
         adapter = FirebaseAnalyticsServiceAdapterMock.self
         sut = FirebaseAnalyticsServiceProvider(adapter: adapter)

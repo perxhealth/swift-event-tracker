@@ -854,26 +854,6 @@ public class FacebookSettingsAdapterMock: FacebookSettingsAdapter {
 
 
 }
-public class FirebaseAnalyticsScreenMock: FirebaseAnalyticsScreen {
-
-    public init() {}
-
-    public var screenClass: String {
-        get { return underlyingScreenClass }
-        set(value) { underlyingScreenClass = value }
-    }
-    public var underlyingScreenClass: (String)!
-    public var name: String {
-        get { return underlyingName }
-        set(value) { underlyingName = value }
-    }
-    public var underlyingName: (String)!
-    public var excludedTags: [Tag] = []
-    public var requiredTags: [Tag] = []
-
-
-
-}
 public class FirebaseAnalyticsServiceAdapterMock: FirebaseAnalyticsServiceAdapter {
 
     public init() {}

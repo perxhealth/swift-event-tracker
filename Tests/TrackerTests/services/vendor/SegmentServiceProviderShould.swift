@@ -66,14 +66,15 @@ final class SegmentServiceProviderShould: XCTestCase {
     }
 
     func testTrackScreenWithExpectedName() {
-        sut.trackScreen(someScreen)
+        sut.trackScreen(anotherScreen)
         XCTAssertEqual(adapter.trackScreenTitleStringCategoryStringPropertiesStringAnyVoidCallsCount, 1)
-        XCTAssertEqual(adapter.trackScreenTitleStringCategoryStringPropertiesStringAnyVoidReceivedArguments?.title, someScreenName)
+        XCTAssertEqual(adapter.trackScreenTitleStringCategoryStringPropertiesStringAnyVoidReceivedArguments?.title, anotherScreenName)
     }
 
     func testTrackScreenWithExpectedSegmentation() {
         sut.trackScreen(someScreen)
         XCTAssertEqual(adapter.trackScreenTitleStringCategoryStringPropertiesStringAnyVoidCallsCount, 1)
+        XCTAssertEqual(adapter.trackScreenTitleStringCategoryStringPropertiesStringAnyVoidReceivedArguments?.title, someScreenName)
         for (key, value) in someScreen.properties {
             XCTAssertEqual(adapter.trackScreenTitleStringCategoryStringPropertiesStringAnyVoidReceivedArguments?.properties[key] as! String, value as! String)
         }
