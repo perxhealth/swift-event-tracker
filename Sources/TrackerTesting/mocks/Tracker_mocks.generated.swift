@@ -1064,6 +1064,48 @@ public class InstabugServiceAdapterMock: InstabugServiceAdapter {
 
 
 }
+public class KochavaServiceAdapterMock: KochavaServiceAdapter {
+
+    public init() {}
+
+
+
+    //MARK: - sendCustomEvent
+
+    public var sendCustomEventNameStringInfoDictionaryAnyHashableAnyVoidCallsCount = 0
+    public var sendCustomEventNameStringInfoDictionaryAnyHashableAnyVoidCalled: Bool {
+        return sendCustomEventNameStringInfoDictionaryAnyHashableAnyVoidCallsCount > 0
+    }
+    public var sendCustomEventNameStringInfoDictionaryAnyHashableAnyVoidReceivedArguments: (name: String, infoDictionary: [AnyHashable : Any]?)?
+    public var sendCustomEventNameStringInfoDictionaryAnyHashableAnyVoidReceivedInvocations: [(name: String, infoDictionary: [AnyHashable : Any]?)] = []
+    public var sendCustomEventNameStringInfoDictionaryAnyHashableAnyVoidClosure: ((String, [AnyHashable : Any]?) -> Void)?
+
+    public func sendCustomEvent(name: String, infoDictionary: [AnyHashable : Any]?) {
+        sendCustomEventNameStringInfoDictionaryAnyHashableAnyVoidCallsCount += 1
+        sendCustomEventNameStringInfoDictionaryAnyHashableAnyVoidReceivedArguments = (name: name, infoDictionary: infoDictionary)
+        sendCustomEventNameStringInfoDictionaryAnyHashableAnyVoidReceivedInvocations.append((name: name, infoDictionary: infoDictionary))
+        sendCustomEventNameStringInfoDictionaryAnyHashableAnyVoidClosure?(name, infoDictionary)
+    }
+
+    //MARK: - registerIdentityLink
+
+    public var registerIdentityLinkNameStringIdentifierStringVoidCallsCount = 0
+    public var registerIdentityLinkNameStringIdentifierStringVoidCalled: Bool {
+        return registerIdentityLinkNameStringIdentifierStringVoidCallsCount > 0
+    }
+    public var registerIdentityLinkNameStringIdentifierStringVoidReceivedArguments: (name: String, identifier: String?)?
+    public var registerIdentityLinkNameStringIdentifierStringVoidReceivedInvocations: [(name: String, identifier: String?)] = []
+    public var registerIdentityLinkNameStringIdentifierStringVoidClosure: ((String, String?) -> Void)?
+
+    public func registerIdentityLink(name: String, identifier: String?) {
+        registerIdentityLinkNameStringIdentifierStringVoidCallsCount += 1
+        registerIdentityLinkNameStringIdentifierStringVoidReceivedArguments = (name: name, identifier: identifier)
+        registerIdentityLinkNameStringIdentifierStringVoidReceivedInvocations.append((name: name, identifier: identifier))
+        registerIdentityLinkNameStringIdentifierStringVoidClosure?(name, identifier)
+    }
+
+
+}
 public class LocalyticsServiceAdapterMock: LocalyticsServiceAdapter {
 
     public init() {}

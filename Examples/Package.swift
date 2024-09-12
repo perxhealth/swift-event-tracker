@@ -17,9 +17,11 @@ let package = Package(
         .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "11.0.0"),
         .package(url: "https://github.com/facebook/facebook-ios-sdk", from: "17.0.0"),
         .package(url: "https://github.com/Instabug/Instabug-SP", from: "13.0.0"),
+        .package(url: "https://github.com/Kochava/Apple-SwiftPackage-KochavaMeasurement-XCFramework", from: "8.0.0"),
+        .package(url: "https://github.com/Kochava/Apple-SwiftPackage-KochavaNetworking-XCFramework", from: "8.0.0"),
         .package(url: "https://github.com/localytics/Localytics-swiftpm.git", from: "6.0.0"),
         .package(url: "https://github.com/mixpanel/mixpanel-iphone", from: "5.0.0"),
-        .package(url: "https://github.com/PostHog/posthog-ios", from: "3.0.0"),
+//        .package(url: "https://github.com/PostHog/posthog-ios", from: "3.0.0"),
 //        .package(url: "https://github.com/segmentio/analytics-swift", from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-log.git", from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-metrics", "1.0.0" ..< "3.0.0"),
@@ -72,6 +74,14 @@ let package = Package(
             dependencies:  [.product(name: "Instabug", package: "Instabug-SP"), "Tracker"]
         ),
         .target(
+            name: "KochovaAdapter",
+            dependencies:  [
+                .product(name: "KochavaMeasurement", package: "Apple-SwiftPackage-KochavaMeasurement-XCFramework"),
+                .product(name: "KochavaNetworking", package: "Apple-SwiftPackage-KochavaNetworking-XCFramework"),
+                "Tracker"
+            ]
+        ),
+        .target(
             name: "LocalyticsAdapter",
             dependencies:  [.product(name: "Localytics", package: "Localytics-swiftpm"), "Tracker"]
         ),
@@ -79,10 +89,10 @@ let package = Package(
             name: "MixpanelAdapter",
             dependencies:  [.product(name: "Mixpanel", package: "mixpanel-iphone"), "Tracker"]
         ),
-        .target(
-            name: "PostHogAdapter",
-            dependencies:  [.product(name: "PostHog", package: "posthog-ios"), "Tracker"]
-        ),
+//        .target(
+//            name: "PostHogAdapter",
+//            dependencies:  [.product(name: "PostHog", package: "posthog-ios"), "Tracker"]
+//        ),
 //        .target(
 //            name: "SegmentAdapter",
 //            dependencies: [.product(name: "Segment", package: "analytics-swift"), "Tracker"]

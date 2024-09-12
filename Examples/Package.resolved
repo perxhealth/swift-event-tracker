@@ -1,5 +1,5 @@
 {
-  "originHash" : "df5030ca0fbdd244995af48241905b5d3cb51a7cd2e6f02a36331edb41598627",
+  "originHash" : "79611c10dc26636627be068e84f4c383a031e9d597e144e5893771d7f963eeb4",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -62,6 +62,24 @@
       "state" : {
         "revision" : "ab54f758243f282d290b33027e8aac910d3d859a",
         "version" : "5.0.5"
+      }
+    },
+    {
+      "identity" : "apple-swiftpackage-kochavameasurement-xcframework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kochava/Apple-SwiftPackage-KochavaMeasurement-XCFramework",
+      "state" : {
+        "revision" : "06dbfb210655c0189dbe3ffafbfa84fa48b87929",
+        "version" : "8.4.1"
+      }
+    },
+    {
+      "identity" : "apple-swiftpackage-kochavanetworking-xcframework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Kochava/Apple-SwiftPackage-KochavaNetworking-XCFramework",
+      "state" : {
+        "revision" : "e9b3b42010da1eea5e8e780009be81d01d3581fa",
+        "version" : "8.4.1"
       }
     },
     {
@@ -215,15 +233,6 @@
       "state" : {
         "revision" : "6752f71de206f6a53fa6a758c3660fd9a7fe7527",
         "version" : "1.11.2"
-      }
-    },
-    {
-      "identity" : "posthog-ios",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/PostHog/posthog-ios",
-      "state" : {
-        "revision" : "c9f51c1dbe55178f3af59c319717ada9126c9784",
-        "version" : "3.9.1"
       }
     },
     {

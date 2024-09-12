@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Tag: Equatable {
+public struct Tag: Equatable, ExpressibleByStringLiteral, ExpressibleByStringInterpolation {
     public static let analytics = Tag("analytics")
     public static let crashReporting = Tag("crashReporting")
     public static let debugging = Tag("debugging")
@@ -15,5 +15,13 @@ public struct Tag: Equatable {
 
     public init(_ identifier: String) {
         self.identifier = identifier
+    }
+
+    public init(stringLiteral value: String) {
+        self.identifier = value
+    }
+
+    public init(stringInterpolation value: DefaultStringInterpolation) {
+        self.identifier = value.description
     }
 }
