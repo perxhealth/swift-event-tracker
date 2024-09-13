@@ -1,4 +1,5 @@
-import KochavaMeasurement
+import class KochavaMeasurement.Event
+import class KochavaMeasurement.IdentityLink
 import protocol Tracker.KochavaServiceAdapter
 
 struct KochavaAdapter: KochavaServiceAdapter {
