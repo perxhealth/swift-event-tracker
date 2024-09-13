@@ -1,7 +1,9 @@
 import Foundation
 
 /**
- # Links:
+ Adapter for the Firebase iOS SDK.
+
+ # Useful links:
  - https://firebase.google.com/docs/analytics/get-started?platform=ios
 
  # Package example:

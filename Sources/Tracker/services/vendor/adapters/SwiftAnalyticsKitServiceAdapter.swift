@@ -1,8 +1,7 @@
 import Foundation
 
 /**
- # Links:
- - https://github.com/SwiftyLab/SwiftAnalyticsKit
+ Adapter for the SwiftAnalyticsKit API package.
 
  # Package example:
  ```

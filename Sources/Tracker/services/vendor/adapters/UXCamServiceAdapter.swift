@@ -1,7 +1,9 @@
 import Foundation
 
 /**
- # Links:
+ Adapter for the UXCam iOS SDK.
+
+ # Useful links:
  - https://help.uxcam.com/hc/en-us/categories/115000129131-Developer-Guide
 
  # Package example:

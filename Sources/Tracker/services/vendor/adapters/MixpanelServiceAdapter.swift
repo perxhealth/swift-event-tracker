@@ -1,9 +1,10 @@
 import Foundation
 
 /**
- # Links:
+ Adapter for the Mixpanel iOS library.
+
+ # Useful links:
  - https://developer.mixpanel.com/docs/swift
- - https://github.com/mixpanel/mixpanel-iphone
 
  # Package example:
  ```

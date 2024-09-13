@@ -1,7 +1,9 @@
 import Foundation
 
 /**
- # Links:
+ Adapter for the AppCenter iOS and macOS SDK.
+
+ # Useful links:
  - https://docs.microsoft.com/en-us/appcenter/sdk/analytics/ios
  - https://docs.microsoft.com/en-us/appcenter/sdk/getting-started/ios
 

@@ -1,7 +1,9 @@
 import Foundation
 
 /**
- # Links:
+ Adapter for the SwiftLog API package.
+
+ # Useful links:
  - https://apple.github.io/swift-log/docs/current/Logging/Structs/Logger.html
 
  # Package example:

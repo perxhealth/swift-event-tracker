@@ -1,7 +1,9 @@
 import Foundation
 
 /**
- # Links:
+ Adapter for the Instabug iOS SDK.
+
+ # Useful links:
  - https://docs.instabug.com/docs/ios-set-custom-data
 
  # Package example:

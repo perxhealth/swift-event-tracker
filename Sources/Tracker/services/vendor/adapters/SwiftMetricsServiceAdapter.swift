@@ -1,8 +1,7 @@
 import Foundation
 
 /**
- # Links:
- - https://github.com/apple/swift-metrics
+ Adapter for the SwiftMetrics API package.
 
  # Package example:
  ```

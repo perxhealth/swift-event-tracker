@@ -1,8 +1,7 @@
 import Foundation
 
 /**
- # Links:
- - https://github.com/dankinsoid/swift-analytics
+ Adapter for the SwiftAnalytics API package.
 
  # Package example:
  ```

@@ -1,7 +1,9 @@
 import Foundation
 
 /**
- # Links:
+ Adapter for the Segment analytics library.
+
+ # Useful links:
  - https://segment.com/docs/connections/sources/catalog/libraries/mobile/apple/
 
  # Package example:

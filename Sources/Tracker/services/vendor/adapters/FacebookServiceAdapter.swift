@@ -1,7 +1,9 @@
 import Foundation
 
 /**
- # Links:
+ Adapter for the Facebook iOS SDK.
+
+ # Useful links:
  - https://developers.facebook.com/docs/app-events/getting-started-app-events-ios
  - https://developers.facebook.com/docs/analytics/quickstart-list/ios/
 

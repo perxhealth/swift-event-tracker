@@ -1,8 +1,10 @@
 import Foundation
 
 /**
-# Links:
-- https://support.appsflyer.com/hc/en-us/articles/207032066-iOS-SDK-integration-for-developers#core-apis
+ Adapter for the AppsFlyerFramework.
+
+ # Useful links:
+ - https://support.appsflyer.com/hc/en-us/articles/207032066-iOS-SDK-integration-for-developers#core-apis
 
  # Package example:
  ```

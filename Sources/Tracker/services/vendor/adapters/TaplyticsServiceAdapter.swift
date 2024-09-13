@@ -1,7 +1,9 @@
 import Foundation
 
 /**
- # Links:
+ Adapter for the Taplytics iOS SDK.
+
+ # Useful links:
  - https://docs.taplytics.com/docs/ios-sdk
  - https://github.com/taplytics/taplytics-ios-sdk/blob/master/START.md
 

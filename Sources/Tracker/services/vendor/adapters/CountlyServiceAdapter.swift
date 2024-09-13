@@ -1,7 +1,9 @@
 import Foundation
 
 /**
- # Links:
+ Adapter for the Countly iOS SDK.
+
+ # Useful links:
  - https://support.count.ly/hc/en-us/articles/360037753511-iOS-watchOS-tvOS-macOS
 
  # Package example:

@@ -1,6 +1,8 @@
 import Foundation
 
 /**
+ Adapter for the Amplitude iOS SDK.
+
  # Package example:
  ```
  // swift-tools-version: 5.10

@@ -1,7 +1,9 @@
 import Foundation
 
 /**
- # Links:
+ Adapter for the Heap iOS SDK.
+
+ # Useful links:
  - https://github.com/heap/heap-ios-sdk
 
  # Package example:

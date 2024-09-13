@@ -1,7 +1,9 @@
 import Foundation
 
 /**
- # Links:
+ Adapter for the Localytics SDK.
+
+ # Useful links:
  - https://posthog.com/docs/libraries/ios
 
  # Package example:

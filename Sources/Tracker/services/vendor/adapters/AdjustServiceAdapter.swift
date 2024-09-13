@@ -1,7 +1,9 @@
 import Foundation
 
 /**
- # Links:
+ Adapter for the Adjust SDK for iOS.
+
+ # Useful links:
  - https://github.com/adjust/ios_sdk#event-tracking
 
  # Package example:

@@ -1,7 +1,9 @@
 import Foundation
 
 /**
- # Links:
+ Adapter for the Bugsee mobile SDK.
+
+ # Useful links:
  - https://docs.bugsee.com/sdk/ios/custom/
 
  # Package example:

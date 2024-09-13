@@ -1,7 +1,9 @@
 import Foundation
 
 /**
- # Links:
+ Adapter for the KochavaMeasurement framework.
+
+ # Useful links:
  - https://support.kochava.com/sdk-integration/ios-sdk-integration/
  - http://support.kochava.com/sdk-integration/ios-sdk-integration/ios-using-the-sdk/
 

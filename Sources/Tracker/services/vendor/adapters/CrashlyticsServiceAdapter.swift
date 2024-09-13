@@ -1,7 +1,9 @@
 import Foundation
 
 /**
- # Links:
+ Adapter for the Crashlytics iOS SDK.
+
+ # Useful links:
  - https://firebase.google.com/docs/crashlytics/upgrade-sdk
  
  # Package example:

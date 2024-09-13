@@ -1,8 +1,10 @@
 import Foundation
 
 /**
-# Links:
-- https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/tracking_custom_events/
+ Adapter for the Appboy iOS SDK.
+
+ # Useful links:
+ - https://www.braze.com/docs/developer_guide/platform_integration_guides/ios/analytics/tracking_custom_events/
 
  # Package example:
  ```
