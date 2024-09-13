@@ -1,5 +1,5 @@
 {
-  "originHash" : "12dd97e0e545fcd4109d072aec387f0d79bc9c1ba8247255efa62d628d006951",
+  "originHash" : "49ccd59f38e9dedcc87d0b763e6e61f2dbede4c7808aa2b8998fc127b16f21c8",
   "pins" : [
     {
       "identity" : "swift-analytics",
@@ -8,6 +8,15 @@
       "state" : {
         "revision" : "491ef60f39bc62a98396ea7f89d1bfd996888162",
         "version" : "1.9.0"
+      }
+    },
+    {
+      "identity" : "swiftanalyticskit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftyLab/SwiftAnalyticsKit.git",
+      "state" : {
+        "revision" : "d03f688f1338fb9e5acfd0945051caaec022f3d8",
+        "version" : "1.0.0"
       }
     }
   ],

@@ -26,8 +26,24 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/dankinsoid/swift-analytics.git", from: "1.9.0"),
+        .package(url: "https://github.com/SwiftyLab/SwiftAnalyticsKit.git", from: "1.0.0"),
     ],
     targets: [
+        .target(
+            name: "SwiftAnalyticsKitTracking",
+            dependencies: [
+                .product(name: "Analytics", package: "SwiftAnalyticsKit"),
+                "Tracker",
+            ]
+        ),
+        .testTarget(
+            name: "SwiftAnalyticsKitTrackingTests",
+            dependencies: [
+                .product(name: "AnalyticsMock", package: "SwiftAnalyticsKit"),
+                "SwiftAnalyticsKitTracking",
+                "TrackerTesting"
+            ]
+        ),
         .target(
             name: "SwiftAnalyticsTracking",
             dependencies: [

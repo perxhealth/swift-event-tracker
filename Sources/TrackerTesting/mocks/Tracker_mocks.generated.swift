@@ -1983,6 +1983,31 @@ public class ServiceMock: Service {
 
 
 }
+public class SwiftAnalyticsKitServiceAdapterMock: SwiftAnalyticsKitServiceAdapter {
+
+    public init() {}
+
+
+
+    //MARK: - fire
+
+    public var fireEventNameStringMetadataStringStringVoidCallsCount = 0
+    public var fireEventNameStringMetadataStringStringVoidCalled: Bool {
+        return fireEventNameStringMetadataStringStringVoidCallsCount > 0
+    }
+    public var fireEventNameStringMetadataStringStringVoidReceivedArguments: (eventName: String, metadata: [String: String])?
+    public var fireEventNameStringMetadataStringStringVoidReceivedInvocations: [(eventName: String, metadata: [String: String])] = []
+    public var fireEventNameStringMetadataStringStringVoidClosure: ((String, [String: String]) -> Void)?
+
+    public func fire(_ eventName: String, metadata: [String: String]) {
+        fireEventNameStringMetadataStringStringVoidCallsCount += 1
+        fireEventNameStringMetadataStringStringVoidReceivedArguments = (eventName: eventName, metadata: metadata)
+        fireEventNameStringMetadataStringStringVoidReceivedInvocations.append((eventName: eventName, metadata: metadata))
+        fireEventNameStringMetadataStringStringVoidClosure?(eventName, metadata)
+    }
+
+
+}
 public class SwiftAnalyticsServiceAdapterMock: SwiftAnalyticsServiceAdapter {
 
     public init() {}
