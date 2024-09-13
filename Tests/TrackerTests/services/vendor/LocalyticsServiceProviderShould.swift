@@ -54,7 +54,7 @@ final class LocalyticsServiceProviderShould: XCTestCase {
     func testTrackEventWithExpectedParameters() {
         sut.trackEvent(someEvent)
         for (key, value) in someEvent.parameters {
-            XCTAssertEqual(adapter.tagEventEventNameStringAttributesStringStringVoidReceivedArguments?.attributes?[key] as! String, value)
+            XCTAssertEqual(adapter.tagEventEventNameStringAttributesStringStringVoidReceivedArguments?.attributes?[key]!, value)
         }
     }
 
