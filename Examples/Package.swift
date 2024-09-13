@@ -23,7 +23,7 @@ let package = Package(
         .package(url: "https://github.com/mixpanel/mixpanel-iphone", from: "5.0.0"),
 //        .package(url: "https://github.com/PostHog/posthog-ios", from: "3.0.0"),
 //        .package(url: "https://github.com/segmentio/analytics-swift", from: "1.0.0"),
-        .package(url: "https://github.com/apple/swift-log.git", from: "1.0.0"),
+        .package(url: "https://github.com/apple/swift-log", from: "1.0.0"),
         .package(url: "https://github.com/apple/swift-metrics", "1.0.0" ..< "3.0.0"),
         .package(url: "https://github.com/taplytics/taplytics-ios-sdk", from: "4.0.0"),
         .package(url: "https://github.com/uxcam/uxcam-ios-sdk", from: "3.0.0"),
