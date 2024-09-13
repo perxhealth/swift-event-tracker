@@ -16,6 +16,7 @@ let package = Package(
         .package(url: "https://github.com/Countly/countly-sdk-ios", from: "24.0.0"),
         .package(url: "https://github.com/firebase/firebase-ios-sdk", from: "11.0.0"),
         .package(url: "https://github.com/facebook/facebook-ios-sdk", from: "17.0.0"),
+        .package(url: "https://github.com/heap/heap-ios-sdk", from: "9.0.0"),
         .package(url: "https://github.com/Instabug/Instabug-SP", from: "13.0.0"),
         .package(url: "https://github.com/Kochava/Apple-SwiftPackage-KochavaMeasurement-XCFramework", from: "8.0.0"),
         .package(url: "https://github.com/Kochava/Apple-SwiftPackage-KochavaNetworking-XCFramework", from: "8.0.0"),
@@ -68,6 +69,10 @@ let package = Package(
         .target(
             name: "FirebaseAnalyticsAdapter",
             dependencies:  [.product(name: "FirebaseAnalytics", package: "firebase-ios-sdk"), "Tracker"]
+        ),
+        .target(
+            name: "HeapAdapter",
+            dependencies:  [.product(name: "Heap", package: "heap-ios-sdk"), "Tracker"]
         ),
         .target(
             name: "InstabugAdapter",

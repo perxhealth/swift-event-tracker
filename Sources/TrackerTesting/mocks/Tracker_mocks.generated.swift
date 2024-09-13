@@ -961,6 +961,154 @@ public class FirebaseAnalyticsServiceAdapterMock: FirebaseAnalyticsServiceAdapte
 
 
 }
+public class HeapServiceAdapterMock: HeapServiceAdapter {
+
+    public init() {}
+
+
+    static func reset()
+    {
+         //MARK: - setTrackingEnabled
+        setTrackingEnabledTrackingEnabledBoolVoidCallsCount = 0
+        setTrackingEnabledTrackingEnabledBoolVoidReceivedTrackingEnabled = nil
+        setTrackingEnabledTrackingEnabledBoolVoidReceivedInvocations = []
+        setTrackingEnabledTrackingEnabledBoolVoidClosure = nil
+
+
+         //MARK: - isTrackingEnabled
+        isTrackingEnabledBoolCallsCount = 0
+        isTrackingEnabledBoolClosure = nil
+
+
+         //MARK: - identify
+        identifyIdentityStringVoidCallsCount = 0
+        identifyIdentityStringVoidReceivedIdentity = nil
+        identifyIdentityStringVoidReceivedInvocations = []
+        identifyIdentityStringVoidClosure = nil
+
+
+         //MARK: - addUserProperties
+        addUserPropertiesPropertiesStringAnyVoidCallsCount = 0
+        addUserPropertiesPropertiesStringAnyVoidReceivedProperties = nil
+        addUserPropertiesPropertiesStringAnyVoidReceivedInvocations = []
+        addUserPropertiesPropertiesStringAnyVoidClosure = nil
+
+
+         //MARK: - track
+        trackEventStringWithPropertiesPropertiesAnyHashableAnyVoidCallsCount = 0
+        trackEventStringWithPropertiesPropertiesAnyHashableAnyVoidReceivedArguments = nil
+        trackEventStringWithPropertiesPropertiesAnyHashableAnyVoidReceivedInvocations = []
+        trackEventStringWithPropertiesPropertiesAnyHashableAnyVoidClosure = nil
+
+
+         //MARK: - resetIdentity
+        resetIdentityVoidCallsCount = 0
+        resetIdentityVoidClosure = nil
+
+
+    }
+
+    //MARK: - setTrackingEnabled
+
+    public static var setTrackingEnabledTrackingEnabledBoolVoidCallsCount = 0
+    public static var setTrackingEnabledTrackingEnabledBoolVoidCalled: Bool {
+        return setTrackingEnabledTrackingEnabledBoolVoidCallsCount > 0
+    }
+    public static var setTrackingEnabledTrackingEnabledBoolVoidReceivedTrackingEnabled: (Bool)?
+    public static var setTrackingEnabledTrackingEnabledBoolVoidReceivedInvocations: [(Bool)] = []
+    public static var setTrackingEnabledTrackingEnabledBoolVoidClosure: ((Bool) -> Void)?
+
+    public static func setTrackingEnabled(_ trackingEnabled: Bool) {
+        setTrackingEnabledTrackingEnabledBoolVoidCallsCount += 1
+        setTrackingEnabledTrackingEnabledBoolVoidReceivedTrackingEnabled = trackingEnabled
+        setTrackingEnabledTrackingEnabledBoolVoidReceivedInvocations.append(trackingEnabled)
+        setTrackingEnabledTrackingEnabledBoolVoidClosure?(trackingEnabled)
+    }
+
+    //MARK: - isTrackingEnabled
+
+    public static var isTrackingEnabledBoolCallsCount = 0
+    public static var isTrackingEnabledBoolCalled: Bool {
+        return isTrackingEnabledBoolCallsCount > 0
+    }
+    public static var isTrackingEnabledBoolReturnValue: Bool!
+    public static var isTrackingEnabledBoolClosure: (() -> Bool)?
+
+    public static func isTrackingEnabled() -> Bool {
+        isTrackingEnabledBoolCallsCount += 1
+        if let isTrackingEnabledBoolClosure = isTrackingEnabledBoolClosure {
+            return isTrackingEnabledBoolClosure()
+        } else {
+            return isTrackingEnabledBoolReturnValue
+        }
+    }
+
+    //MARK: - identify
+
+    public static var identifyIdentityStringVoidCallsCount = 0
+    public static var identifyIdentityStringVoidCalled: Bool {
+        return identifyIdentityStringVoidCallsCount > 0
+    }
+    public static var identifyIdentityStringVoidReceivedIdentity: (String)?
+    public static var identifyIdentityStringVoidReceivedInvocations: [(String)] = []
+    public static var identifyIdentityStringVoidClosure: ((String) -> Void)?
+
+    public static func identify(_ identity: String) {
+        identifyIdentityStringVoidCallsCount += 1
+        identifyIdentityStringVoidReceivedIdentity = identity
+        identifyIdentityStringVoidReceivedInvocations.append(identity)
+        identifyIdentityStringVoidClosure?(identity)
+    }
+
+    //MARK: - addUserProperties
+
+    public static var addUserPropertiesPropertiesStringAnyVoidCallsCount = 0
+    public static var addUserPropertiesPropertiesStringAnyVoidCalled: Bool {
+        return addUserPropertiesPropertiesStringAnyVoidCallsCount > 0
+    }
+    public static var addUserPropertiesPropertiesStringAnyVoidReceivedProperties: ([String: Any])?
+    public static var addUserPropertiesPropertiesStringAnyVoidReceivedInvocations: [([String: Any])] = []
+    public static var addUserPropertiesPropertiesStringAnyVoidClosure: (([String: Any]) -> Void)?
+
+    public static func addUserProperties(_ properties: [String: Any]) {
+        addUserPropertiesPropertiesStringAnyVoidCallsCount += 1
+        addUserPropertiesPropertiesStringAnyVoidReceivedProperties = properties
+        addUserPropertiesPropertiesStringAnyVoidReceivedInvocations.append(properties)
+        addUserPropertiesPropertiesStringAnyVoidClosure?(properties)
+    }
+
+    //MARK: - track
+
+    public static var trackEventStringWithPropertiesPropertiesAnyHashableAnyVoidCallsCount = 0
+    public static var trackEventStringWithPropertiesPropertiesAnyHashableAnyVoidCalled: Bool {
+        return trackEventStringWithPropertiesPropertiesAnyHashableAnyVoidCallsCount > 0
+    }
+    public static var trackEventStringWithPropertiesPropertiesAnyHashableAnyVoidReceivedArguments: (event: String, properties: [AnyHashable: Any]?)?
+    public static var trackEventStringWithPropertiesPropertiesAnyHashableAnyVoidReceivedInvocations: [(event: String, properties: [AnyHashable: Any]?)] = []
+    public static var trackEventStringWithPropertiesPropertiesAnyHashableAnyVoidClosure: ((String, [AnyHashable: Any]?) -> Void)?
+
+    public static func track(_ event: String, withProperties properties: [AnyHashable: Any]?) {
+        trackEventStringWithPropertiesPropertiesAnyHashableAnyVoidCallsCount += 1
+        trackEventStringWithPropertiesPropertiesAnyHashableAnyVoidReceivedArguments = (event: event, properties: properties)
+        trackEventStringWithPropertiesPropertiesAnyHashableAnyVoidReceivedInvocations.append((event: event, properties: properties))
+        trackEventStringWithPropertiesPropertiesAnyHashableAnyVoidClosure?(event, properties)
+    }
+
+    //MARK: - resetIdentity
+
+    public static var resetIdentityVoidCallsCount = 0
+    public static var resetIdentityVoidCalled: Bool {
+        return resetIdentityVoidCallsCount > 0
+    }
+    public static var resetIdentityVoidClosure: (() -> Void)?
+
+    public static func resetIdentity() {
+        resetIdentityVoidCallsCount += 1
+        resetIdentityVoidClosure?()
+    }
+
+
+}
 public class InstabugServiceAdapterMock: InstabugServiceAdapter {
 
     public init() {}
