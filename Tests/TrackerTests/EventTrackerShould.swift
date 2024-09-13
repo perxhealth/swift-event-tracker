@@ -197,6 +197,12 @@ final class EventTrackerShould: XCTestCase {
         XCTAssertEqual(anotherProvider.setUserIdUserIdStringVoidReceivedUserId, someUserId)
     }
 
+    func testResetUserId() {
+        sut.setUserId(someUserId)
+        sut.resetUserId()
+        XCTAssertEqual(someProvider.resetUserIdVoidCallsCount, 1)
+    }
+
     func testForwardSetPropertiesToProviders() {
         sut.setProperty("key", value: "value")
         XCTAssertTrue(someProvider.setPropertyKeyStringValueStringVoidCalled)
