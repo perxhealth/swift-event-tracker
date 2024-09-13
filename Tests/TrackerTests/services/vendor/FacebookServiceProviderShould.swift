@@ -8,7 +8,6 @@ final class FacebookServiceProviderShould: XCTestCase {
     var settingsAdapter: FacebookSettingsAdapterMock!
 
     var someEvent: EventMock!
-    var anotherEvent: EventMock!
     var someScreen: ScreenMock!
 
     var someEventName: String!

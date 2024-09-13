@@ -8,7 +8,6 @@ final class CountlyServiceProviderShould: XCTestCase {
     var userAdapter: CountlyUserDetailsAdapterMock!
 
     var someEvent: EventMock!
-    var anotherEvent: EventMock!
     var someScreen: CountlyScreenMock!
     var anotherScreen: ScreenMock!
 

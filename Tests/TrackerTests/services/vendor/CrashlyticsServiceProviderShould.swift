@@ -7,7 +7,6 @@ final class CrashlyticsServiceProviderShould: XCTestCase {
     var adapter: CrashlyticsServiceAdapterMock!
 
     var someEvent: EventMock!
-    var anotherEvent: EventMock!
     var someScreen: ScreenMock!
 
     var someEventName: String!

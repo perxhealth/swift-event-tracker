@@ -7,7 +7,6 @@ final class AdjustServiceProviderShould: XCTestCase {
     var adapter: AdjustServiceAdapterMock.Type!
 
     var someEvent: EventMock!
-    var anotherEvent: EventMock!
     var someScreen: ScreenMock!
 
     var someEventName: String!

@@ -7,7 +7,6 @@ final class SwiftAnalyticsServiceProviderShould: XCTestCase {
     var adapter: SwiftAnalyticsServiceAdapterMock!
 
     var someEvent: EventMock!
-    var anotherEvent: EventMock!
     var someScreen: ScreenMock!
 
     var someEventName: String!

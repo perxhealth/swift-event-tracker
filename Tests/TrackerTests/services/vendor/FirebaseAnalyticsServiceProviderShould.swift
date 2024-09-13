@@ -7,7 +7,6 @@ final class FirebaseAnalyticsServiceProviderShould: XCTestCase {
     var adapter: FirebaseAnalyticsServiceAdapterMock.Type!
 
     var someEvent: EventMock!
-    var anotherEvent: EventMock!
 
     var someEventName: String!
     var parameters: [String: String]!

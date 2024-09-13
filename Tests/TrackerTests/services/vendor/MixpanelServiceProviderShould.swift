@@ -7,7 +7,6 @@ final class MixpanelServiceProviderShould: XCTestCase {
     var adapter: MixpanelServiceAdapterMock!
 
     var someEvent: EventMock!
-    var anotherEvent: EventMock!
     var someScreen: ScreenMock!
 
     var someEventName: String!

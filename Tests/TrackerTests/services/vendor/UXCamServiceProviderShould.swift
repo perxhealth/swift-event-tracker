@@ -7,7 +7,6 @@ final class UXCamServiceProviderShould: XCTestCase {
     var adapter: UXCamServiceAdapterMock.Type!
 
     var someEvent: EventMock!
-    var anotherEvent: EventMock!
     var someScreen: ScreenMock!
 
     var someEventName: String!

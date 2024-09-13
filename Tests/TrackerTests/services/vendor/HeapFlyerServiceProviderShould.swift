@@ -7,7 +7,6 @@ final class HeapFlyerServiceProviderShould: XCTestCase {
     var adapter: HeapServiceAdapterMock.Type!
 
     var someEvent: EventMock!
-    var anotherEvent: EventMock!
     var someScreen: ScreenMock!
 
     var someEventName: String!

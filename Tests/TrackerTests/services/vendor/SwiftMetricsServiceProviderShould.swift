@@ -7,7 +7,6 @@ final class SwiftMetricsServiceProviderShould: XCTestCase {
     var adapter: SwiftMetricsServiceAdapterMock.Type!
 
     var someEvent: EventMock!
-    var anotherEvent: EventMock!
     var someScreen: ScreenMock!
 
     var someEventName: String!

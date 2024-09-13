@@ -7,7 +7,6 @@ final class SwiftLoggerServiceProviderShould: XCTestCase {
     var adapter: SwiftLoggerServiceAdapterMock!
 
     var someEvent: EventMock!
-    var anotherEvent: EventMock!
     var someScreen: ScreenMock!
 
     var someEventName: String!

@@ -7,7 +7,6 @@ final class SegmentServiceProviderShould: XCTestCase {
     var adapter: SegmentServiceAdapterMock!
 
     var someEvent: EventMock!
-    var anotherEvent: EventMock!
     var someScreen: SegmentScreenMock!
     var anotherScreen: ScreenMock!
 

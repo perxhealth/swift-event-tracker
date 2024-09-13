@@ -6,7 +6,6 @@ final class PrintServiceProviderShould: XCTestCase {
     var sut: PrintServiceProvider!
 
     var someEvent: EventMock!
-    var anotherEvent: EventMock!
     var someScreen: ScreenMock!
 
     var someEventName: String!

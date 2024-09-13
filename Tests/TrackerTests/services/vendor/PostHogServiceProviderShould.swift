@@ -7,7 +7,6 @@ final class PostHogServiceProviderShould: XCTestCase {
     var adapter: PostHogServiceAdapterMock!
 
     var someEvent: EventMock!
-    var anotherEvent: EventMock!
     var someScreen: PostHogScreenMock!
     var anotherScreen: ScreenMock!
 

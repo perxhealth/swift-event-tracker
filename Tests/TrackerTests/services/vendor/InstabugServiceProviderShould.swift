@@ -7,7 +7,6 @@ final class InstabugServiceProviderShould: XCTestCase {
     var adapter: InstabugServiceAdapterMock.Type!
 
     var someEvent: EventMock!
-    var anotherEvent: EventMock!
     var someScreen: ScreenMock!
 
     var someEventName: String!
