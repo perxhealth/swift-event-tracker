@@ -1,13 +1,13 @@
 import Foundation
 
-public struct EventTracker {
+public final class EventTracker {
     private var serviceProviders: [Service]
     
     public init(serviceProviders: [Service] = [PrintServiceProvider()]) {
         self.serviceProviders = serviceProviders
     }
     
-    public mutating func setServiceProviders(_ providers: [Service]) {
+    public func setServiceProviders(_ providers: [Service]) {
         self.serviceProviders = providers
     }
     
