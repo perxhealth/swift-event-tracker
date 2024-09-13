@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Tag: Equatable, ExpressibleByStringLiteral, ExpressibleByStringInterpolation {
+public struct Tag: Codable, Hashable, ExpressibleByStringLiteral, ExpressibleByStringInterpolation {
     public static let analytics = Tag("analytics")
     public static let crashReporting = Tag("crashReporting")
     public static let debugging = Tag("debugging")
