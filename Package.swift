@@ -12,6 +12,10 @@ let package = Package(
     ],
     products: [
         .library(
+            name: "SwiftAnalyticsKitTracking",
+            targets: ["SwiftAnalyticsKitTracking"]
+        ),
+        .library(
             name: "SwiftAnalyticsTracking",
             targets: ["SwiftAnalyticsTracking"]
         ),

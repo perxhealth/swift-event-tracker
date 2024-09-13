@@ -1,5 +1,5 @@
 {
-  "originHash" : "a72139408116df2a42a93ac3aff04a2dc8bac20686048f9b45cb19698ea2668d",
+  "originHash" : "e0aa5d3df072ce738099c909d22cdd0f84c1ed7586acd75868017d5ea3f08b11",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -305,6 +305,15 @@
       "state" : {
         "revision" : "564597ad2fe2513a94dd8f3ba27ea2ff4be3cb37",
         "version" : "1.28.0"
+      }
+    },
+    {
+      "identity" : "swiftanalyticskit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftyLab/SwiftAnalyticsKit.git",
+      "state" : {
+        "revision" : "d03f688f1338fb9e5acfd0945051caaec022f3d8",
+        "version" : "1.0.0"
       }
     },
     {
