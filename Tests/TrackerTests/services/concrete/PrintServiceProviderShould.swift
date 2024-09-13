@@ -39,6 +39,11 @@ final class PrintServiceProviderShould: XCTestCase {
         receivedEventDescription = nil
     }
 
+    func testDefaultCanBeDisabledValue() {
+        let sutWithDefaultCanBeDisabledValue = PrintServiceProvider() { _ in }
+        XCTAssertTrue(sutWithDefaultCanBeDisabledValue.canBeDisabled)
+    }
+
     func testSupportedTags() {
         XCTAssertEqual(sut.supportedTags, [.debugging, .logging])
     }
@@ -99,12 +104,12 @@ final class PrintServiceProviderShould: XCTestCase {
     }
 
     func testUpdateTrackingDisabledPropertyOnlyWhenCanBeDisabled() {
-        let provider = PrintServiceProvider(canBeDisabled: true) { eventdescription in
+        let sutWithCanBeDisabledTrue = PrintServiceProvider(canBeDisabled: true) { eventdescription in
             self.receivedEventDescription = eventdescription
         }
-        provider.disableTracking(true)
+        sutWithCanBeDisabledTrue.disableTracking(true)
         sut.disableTracking(true)
-        XCTAssertTrue(provider.trackingDisabled)
+        XCTAssertTrue(sutWithCanBeDisabledTrue.trackingDisabled)
         XCTAssertFalse(sut.trackingDisabled)
     }
 }
