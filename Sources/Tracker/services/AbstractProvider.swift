@@ -8,7 +8,7 @@ open class AbstractProvider {
     var userIdPropertyKey: String?
     var userProperties: [String: Any] = [:]
 
-    init(userIdPropertyKey: String? = nil) {
+    public init(userIdPropertyKey: String? = nil) {
         self.userIdPropertyKey = userIdPropertyKey
     }
 
