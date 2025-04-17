@@ -9,7 +9,7 @@
 To use **SwiftEventTracker** in your project, add the following dependency to your `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/hectr/swift-event-tracker", from: "2.0.0"),
+.package(url: "https://github.com/perxhealth/swift-event-tracker", from: "2.0.1"),
 ```
 
 Then, add `Tracker` to your target's dependencies:
