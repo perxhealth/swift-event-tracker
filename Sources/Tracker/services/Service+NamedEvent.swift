@@ -30,7 +30,7 @@ extension Service {
         trackEvent(event)
     }
 
-    public func setProperty(_ property: Parameter) {
+    public func setProperty(_ property: any Parameter) {
         setProperty(property.key, value: property.value)
     }
 

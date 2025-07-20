@@ -53,7 +53,10 @@ final class SwiftAnalyticsKitServiceAdapterShould: XCTestCase {
     }
 
     func testTrackEventWithNameAndParameters() {
-        let event = ParameterizedEvent(name: "Test Event", parameters: ["param1": "value1", "param2": "value2"])
+        let event = ParameterizedEvent(name: "Test Event", parameters: [
+            NamedParameter(key: "param1", value: "value1"),
+            NamedParameter(key: "param2", value: "value2")
+        ])
         eventTracker.trackEvent(event)
 
         XCTAssertEqual(handler.arguments.last?.eventName, "Test Event")
@@ -64,7 +67,9 @@ final class SwiftAnalyticsKitServiceAdapterShould: XCTestCase {
     func testTrackEventWithProperties() {
         eventTracker.setProperty("param1", value: "value1")
         eventTracker.setProperty("param2", value: "value2")
-        let event = ParameterizedEvent(name: "Test Event", parameters: ["param3": "value3"])
+        let event = ParameterizedEvent(name: "Test Event", parameters: [
+            NamedParameter(key: "param3", value: "value3")
+        ])
         eventTracker.trackEvent(event)
 
         XCTAssertEqual(handler.arguments.last?.eventName, "Test Event")
@@ -76,7 +81,9 @@ final class SwiftAnalyticsKitServiceAdapterShould: XCTestCase {
     func testResetProperties() {
         eventTracker.setProperty("param1", value: "value1")
         eventTracker.resetProperties()
-        let event = ParameterizedEvent(name: "Test Event", parameters: ["param2": "value2"])
+        let event = ParameterizedEvent(name: "Test Event", parameters: [
+            NamedParameter(key: "param2", value: "value2")
+        ])
         eventTracker.trackEvent(event)
 
         XCTAssertEqual(handler.arguments.last?.eventName, "Test Event")

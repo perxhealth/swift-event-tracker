@@ -26,10 +26,10 @@ public struct SwiftAnalyticsKitHandlerAdapter: AnalyticsHandler, Hashable {
     public func track<Event>(event: Event, at time: Date, data: Event.Metadata) where Event : AnalyticsEvent, String == Event.Name {
         let jsonData = try? JSONEncoder().encode(data)
         let dictionary = try? JSONSerialization.jsonObject(with: jsonData ?? Data(), options: .allowFragments) as? [String: Any]
-        let parameters = dictionary?.mapValues { value in
-                String(describing: value)
+        let parameters = dictionary?.reduce([]) { partialResult, value in
+            return partialResult + [NamedParameter(key: value.key, value: String(describing: value.value))]
         }
-//        let parameterizedEvent = ParameterizedEvent(name: event.name, parameters: parameters ?? [:])
-//        eventTracker.trackEvent(parameterizedEvent)
+        let parameterizedEvent = ParameterizedEvent(name: event.name, parameters: parameters ?? [])
+        eventTracker.trackEvent(parameterizedEvent)
     }
 }

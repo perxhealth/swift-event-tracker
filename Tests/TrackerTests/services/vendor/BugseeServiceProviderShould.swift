@@ -53,7 +53,7 @@ final class BugseeServiceProviderShould: XCTestCase {
 
     func testTrackEventWithExpectedParameters() {
         sut.trackEvent(someEvent)
-        for (key, value) in someEvent.parameters {
+        for (key, value) in someEvent.resolvedParameters {
             XCTAssertEqual(adapter.eventEventNameStringParamsAnyHashableAnyVoidReceivedArguments?.params[key] as? String, value)
         }
     }

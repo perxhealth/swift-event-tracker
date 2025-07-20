@@ -13,14 +13,16 @@ public final class EventTracker {
 
     // MARK: - Conditional tracking
 
-    public func setProperty(_ property: Parameter, given condition: () -> Bool)
-    {
+    public func setProperty(
+        _ property: any Parameter,
+        given condition: () -> Bool
+    ) {
         guard condition() else { return }
         setProperty(property)
     }
 
     public func setProperty(
-        _ property: Parameter,
+        _ property: any Parameter,
         given condition: @autoclosure () -> Bool
     ) {
         guard condition() else { return }
@@ -111,10 +113,15 @@ public final class EventTracker {
         }
     }
 
-    public func setProperty(_ property: Parameter, forTags tags: [Tag]) {
+    public func setProperty(_ property: any Parameter, forTags tags: [Tag]) {
         guard !tags.isEmpty else { return }
         for provider in serviceProviders
-        where provider.containsAny(from: tags) {
+        where provider.containsAny(from: tags)
+            && (property.requiredTags.isEmpty
+                || property.requiredTags.containsAny(from: tags))
+            && (property.excludedTags.isEmpty
+                || property.excludedTags.containsNone(from: tags))
+        {
             provider.setProperty(property)
         }
     }
@@ -192,7 +199,7 @@ extension EventTracker: Service {
         }
     }
 
-    public func setProperty(_ parameter: Parameter) {
+    public func setProperty(_ parameter: any Parameter) {
         for provider in serviceProviders
         where !provider.trackingDisabled
             && provider.containsNone(from: parameter.excludedTags)

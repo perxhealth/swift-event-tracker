@@ -52,7 +52,7 @@ final class AppsFlyerServiceProviderShould: XCTestCase {
 
     func testTrackEventWithExpectedParameters() {
         sut.trackEvent(someEvent)
-        for (key, value) in someEvent.parameters {
+        for (key, value) in someEvent.resolvedParameters {
             XCTAssertEqual(adapter.logEventEventNameStringWithValuesAnyHashableAnyVoidReceivedArguments?.withValues?[key] as? String, value)
         }
     }

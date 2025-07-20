@@ -53,7 +53,7 @@ final class SwiftMetricsServiceProviderShould: XCTestCase {
 
     func testTrackEventWithExpectedParameters() {
         sut.trackEvent(someEvent)
-        for (key, value) in someEvent.parameters {
+        for (key, value) in someEvent.resolvedParameters {
             XCTAssertEqual(adapter.incrementCounterLabelStringDimensionsStringStringVoidReceivedArguments?.dimensions.first { (name, _) in key == name }?.1, value)
         }
     }

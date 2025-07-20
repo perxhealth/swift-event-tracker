@@ -37,7 +37,7 @@ extension Service where Self: AbstractProvider {
         trackEvent(event)
     }
 
-    public func setProperty(_ parameter: Parameter) {
+    public func setProperty(_ parameter: any Parameter) {
         setProperty(parameter.key, value: parameter.value)
     }
 
@@ -55,7 +55,7 @@ extension Service where Self: AbstractProvider {
             let userId = userProperties.first(where: { $0.key == userIdKey })?
                 .value
         {
-            userProperties[userIdKey] = userId
+            userProperties = [userIdKey: userId]
         } else {
             userProperties = [:]
         }

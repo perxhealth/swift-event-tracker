@@ -795,7 +795,7 @@ public class EventMock: Event {
         set(value) { underlyingName = value }
     }
     public var underlyingName: (String)!
-    public var parameters: [Parameter] = []
+    public var parameters: [any Parameter] = []
     public var excludedTags: [Tag] = []
     public var requiredTags: [Tag] = []
 

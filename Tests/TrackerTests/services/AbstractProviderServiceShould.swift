@@ -1,6 +1,7 @@
-@testable import Tracker
 import TrackerTesting
 import XCTest
+
+@testable import Tracker
 
 final class AbstractProviderServiceShould: XCTestCase {
     final class AbstractProviderService: AbstractProvider, Service {
@@ -27,7 +28,7 @@ final class AbstractProviderServiceShould: XCTestCase {
             trackEventClosure?(event)
         }
     }
-    
+
     var sut: AbstractProviderService!
 
     var someEvent: EventMock!
@@ -60,7 +61,9 @@ final class AbstractProviderServiceShould: XCTestCase {
     }
 
     func testAssignFallbackUserIdPropertyKey() {
-        let sut = AbstractProviderService(userIdPropertyKey: "user id property key")
+        let sut = AbstractProviderService(
+            userIdPropertyKey: "user id property key"
+        )
 
         XCTAssertEqual(sut.userIdPropertyKey, "user id property key")
     }
@@ -68,13 +71,22 @@ final class AbstractProviderServiceShould: XCTestCase {
     func testTrackEventWithExpectedScreenName() throws {
         let sut = AbstractProviderService()
         sut.trackScreen(someScreen)
-        try AssertTrue(sut.trackEventEventEventVoidReceivedEvent?.name.contains(someScreenName))
+        try AssertTrue(
+            sut.trackEventEventEventVoidReceivedEvent?.name.contains(
+                someScreenName
+            )
+        )
     }
 
     func testTrackEventWithExpectedProperty() {
         let sut = AbstractProviderService()
         sut.setProperty(somePropertyKey, value: somePropertyValue)
-        XCTAssertEqual(sut.trackEventEventEventVoidReceivedEvent?.parameters[somePropertyKey], somePropertyValue)
+        XCTAssertEqual(
+            sut.trackEventEventEventVoidReceivedEvent?.resolvedParameters[
+                somePropertyKey
+            ],
+            somePropertyValue
+        )
         XCTAssertEqual(sut.userProperties.count, 1)
     }
 
@@ -82,7 +94,11 @@ final class AbstractProviderServiceShould: XCTestCase {
         let sut = AbstractProviderService()
         sut.setProperty(somePropertyKey, value: somePropertyValue)
         sut.resetProperties()
-        try AssertTrue(sut.trackEventEventEventVoidReceivedEvent?.name.contains("Reset properties"))
+        try AssertTrue(
+            sut.trackEventEventEventVoidReceivedEvent?.name.contains(
+                "Reset properties"
+            )
+        )
         XCTAssertEqual(sut.userProperties.count, 0)
     }
 
@@ -92,34 +108,60 @@ final class AbstractProviderServiceShould: XCTestCase {
         sut.setProperty(somePropertyKey, value: somePropertyValue)
         sut.resetProperties()
         XCTAssertEqual(sut.userProperties.count, 1)
-        XCTAssertEqual(sut.userProperties["some user id key"] as? String, "some user id value")
+        XCTAssertEqual(
+            sut.userProperties["some user id key"] as? String,
+            "some user id value"
+        )
     }
 
     func testSetPropertyWithExpectedUserId() throws {
-        let sut = AbstractProviderService(userIdPropertyKey: "user id property key")
+        let sut = AbstractProviderService(
+            userIdPropertyKey: "user id property key"
+        )
         sut.setUserId(someUserId)
-        try AssertFalse(sut.trackEventEventEventVoidReceivedEvent?.name.contains(someUserId))
-        XCTAssertEqual(sut.userProperties["user id property key"] as? String, someUserId)
+        try AssertFalse(
+            sut.trackEventEventEventVoidReceivedEvent?.name.contains(someUserId)
+        )
+        XCTAssertEqual(
+            sut.userProperties["user id property key"] as? String,
+            someUserId
+        )
     }
 
     func testUnsetPropertyOnResetUserId() throws {
-        let sut = AbstractProviderService(userIdPropertyKey: "user id property key")
+        let sut = AbstractProviderService(
+            userIdPropertyKey: "user id property key"
+        )
         sut.resetUserId()
-        try AssertFalse(sut.trackEventEventEventVoidReceivedEvent?.name.contains("Reset user"))
+        try AssertFalse(
+            sut.trackEventEventEventVoidReceivedEvent?.name.contains(
+                "Reset user"
+            )
+        )
         XCTAssertNil(sut.userProperties["user id property key"])
     }
 
     func testTrackEventWithExpectedUserId() {
         let sut = AbstractProviderService()
         sut.setUserId(someUserId)
-        XCTAssertEqual(sut.trackEventEventEventVoidReceivedEvent?.name, "Set user identifier")
-        XCTAssertEqual(sut.trackEventEventEventVoidReceivedEvent?.parameters, ["id": someUserId])
+        XCTAssertEqual(
+            sut.trackEventEventEventVoidReceivedEvent?.name,
+            "Set user identifier"
+        )
+        XCTAssertEqual(
+            sut.trackEventEventEventVoidReceivedEvent?.resolvedParameters,
+            ["id": someUserId]
+        )
     }
 
     func testTrackEventOnResetUserId() throws {
         let sut = AbstractProviderService()
         sut.resetUserId()
-        try AssertTrue(sut.trackEventEventEventVoidReceivedEvent?.name.contains("Reset user"))
+        try AssertTrue(
+            sut.trackEventEventEventVoidReceivedEvent?.name.contains(
+                "Reset user"
+            )
+        )
     }
 
     func testDisableTracking() throws {

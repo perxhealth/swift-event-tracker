@@ -7,7 +7,7 @@ public struct NamedEvent: Event {
         self.name = name
     }
     
-    public var parameters: [Parameter] {
+    public var parameters: [any Parameter] {
         return []
     }
 }

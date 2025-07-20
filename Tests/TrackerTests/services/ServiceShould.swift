@@ -68,7 +68,7 @@ final class ServiceShould: XCTestCase {
         sut.setUserId("some user id")
         XCTAssertEqual(sut.trackEventEventEventVoidCallsCount, 1)
         XCTAssertEqual(sut.trackEventEventEventVoidReceivedEvent?.name, "Set user")
-        XCTAssertEqual(sut.trackEventEventEventVoidReceivedEvent?.parameters, ["user-id": "some user id"])
+        XCTAssertEqual(sut.trackEventEventEventVoidReceivedEvent?.resolvedParameters, ["user-id": "some user id"])
     }
 
     func testResetUserId() {
@@ -83,7 +83,7 @@ final class ServiceShould: XCTestCase {
         sut.setProperty("some property key", value: "some property values")
         XCTAssertEqual(sut.trackEventEventEventVoidCallsCount, 1)
         XCTAssertEqual(sut.trackEventEventEventVoidReceivedEvent?.name, "Set property")
-        XCTAssertEqual(sut.trackEventEventEventVoidReceivedEvent?.parameters, ["some property key": "some property values"])
+        XCTAssertEqual(sut.trackEventEventEventVoidReceivedEvent?.resolvedParameters, ["some property key": "some property values"])
     }
 
     func testResetProperties() {

@@ -59,7 +59,7 @@ final class PostHogServiceProviderShould: XCTestCase {
 
     func testTrackEventWithExpectedParameters() {
         sut.trackEvent(someEvent)
-        for (key, value) in someEvent.parameters {
+        for (key, value) in someEvent.resolvedParameters {
             XCTAssertEqual(adapter.captureEventStringPropertiesStringAnyVoidReceivedArguments?.properties?[key] as! String, value)
         }
     }

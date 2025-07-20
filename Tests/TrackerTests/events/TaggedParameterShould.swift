@@ -49,17 +49,15 @@ final class TaggedParameterShould: XCTestCase {
     }
     
     func testMergeTagsWithBaseParameter() {
-        let baseExcludedTags: [Tag] = [.debugging]
-        let baseRequiredTags: [Tag] = [.analytics]
-        let parameterWithTags = NamedParameter(
+        let parameter = NamedParameter(
             key: "test_key",
             value: "test_value",
         )
         
-        let additionalExcludedTags: [Tag] = [.logging]
-        let additionalRequiredTags: [Tag] = [.crashReporting]
+        let additionalExcludedTags: [Tag] = [.logging, .debugging]
+        let additionalRequiredTags: [Tag] = [.crashReporting, .analytics]
         let taggedParameter = TaggedParameter(
-            parameter: parameterWithTags,
+            parameter: parameter,
             excludedTags: additionalExcludedTags,
             requiredTags: additionalRequiredTags
         )

@@ -53,7 +53,7 @@ final class UXCamServiceProviderShould: XCTestCase {
 
     func testTrackEventWithExpectedParameters() {
         sut.trackEvent(someEvent)
-        for (key, value) in someEvent.parameters {
+        for (key, value) in someEvent.resolvedParameters {
             XCTAssertEqual(adapter.logEventEventNameStringWithPropertiesStringAnyVoidReceivedArguments?.withProperties?[key] as? String, value)
         }
     }

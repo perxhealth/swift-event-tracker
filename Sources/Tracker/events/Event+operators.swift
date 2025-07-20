@@ -2,21 +2,21 @@ import Foundation
 
 infix operator +: AdditionPrecedence
 
-public func + (left: NamedEvent, right: [Parameter]) -> TaggedEvent {
+public func + (left: NamedEvent, right: [any Parameter]) -> TaggedEvent {
     TaggedEvent(name: left.name,
                 parameters: left.parameters.appending(contentsOf: right),
                 excludedTags: left.excludedTags,
                 requiredTags: left.requiredTags)
 }
 
-public func + (left: ParameterizedEvent, right: [Parameter]) -> TaggedEvent {
+public func + (left: ParameterizedEvent, right: [any Parameter]) -> TaggedEvent {
     TaggedEvent(name: left.name,
                 parameters: left.parameters.appending(contentsOf: right),
                 excludedTags: left.excludedTags,
                 requiredTags: left.requiredTags)
 }
 
-public func + (left: TaggedEvent, right: [Parameter]) -> TaggedEvent {
+public func + (left: TaggedEvent, right: [any Parameter]) -> TaggedEvent {
     TaggedEvent(name: left.name,
                 parameters: left.parameters.appending(contentsOf: right),
                 excludedTags: left.excludedTags,
