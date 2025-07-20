@@ -11,7 +11,7 @@ public final class BugseeServiceProvider: AbstractProvider, Service {
     }
 
     public func trackEvent(_ event: Event) {
-        adapter.event(event.name, params: event.parameters)
+        adapter.event(event.name, params: event.resolvedParameters)
     }
 
     public func setProperty(_ key: String, value: String) {

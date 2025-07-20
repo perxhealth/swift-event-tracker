@@ -12,7 +12,7 @@ public final class HeapServiceProvider: AbstractProvider, Service {
     }
 
     public func trackEvent(_ event: Event) {
-        adapter.track(event.name, withProperties: event.parameters)
+        adapter.track(event.name, withProperties: event.resolvedParameters)
     }
 
     public func setUserId(_ userId: String) {

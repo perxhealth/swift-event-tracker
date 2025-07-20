@@ -11,6 +11,6 @@ public final class SwiftAnalyticsKitServiceProvider: AbstractProvider, Service {
     }
 
     public func trackEvent(_ event: Event) {
-        adapter.fire(event.name, metadata: event.parameters)
+        adapter.fire(event.name, metadata: event.resolvedParameters)
     }
 }

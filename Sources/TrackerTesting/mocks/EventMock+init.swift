@@ -3,7 +3,7 @@ import Tracker
 
 extension EventMock {
     public convenience init(name: String,
-                            parameters: [String: String] = [:],
+                            parameters: [Parameter] = [],
                             requiredTags: [Tag] = [],
                             excludedTags: [Tag] = []) {
         self.init()

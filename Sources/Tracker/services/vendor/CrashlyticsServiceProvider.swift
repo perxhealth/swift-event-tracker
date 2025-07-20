@@ -13,7 +13,7 @@ public final class CrashlyticsServiceProvider: AbstractProvider, Service {
 
     public func trackEvent(_ event: Event) {
         adapter.log(event.name)
-        for (key, value) in event.parameters {
+        for (key, value) in event.resolvedParameters {
             adapter.setCustomValue(value, forKey: event.name + " -> " + key)
         }
     }

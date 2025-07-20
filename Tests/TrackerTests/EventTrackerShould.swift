@@ -273,4 +273,73 @@ final class EventTrackerShould: XCTestCase {
         XCTAssertEqual(someProvider.disableTrackingFlagBoolVoidReceivedInvocations, [false])
         XCTAssertEqual(anotherProvider.disableTrackingFlagBoolVoidReceivedInvocations, [])
     }
+    
+    // MARK: - Property with Tags Tests
+    
+    func testForwardPropertyToProvidersWithNoTags() {
+        let property = NamedProperty(key: "test_key", value: "test_value")
+        sut.setProperty(property)
+        XCTAssertTrue(someProvider.setPropertyPropertyPropertyVoidCalled)
+        XCTAssertTrue(anotherProvider.setPropertyPropertyPropertyVoidCalled)
+    }
+    
+    func testForwardPropertyToProvidersWithRequiredTags() {
+        let property = NamedProperty(key: "test_key", value: "test_value") + [.analytics]
+        sut.setProperty(property)
+        XCTAssertFalse(someProvider.setPropertyPropertyPropertyVoidCalled)
+        XCTAssertTrue(anotherProvider.setPropertyPropertyPropertyVoidCalled)
+    }
+    
+    func testDoNotForwardPropertyToProvidersWithExcludedTags() {
+        let property = NamedProperty(key: "test_key", value: "test_value") - [.debugging]
+        sut.setProperty(property)
+        XCTAssertFalse(someProvider.setPropertyPropertyPropertyVoidCalled)
+        XCTAssertTrue(anotherProvider.setPropertyPropertyPropertyVoidCalled)
+    }
+    
+    func testForwardPropertyWithMultipleRequiredTags() {
+        let property = NamedProperty(key: "test_key", value: "test_value") + [.debugging, .analytics]
+        sut.setProperty(property)
+        XCTAssertTrue(someProvider.setPropertyPropertyPropertyVoidCalled)
+        XCTAssertTrue(anotherProvider.setPropertyPropertyPropertyVoidCalled)
+    }
+    
+    func testDoNotForwardPropertyWithMultipleExcludedTags() {
+        let property = NamedProperty(key: "test_key", value: "test_value") - [.debugging, .analytics]
+        sut.setProperty(property)
+        XCTAssertFalse(someProvider.setPropertyPropertyPropertyVoidCalled)
+        XCTAssertFalse(anotherProvider.setPropertyPropertyPropertyVoidCalled)
+    }
+    
+    func testForwardPropertyWithBothRequiredAndExcludedTags() {
+        let property = NamedProperty(key: "test_key", value: "test_value") + [.crashReporting] - [.analytics]
+        sut.setProperty(property)
+        XCTAssertTrue(someProvider.setPropertyPropertyPropertyVoidCalled)
+        XCTAssertFalse(anotherProvider.setPropertyPropertyPropertyVoidCalled)
+    }
+    
+    func testDoNotForwardPropertyToDisabledProviders() {
+        someProvider.trackingDisabled = true
+        let property = NamedProperty(key: "test_key", value: "test_value")
+        sut.setProperty(property)
+        XCTAssertFalse(someProvider.setPropertyPropertyPropertyVoidCalled)
+        XCTAssertTrue(anotherProvider.setPropertyPropertyPropertyVoidCalled)
+    }
+    
+    func testForwardPropertyWithCondition() {
+        let property = NamedProperty(key: "test_key", value: "test_value")
+        sut.setProperty(property, given: true)
+        XCTAssertTrue(someProvider.setPropertyPropertyPropertyVoidCalled)
+        
+        someProvider.setPropertyPropertyPropertyVoidCalled = false
+        sut.setProperty(property, given: false)
+        XCTAssertFalse(someProvider.setPropertyPropertyPropertyVoidCalled)
+    }
+    
+    func testForwardPropertyToSpecificProvidersWithTags() {
+        let property = NamedProperty(key: "test_key", value: "test_value")
+        sut.setProperty(property, forTags: [.analytics])
+        XCTAssertFalse(someProvider.setPropertyPropertyPropertyVoidCalled)
+        XCTAssertTrue(anotherProvider.setPropertyPropertyPropertyVoidCalled)
+    }
 }

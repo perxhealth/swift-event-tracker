@@ -11,7 +11,7 @@ public final class SwiftAnalyticsServiceProvider: AbstractProvider, Service {
     }
 
     public func trackEvent(_ event: Event) {
-        adapter.send(event.name, parameters: event.parameters)
+        adapter.send(event.name, parameters: event.resolvedParameters)
     }
 
     public func setProperty(_ key: String, value: String) {

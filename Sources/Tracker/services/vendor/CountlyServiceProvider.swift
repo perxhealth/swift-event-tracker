@@ -12,7 +12,7 @@ public final class CountlyServiceProvider: AbstractProvider, Service {
     }
 
     public func trackEvent(_ event: Event) {
-        adapter.recordEvent(event.name, segmentation: event.parameters)
+        adapter.recordEvent(event.name, segmentation: event.resolvedParameters)
     }
 
     public func trackScreen(_ screen: Screen) {

@@ -29,7 +29,7 @@ public struct SwiftAnalyticsKitHandlerAdapter: AnalyticsHandler, Hashable {
         let parameters = dictionary?.mapValues { value in
                 String(describing: value)
         }
-        let parameterizedEvent = ParameterizedEvent(name: event.name, parameters: parameters ?? [:])
-        eventTracker.trackEvent(parameterizedEvent)
+//        let parameterizedEvent = ParameterizedEvent(name: event.name, parameters: parameters ?? [:])
+//        eventTracker.trackEvent(parameterizedEvent)
     }
 }

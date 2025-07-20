@@ -12,7 +12,7 @@ public final class AmplitudeServiceProvider: AbstractProvider, Service {
     }
 
     public func trackEvent(_ event: Event) {
-        adapter.logEvent(event.name, withEventProperties: event.parameters)
+        adapter.logEvent(event.name, withEventProperties: event.resolvedParameters)
     }
 
     public func setUserId(_ userId: String) {

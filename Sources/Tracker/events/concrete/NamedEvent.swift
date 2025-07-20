@@ -6,6 +6,10 @@ public struct NamedEvent: Event {
     public init(_ name: String) {
         self.name = name
     }
+    
+    public var parameters: [Parameter] {
+        return []
+    }
 }
 
 extension NamedEvent: ExpressibleByStringLiteral {

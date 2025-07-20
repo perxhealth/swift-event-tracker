@@ -24,8 +24,8 @@ public struct SwiftAnalyticsHandlerAdapter: AnalyticsHandler {
     public func send(event: Analytics.Event, file: String, function: String, line: UInt, source: String) {
         let allParameters = event.parameters.merging(parameters) { (current, _) in current }
         let dictionary = convertParametersToDictionary(allParameters, function: function, line: line, source: source)
-        let parameterizedEvent = ParameterizedEvent(name: event.name, parameters: dictionary)
-        eventTracker.trackEvent(parameterizedEvent)
+//        let parameterizedEvent = ParameterizedEvent(name: event.name, parameters: dictionary)
+//        eventTracker.trackEvent(parameterizedEvent)
     }
 
     private func convertParametersToDictionary(_ parameters: Analytics.Parameters, function: String, line: UInt, source: String) -> [String: String] {
