@@ -28,7 +28,7 @@ public final class PostHogServiceProvider: AbstractProvider, Service {
     }
 
     public func resetUserId() {
-        adapter.identify("")
+        adapter.reset()
     }
 
     public func setProperty(_ key: String, value: String) {
