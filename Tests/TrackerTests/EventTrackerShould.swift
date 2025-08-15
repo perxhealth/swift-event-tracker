@@ -333,7 +333,7 @@ final class EventTrackerShould: XCTestCase {
         XCTAssertTrue(anotherProvider.setPropertyKeyStringValueStringVoidCalled)
     }
 
-    func testDoNotForwardSetetPropertiesToProvidersIfTrackingDisabled() {
+    func testDoNotForwardSetPropertiesToProvidersIfTrackingDisabled() {
         someProvider.trackingDisabled = true
         sut.setProperty("key", value: "value")
         XCTAssertFalse(someProvider.setPropertyKeyStringValueStringVoidCalled)

@@ -38,10 +38,10 @@ public struct SwiftAnalyticsHandlerAdapter: AnalyticsHandler {
             case .double(let double):
                 partial.append(NamedParameter(key: value.key, value: double.description))
             case .bool(let boolean):
-                partial.append( NamedParameter(key: value.key, value: boolean ? "true" : "false"))
+                partial.append(NamedParameter(key: value.key, value: boolean ? "true" : "false"))
             case .dictionary(let dictionary):
                 do {
-                    try  partial.append(NamedParameter(key: value.key, value: convertParameterValueToJson(value.value)))
+                    try partial.append(NamedParameter(key: value.key, value: convertParameterValueToJson(value.value)))
                 } catch {
                     let reason = """
                     Cannot convert \(dictionary) into a JSON string: \(error)
@@ -52,7 +52,7 @@ public struct SwiftAnalyticsHandlerAdapter: AnalyticsHandler {
                 }
             case .array(let array):
                 do {
-                    try  partial.append(NamedParameter(key: value.key, value: convertParameterValueToJson(value.value)))
+                    try partial.append(NamedParameter(key: value.key, value: convertParameterValueToJson(value.value)))
                 } catch {
                     let reason = """
                     Cannot convert \(array) into a JSON string: \(error)
