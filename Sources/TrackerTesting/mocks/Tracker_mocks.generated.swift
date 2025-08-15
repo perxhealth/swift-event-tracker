@@ -1664,6 +1664,13 @@ public class PostHogServiceAdapterMock: PostHogServiceAdapter {
         identifyDistinctIdStringVoidReceivedInvocations.append(distinctId)
         identifyDistinctIdStringVoidClosure?(distinctId)
     }
+    
+    // MARK: - reset
+    
+    public var resetVoidCallsCount = 0
+    public func reset() {
+        resetVoidCallsCount += 1
+    }
 
     //MARK: - capture
 

@@ -103,8 +103,7 @@ final class PostHogServiceProviderShould: XCTestCase {
     func testResetUserId() {
         sut.setUserId(someUserId)
         sut.resetUserId()
-        XCTAssertEqual(adapter.identifyDistinctIdStringVoidCallsCount, 2)
-        XCTAssertEqual(adapter.identifyDistinctIdStringVoidReceivedDistinctId, "")
+        XCTAssertEqual(adapter.resetVoidCallsCount, 1)
     }
 
     func testDisableTracking() {
