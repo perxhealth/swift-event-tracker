@@ -12,7 +12,7 @@ public final class AppsFlyerServiceProvider: AbstractProvider, Service {
     }
 
     public func trackEvent(_ event: Event) {
-        adapter.logEvent(event.name, withValues: event.parameters)
+        adapter.logEvent(event.name, withValues: event.resolvedParameters)
     }
 
     public func setUserId(_ userId: String) {

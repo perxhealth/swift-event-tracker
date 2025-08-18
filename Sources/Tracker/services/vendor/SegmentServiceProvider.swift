@@ -12,7 +12,7 @@ public final class SegmentServiceProvider: AbstractProvider, Service {
     }
 
     public func trackEvent(_ event: Event) {
-        adapter.track(name: event.name, properties: event.parameters)
+        adapter.track(name: event.name, properties: event.resolvedParameters)
     }
 
     public func trackScreen(_ screen: Screen) {

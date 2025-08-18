@@ -12,7 +12,7 @@ public final class PostHogServiceProvider: AbstractProvider, Service {
     }
 
     public func trackEvent(_ event: Event) {
-        adapter.capture(event.name, properties: event.parameters)
+        adapter.capture(event.name, properties: event.resolvedParameters)
     }
 
     public func trackScreen(_ screen: Screen) {
@@ -28,7 +28,7 @@ public final class PostHogServiceProvider: AbstractProvider, Service {
     }
 
     public func resetUserId() {
-        adapter.identify("")
+        adapter.reset()
     }
 
     public func setProperty(_ key: String, value: String) {

@@ -12,7 +12,7 @@ public final class UXCamServiceProvider: AbstractProvider, Service {
     }
 
     public func trackEvent(_ event: Event) {
-        adapter.logEvent(event.name, withProperties: event.parameters)
+        adapter.logEvent(event.name, withProperties: event.resolvedParameters)
     }
 
     public func setUserId(_ userId: String) {

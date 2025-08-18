@@ -1,18 +1,23 @@
 import Foundation
 
 public final class FacebookServiceProvider: AbstractProvider, Service {
-    public var supportedTags: [Tag] = [.facebook, .analytics, .nativeEventParameters, .nativeUserId]
+    public var supportedTags: [Tag] = [
+        .facebook, .analytics, .nativeEventParameters, .nativeUserId,
+    ]
 
     private var adapter: FacebookServiceAdapter
     private var settingsAdapter: FacebookSettingsAdapter
 
-    public init(adapter: FacebookServiceAdapter, settingsAdapter: FacebookSettingsAdapter) {
+    public init(
+        adapter: FacebookServiceAdapter,
+        settingsAdapter: FacebookSettingsAdapter
+    ) {
         self.adapter = adapter
         self.settingsAdapter = settingsAdapter
     }
 
     public func trackEvent(_ event: Event) {
-        adapter.logEvent(event.name, parameters: event.parameters)
+        adapter.logEvent(event.name, parameters: event.resolvedParameters)
     }
 
     public func setUserId(_ userId: String) {
@@ -25,12 +30,21 @@ public final class FacebookServiceProvider: AbstractProvider, Service {
 
     public func setProperty(_ key: String, value: String) {
         userProperties[key] = value
-        let event = NamedEvent("Set property") + [key: value]
+        let event =
+            NamedEvent("Set property") + [
+                NamedParameter(key: key, value: value)
+            ]
         trackEvent(event)
     }
 
     public func resetProperties() {
-        let event = NamedEvent("Reset properties") + ["keys": userProperties.keys.joined(separator: ", ")]
+        let event =
+            NamedEvent("Reset properties") + [
+                NamedParameter(
+                    key: "keys",
+                    value: userProperties.keys.joined(separator: ", ")
+                )
+            ]
         userProperties = [:]
         trackEvent(event)
     }

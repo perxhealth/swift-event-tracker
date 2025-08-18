@@ -59,7 +59,7 @@ final class PostHogServiceProviderShould: XCTestCase {
 
     func testTrackEventWithExpectedParameters() {
         sut.trackEvent(someEvent)
-        for (key, value) in someEvent.parameters {
+        for (key, value) in someEvent.resolvedParameters {
             XCTAssertEqual(adapter.captureEventStringPropertiesStringAnyVoidReceivedArguments?.properties?[key] as! String, value)
         }
     }
@@ -103,8 +103,7 @@ final class PostHogServiceProviderShould: XCTestCase {
     func testResetUserId() {
         sut.setUserId(someUserId)
         sut.resetUserId()
-        XCTAssertEqual(adapter.identifyDistinctIdStringVoidCallsCount, 2)
-        XCTAssertEqual(adapter.identifyDistinctIdStringVoidReceivedDistinctId, "")
+        XCTAssertEqual(adapter.resetVoidCallsCount, 1)
     }
 
     func testDisableTracking() {

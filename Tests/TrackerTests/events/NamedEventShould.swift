@@ -5,15 +5,15 @@ final class NamedEventShould: XCTestCase {
     func testInitializeFromStringLiteral() {
         let event: NamedEvent = "some event name"
         XCTAssertEqual(event.name, "some event name")
-        XCTAssertEqual(event.parameters, [:])
+        XCTAssertEqual(event.resolvedParameters, [:])
         XCTAssertEqual(event.excludedTags, [])
         XCTAssertEqual(event.requiredTags, [])
     }
 
     func testSupportAddingParameters() {
-        let event = "some event name" + ["key": "value"]
+        let event = "some event name" + [NamedParameter(key: "key", value: "value")]
         XCTAssertEqual(event.name, "some event name")
-        XCTAssertEqual(event.parameters, ["key": "value"])
+        XCTAssertEqual(event.resolvedParameters, ["key": "value"])
         XCTAssertEqual(event.excludedTags, [])
         XCTAssertEqual(event.requiredTags, [])
     }
@@ -21,7 +21,7 @@ final class NamedEventShould: XCTestCase {
     func testSupportAddingRequiredTag() {
         let event: Event = "some event name" + Tag.debugging
         XCTAssertEqual(event.name, "some event name")
-        XCTAssertEqual(event.parameters, [:])
+        XCTAssertEqual(event.resolvedParameters, [:])
         XCTAssertEqual(event.excludedTags, [])
         XCTAssertEqual(event.requiredTags, [.debugging])
     }
@@ -29,7 +29,7 @@ final class NamedEventShould: XCTestCase {
     func testSupportAddingRequiredTags() {
         let event = NamedEvent("some event name") + [.analytics, .debugging]
         XCTAssertEqual(event.name, "some event name")
-        XCTAssertEqual(event.parameters, [:])
+        XCTAssertEqual(event.resolvedParameters, [:])
         XCTAssertEqual(event.excludedTags, [])
         XCTAssertEqual(event.requiredTags, [.analytics, .debugging])
     }
@@ -37,7 +37,7 @@ final class NamedEventShould: XCTestCase {
     func testSupportAddingExcludedTag() {
         let event: Event = "some event name" - Tag.crashReporting
         XCTAssertEqual(event.name, "some event name")
-        XCTAssertEqual(event.parameters, [:])
+        XCTAssertEqual(event.resolvedParameters, [:])
         XCTAssertEqual(event.excludedTags, [.crashReporting])
         XCTAssertEqual(event.requiredTags, [])
     }
@@ -45,7 +45,7 @@ final class NamedEventShould: XCTestCase {
     func testSupportAddingExcludedTags() {
         let event = NamedEvent("some event name") - [.debugging, .crashReporting]
         XCTAssertEqual(event.name, "some event name")
-        XCTAssertEqual(event.parameters, [:])
+        XCTAssertEqual(event.resolvedParameters, [:])
         XCTAssertEqual(event.excludedTags, [.debugging, .crashReporting])
         XCTAssertEqual(event.requiredTags, [])
     }

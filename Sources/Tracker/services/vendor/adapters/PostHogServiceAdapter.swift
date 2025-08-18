@@ -38,6 +38,7 @@ public protocol PostHogServiceAdapter {
     func register(_ properties: [String: Any])
     func unregister(_ key: String)
     func identify(_ distinctId: String)
+    func reset()
     func capture(_ event: String, properties: [String: Any]?)
     func screen(_ screenTitle: String, properties: [String: Any]?)
     func optIn()

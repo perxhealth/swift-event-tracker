@@ -52,7 +52,7 @@ final class SwiftAnalyticsServiceProviderShould: XCTestCase {
 
     func testTrackEventWithExpectedParameters() {
         sut.trackEvent(someEvent)
-        for (key, value) in someEvent.parameters {
+        for (key, value) in someEvent.resolvedParameters {
             XCTAssertEqual(adapter.sendEventStringParametersStringStringVoidReceivedArguments?.parameters[key] as? String, value)
         }
     }

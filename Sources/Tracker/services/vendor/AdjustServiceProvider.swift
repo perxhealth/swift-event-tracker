@@ -11,7 +11,7 @@ public final class AdjustServiceProvider: AbstractProvider, Service {
     }
 
     public func trackEvent(_ event: Event) {
-        adapter.trackEvent(event.name, parameters: event.parameters)
+        adapter.trackEvent(event.name, parameters: event.resolvedParameters)
     }
 
     public override func disableTracking(_ flag: Bool) {

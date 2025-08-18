@@ -5,7 +5,7 @@ import PackageDescription
 let package = Package(
     name: "EventTracker",
     platforms: [
-        .iOS(.v12),
+        .iOS(.v16),
         .macOS(.v10_13),
         .watchOS(.v5),
         .tvOS(.v13),

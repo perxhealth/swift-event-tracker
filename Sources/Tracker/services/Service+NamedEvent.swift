@@ -7,7 +7,13 @@ extension Service {
     }
 
     public func setUserId(_ userId: String) {
-        let event = NamedEvent("Set user") + [AbstractProvider.defaultFallbackUserIdPropertyKey: userId]
+        let event =
+            NamedEvent("Set user") + [
+                NamedParameter(
+                    key: AbstractProvider.defaultFallbackUserIdPropertyKey,
+                    value: userId
+                )
+            ]
         trackEvent(event)
     }
 
@@ -17,8 +23,15 @@ extension Service {
     }
 
     public func setProperty(_ key: String, value: String) {
-        let event = NamedEvent("Set property") + [key: value]
+        let event =
+            NamedEvent("Set property") + [
+                NamedParameter(key: key, value: value)
+            ]
         trackEvent(event)
+    }
+
+    public func setProperty(_ property: any Parameter) {
+        setProperty(property.key, value: property.value)
     }
 
     public func resetProperties() {

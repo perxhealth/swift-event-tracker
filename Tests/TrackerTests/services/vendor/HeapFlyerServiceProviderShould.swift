@@ -53,7 +53,7 @@ final class HeapFlyerServiceProviderShould: XCTestCase {
 
     func testTrackEventWithExpectedParameters() {
         sut.trackEvent(someEvent)
-        for (key, value) in someEvent.parameters {
+        for (key, value) in someEvent.resolvedParameters {
             XCTAssertEqual(adapter.trackEventStringWithPropertiesPropertiesAnyHashableAnyVoidReceivedArguments?.properties?[key] as? String, value)
         }
     }

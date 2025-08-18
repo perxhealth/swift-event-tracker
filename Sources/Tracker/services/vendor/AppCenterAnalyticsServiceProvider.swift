@@ -11,7 +11,7 @@ public final class AppCenterAnalyticsServiceProvider: AbstractProvider, Service 
     }
 
     public func trackEvent(_ event: Event) {
-        adapter.trackEvent(event.name, withProperties: event.parameters)
+        adapter.trackEvent(event.name, withProperties: event.resolvedParameters)
     }
 
     public override func disableTracking(_ flag: Bool) {

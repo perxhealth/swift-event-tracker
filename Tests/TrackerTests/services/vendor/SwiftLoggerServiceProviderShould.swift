@@ -53,7 +53,7 @@ final class SwiftLoggerServiceProviderShould: XCTestCase {
 
     func testTrackEventWithExpectedParameters() throws {
         sut.trackEvent(someEvent)
-        for (key, value) in someEvent.parameters {
+        for (key, value) in someEvent.resolvedParameters {
             try AssertTrue(receivedEventDescription?.contains(key), "\"\(receivedEventDescription ?? "nil")\" does not contain \"\(key)\"")
             try AssertTrue(receivedEventDescription?.contains(value), "\"\(receivedEventDescription ?? "nil")\" does not contain \"\(value)\"")
         }

@@ -12,7 +12,7 @@ public final class InstabugServiceProvider: AbstractProvider, Service {
 
     public func trackEvent(_ event: Event) {
         adapter.logUserEvent(withName: event.name)
-        for (key, value) in event.parameters {
+        for (key, value) in event.resolvedParameters {
             adapter.setUserAttribute(value, withKey: event.name + " -> " + key)
         }
     }

@@ -53,7 +53,7 @@ final class InstabugServiceProviderShould: XCTestCase {
 
     func testTrackEventWithExpectedParameters() throws {
         sut.trackEvent(someEvent)
-        for (key, value) in someEvent.parameters {
+        for (key, value) in someEvent.resolvedParameters {
             let invocation = adapter.setUserAttributeValueStringWithKeyStringVoidReceivedInvocations.first { (_, withKey) in
                 withKey.hasSuffix(key)
             }

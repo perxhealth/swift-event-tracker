@@ -10,7 +10,7 @@ public final class FirebaseAnalyticsServiceProvider: AbstractProvider, Service {
     }
 
     public func trackEvent(_ event: Event) {
-        adapter.logEvent(event.name, parameters: event.parameters)
+        adapter.logEvent(event.name, parameters: event.resolvedParameters)
     }
 
     public func setUserId(_ userId: String) {

@@ -10,7 +10,7 @@ public final class BrazeServiceProvider: AbstractProvider, Service {
     }
 
     public func trackEvent(_ event: Event) {
-        adapter.logCustomEvent(event.name, withProperties: event.parameters)
+        adapter.logCustomEvent(event.name, withProperties: event.resolvedParameters)
     }
 
     public func setUserId(_ userId: String) {

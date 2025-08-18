@@ -41,7 +41,7 @@ final class SwiftAnalyticsHandlerAdapterShould: XCTestCase {
         analytics.send("some event", parameters: ["array": .array([1, "two", .dictionary(["three": 3])])])
 
         let event = serviceProvider.trackEventEventEventVoidReceivedEvent
-        XCTAssertEqual(event?.parameters, ["array": "[1,\"two\",{\"three\":3}]"])
+        XCTAssertEqual(event?.resolvedParameters, ["array": "[1,\"two\",{\"three\":3}]"])
     }
 
     func testTrackEventsWithExpectedSharedParameters() {
@@ -51,7 +51,7 @@ final class SwiftAnalyticsHandlerAdapterShould: XCTestCase {
         analytics.send("some event")
 
         let event = serviceProvider.trackEventEventEventVoidReceivedEvent
-        XCTAssertEqual(event?.parameters, ["dict": "{\"array\":[false,true]}"])
+        XCTAssertEqual(event?.resolvedParameters, ["dict": "{\"array\":[false,true]}"])
     }
 
     func testNotShareParametersBetweenDifferentInstances() {
@@ -73,6 +73,6 @@ final class SwiftAnalyticsHandlerAdapterShould: XCTestCase {
         analytics.send("some event", parameters: ["not shared": 1234, "conflicting": "different value"])
 
         let event = serviceProvider.trackEventEventEventVoidReceivedEvent
-        XCTAssertEqual(event?.parameters, ["not shared": "1234", "conflicting": "different value", "shared": "some value"])
+        XCTAssertEqual(event?.resolvedParameters, ["not shared": "1234", "conflicting": "different value", "shared": "some value"])
     }
 }

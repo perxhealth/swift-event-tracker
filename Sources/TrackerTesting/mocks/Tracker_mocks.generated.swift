@@ -795,7 +795,7 @@ public class EventMock: Event {
         set(value) { underlyingName = value }
     }
     public var underlyingName: (String)!
-    public var parameters: [String: String] = [:]
+    public var parameters: [any Parameter] = []
     public var excludedTags: [Tag] = []
     public var requiredTags: [Tag] = []
 
@@ -1663,6 +1663,13 @@ public class PostHogServiceAdapterMock: PostHogServiceAdapter {
         identifyDistinctIdStringVoidReceivedDistinctId = distinctId
         identifyDistinctIdStringVoidReceivedInvocations.append(distinctId)
         identifyDistinctIdStringVoidClosure?(distinctId)
+    }
+    
+    // MARK: - reset
+    
+    public var resetVoidCallsCount = 0
+    public func reset() {
+        resetVoidCallsCount += 1
     }
 
     //MARK: - capture

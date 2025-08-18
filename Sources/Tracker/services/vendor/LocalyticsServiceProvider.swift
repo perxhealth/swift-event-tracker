@@ -12,7 +12,7 @@ public final class LocalyticsServiceProvider: AbstractProvider, Service {
     }
 
     public func trackEvent(_ event: Event) {
-        adapter.tagEvent(event.name, attributes: event.parameters)
+        adapter.tagEvent(event.name, attributes: event.resolvedParameters)
     }
 
     public func trackScreen(_ screen: Screen) {

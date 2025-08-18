@@ -14,7 +14,7 @@ public final class TaplyticsServiceProvider: AbstractProvider, Service {
 
     public func trackEvent(_ event: Event) {
         adapter.logEvent(event.name)
-        for (key, value) in event.parameters {
+        for (key, value) in event.resolvedParameters {
             userProperties[event.name + " -> " + key] = value
         }
         setUserAttributes()

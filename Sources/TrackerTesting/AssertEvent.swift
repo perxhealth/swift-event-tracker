@@ -34,7 +34,7 @@ public func AssertEventTracked(_ event: NamedEvent,
                    message(),
                    file: file,
                    line: line)
-    XCTAssertEqual(lastEvent?.parameters,
+    XCTAssertEqual(lastEvent?.resolvedParameters,
                    params,
                    message(),
                    file: file,

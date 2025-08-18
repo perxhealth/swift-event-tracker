@@ -56,6 +56,6 @@ final class SwiftAnalyticsKitHandlerAdapterShould: XCTestCase {
             .fire(on: analytics, data: SomeMetadata(someString: "some string", someInteger: 15))
 
         let event = serviceProvider.trackEventEventEventVoidReceivedEvent
-        XCTAssertEqual(event?.parameters, ["someString": "some string", "someInteger": "15"])
+        XCTAssertEqual(event?.resolvedParameters, ["someString": "some string", "someInteger": "15"])
     }
 }

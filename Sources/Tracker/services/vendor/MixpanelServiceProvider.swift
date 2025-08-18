@@ -12,7 +12,7 @@ public final class MixpanelServiceProvider: AbstractProvider, Service {
     }
 
     public func trackEvent(_ event: Event) {
-        adapter.track(event.name, properties: event.parameters)
+        adapter.track(event.name, properties: event.resolvedParameters)
     }
 
     public func setUserId(_ userId: String) {
