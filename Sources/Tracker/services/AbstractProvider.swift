@@ -6,7 +6,7 @@ open class AbstractProvider {
     public private(set) var trackingDisabled: Bool = false
 
     var userIdPropertyKey: String?
-    var userProperties: [String: Any] = [:]
+    public var userProperties: [String: Any] = [:]
 
     public init(userIdPropertyKey: String? = nil) {
         self.userIdPropertyKey = userIdPropertyKey
